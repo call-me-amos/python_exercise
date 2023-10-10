@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="46f85297-3107-4f8e-ad6c-27c24b6294bd" name="Default Changelist" comment="" />
+    <list default="true" id="46f85297-3107-4f8e-ad6c-27c24b6294bd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/smartChat/chat/回测--验证状态策略表.py" beforeDir="false" afterPath="$PROJECT_DIR$/smartChat/chat/回测--验证状态策略表.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smartChat/robot_baktest/data/res/6.0/119.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smartChat/robot_baktest/data/res/6.0/120.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smartChat/robot_baktest/data/res/6.0/121.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smartChat/robot_baktest/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/smartChat/robot_baktest/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smartChat/robot_baktest/simulate_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/smartChat/robot_baktest/simulate_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smartChat/tool/batchRejectTakeover.py" beforeDir="false" afterPath="$PROJECT_DIR$/smartChat/tool/batchRejectTakeover.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,12 +67,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/smartChat/robot_baktest/data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sentence-transformers-master" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.pyOptions" />
+    <property name="settings.editor.selected.configurable" value="Console" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
@@ -75,12 +83,14 @@
       <recent name="E:\python_source\python_exercise\smartChat\robot_baktest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\workspace\python_exercise\smartChat\模型\data" />
+      <recent name="C:\workspace\python_exercise\smartChat\模型" />
       <recent name="E:\python_source\python_exercise\test" />
       <recent name="E:\python_source\python_exercise\smartChat" />
       <recent name="E:\python_source\python_exercise\demo" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.simulate_bot">
+  <component name="RunManager" selected="Python.6-回测-NER模型">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -112,7 +122,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="回测--验证状态策略表 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="回测--验证状态策略表 (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
       <module name="python_exercise" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -126,6 +136,50 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smartChat/chat/回测--验证状态策略表.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="6-回测-NER模型" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python_exercise" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smartChat/模型/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smartChat/模型/data/6-回测-NER模型.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TheSameWord" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="python_exercise" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smartChat/recommond" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smartChat/recommond/TheSameWord.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,7 +210,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="jionlp-test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="similarity-对比两个字符串的相似度" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python_exercise" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -164,12 +218,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/jionlp-test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smartChat/recommend" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jionlp-test/jionlp-test.py" />
+      <option name="SCRIPT_NAME" value="C:\workspace\python_exercise\smartChat\recommend\similarity-对比两个字符串的相似度.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -178,7 +232,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pycorrector_demo (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="similarity-对比两个字符串的相似度" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python_exercise" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -186,34 +240,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pycorrector_test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smartChat/recommend" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pycorrector_test/pycorrector_demo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="simulate_bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="python_exercise" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smartChat/robot_baktest" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smartChat/robot_baktest/simulate_bot.py" />
+      <option name="SCRIPT_NAME" value="C:\workspace\python_exercise\smartChat\recommend\similarity-对比两个字符串的相似度.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -242,11 +274,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.回测--验证状态策略表 (1)" />
-        <item itemvalue="Python.simulate_bot" />
+        <item itemvalue="Python.6-回测-NER模型" />
         <item itemvalue="Python.batchRejectTakeover" />
-        <item itemvalue="Python.jionlp-test (1)" />
-        <item itemvalue="Python.pycorrector_demo (1)" />
+        <item itemvalue="Python.回测--验证状态策略表 (1)" />
+        <item itemvalue="Python.similarity-对比两个字符串的相似度" />
+        <item itemvalue="Python.similarity-对比两个字符串的相似度" />
       </list>
     </recent_temporary>
   </component>
@@ -282,74 +314,43 @@
       <workItem from="1690800837676" duration="13214000" />
       <workItem from="1691978877997" duration="5198000" />
       <workItem from="1692707225622" duration="21572000" />
+      <workItem from="1694095756884" duration="287000" />
+      <workItem from="1694096059450" duration="3688000" />
+      <workItem from="1694418350959" duration="28538000" />
+      <workItem from="1695449400732" duration="23524000" />
+      <workItem from="1695716028560" duration="2258000" />
+      <workItem from="1695996081992" duration="12162000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/smartChat/exportToExcel.py</url>
-          <line>131</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/smartChat/exportToExcel.py</url>
-          <line>132</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/smartChat/tool/batchRejectTakeover.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/smartChat/tool/batchRejectTakeover.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/smartChat/chat/回测--验证状态策略表.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/python_exercise$main.coverage" NAME="main Coverage Results" MODIFIED="1686663394821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/chat" />
-    <SUITE FILE_PATH="coverage/python_exercise$QA.coverage" NAME="回测QA模型 Coverage Results" MODIFIED="1688354417342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/tool" />
-    <SUITE FILE_PATH="coverage/python_exercise$DownloadFileByClint.coverage" NAME="DownloadFileByClint Coverage Results" MODIFIED="1685003890915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
-    <SUITE FILE_PATH="coverage/python_exercise$baidu__1_.coverage" NAME="baidu (1) Coverage Results" MODIFIED="1685086564077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/python_exercise$simulate_bot.coverage" NAME="simulate_bot Coverage Results" MODIFIED="1693798243195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/robot_baktest" />
-    <SUITE FILE_PATH="coverage/python_exercise$__QA__1_.coverage" NAME="回测：意图模型--QA模型 (1) Coverage Results" MODIFIED="1688380643956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/tool" />
-    <SUITE FILE_PATH="coverage/python_exercise$batchRejectTakeover.coverage" NAME="batchRejectTakeover Coverage Results" MODIFIED="1693321237900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/tool" />
-    <SUITE FILE_PATH="coverage/python_exercise$pycorrector_demo.coverage" NAME="pycorrector_demo Coverage Results" MODIFIED="1688523752140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycorrector" />
-    <SUITE FILE_PATH="coverage/python_exercise$jionlp_test__1_.coverage" NAME="jionlp-test (1) Coverage Results" MODIFIED="1689578216802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jionlp-test" />
-    <SUITE FILE_PATH="coverage/python_exercise$DownloadFileByUrlLib.coverage" NAME="DownloadFileByUrlLib Coverage Results" MODIFIED="1685003017802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
-    <SUITE FILE_PATH="coverage/python_exercise$useWget.coverage" NAME="useWget Coverage Results" MODIFIED="1685004882607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
-    <SUITE FILE_PATH="coverage/python_exercise$__1_.coverage" NAME="回测 (1) Coverage Results" MODIFIED="1688347737816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/chat" />
-    <SUITE FILE_PATH="coverage/python_exercise$____1_.coverage" NAME="回测--验证状态策略表 (1) Coverage Results" MODIFIED="1693808533212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/chat" />
-    <SUITE FILE_PATH="coverage/python_exercise$.coverage" NAME="志新 Coverage Results" MODIFIED="1680000133788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat" />
-    <SUITE FILE_PATH="coverage/python_exercise$exportToExcel.coverage" NAME="exportToExcel Coverage Results" MODIFIED="1680054916358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat" />
-    <SUITE FILE_PATH="coverage/python_exercise$openaiDemo.coverage" NAME="openaiDemo Coverage Results" MODIFIED="1685005916005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chatGPT" />
-    <SUITE FILE_PATH="coverage/python_exercise$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1689575735339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jionlp" />
-    <SUITE FILE_PATH="coverage/python_exercise$pycorrector_demo__1_.coverage" NAME="pycorrector_demo (1) Coverage Results" MODIFIED="1689576012344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycorrector_test" />
-    <SUITE FILE_PATH="coverage/python_exercise$UseRequest.coverage" NAME="UseRequest Coverage Results" MODIFIED="1683271965514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
-    <SUITE FILE_PATH="coverage/python_exercise$_jionlp.coverage" NAME="时间提取-jionlp Coverage Results" MODIFIED="1685067671775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat" />
+    <SUITE FILE_PATH="coverage/python_exercise$TheSameWord__1_.coverage" NAME="TheSameWord (1) Coverage Results" MODIFIED="1695630216301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/recommend" />
+    <SUITE FILE_PATH="coverage/python_exercise$DownloadFileByClint.coverage" NAME="DownloadFileByClint Coverage Results" MODIFIED="1694097954086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/demo" />
+    <SUITE FILE_PATH="coverage/python_exercise$TheSameWord.coverage" NAME="TheSameWord Coverage Results" MODIFIED="1695466571401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/recommond" />
+    <SUITE FILE_PATH="coverage/python_exercise$____1_.coverage" NAME="回测--验证状态策略表 (1) Coverage Results" MODIFIED="1696661212580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/chat" />
+    <SUITE FILE_PATH="coverage/python_exercise$similarity__1_.coverage" NAME="similarity (1) Coverage Results" MODIFIED="1695700221790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/recommend" />
+    <SUITE FILE_PATH="coverage/python_exercise$simulate_bot.coverage" NAME="simulate_bot Coverage Results" MODIFIED="1694704145431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/robot_baktest" />
+    <SUITE FILE_PATH="coverage/python_exercise$6__NER.coverage" NAME="6-回测-NER模型 Coverage Results" MODIFIED="1696909406404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/模型/data" />
+    <SUITE FILE_PATH="coverage/python_exercise$openaiDemo.coverage" NAME="openaiDemo Coverage Results" MODIFIED="1694099133830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chatGPT" />
+    <SUITE FILE_PATH="coverage/python_exercise$batchRejectTakeover.coverage" NAME="batchRejectTakeover Coverage Results" MODIFIED="1696901309221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smartChat/tool" />
   </component>
 </project>

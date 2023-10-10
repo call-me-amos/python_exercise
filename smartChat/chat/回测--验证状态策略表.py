@@ -5,8 +5,9 @@ import uuid
 
 def test_bot(user_name, text):
     #url = "https://apigw.to8to.com/cgi/tls/smartChat/testReply"
-    url = "http://10.4.42.28:40121/tls/smartChat/testReply"
+    url = "http://10.4.42.48:40121/tls/smartChat/testReply"
     #url = "http://192.168.41.142:40701/tls/smartChat/testReply"
+    #url = "https://apigw.to8to.com/cgi/tls/smartChat/testReply"
     mode = 1
     if text == "":
         print("开启会话: chatId:", user_name)
@@ -18,6 +19,7 @@ def test_bot(user_name, text):
         #"weChat": "WeiDongMing", #测试
         "weChat": "tongzhiwei", #新回测配置
         #"weChat": "fantong",
+        #"weChat": "13683560870",
         #"weChat": "12361597",
         "eventType": mode,
         #"preRobotAskId": 179,

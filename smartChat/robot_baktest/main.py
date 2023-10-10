@@ -47,7 +47,8 @@ def single_test_bot(user_name, text, question_id):
 
     # url = "https://apigw.to8to.com/cgi/tls/smartChat/testReply"
     # url = "http://10.4.41.34:8849/tls/smartChat/testReply"
-    url = "http://192.168.41.142:40701/tls/smartChat/testReply"
+    # url = "http://192.168.41.142:40701/tls/smartChat/testReply"
+    url = "http://10.4.42.48:40121/tls/smartChat/testReply"
     mode = 1
     if text == "":
         print("开启会话: chatId:", user_name)

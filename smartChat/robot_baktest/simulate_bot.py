@@ -99,8 +99,8 @@ def data_post_process(question_id, resp, text, question):
 
 
 def single_test():
-    q_list = ["119", "120", "121", "123", "124", "125", "126", "127", "128"]
-    # q_list = ["160"]
+    #q_list = ["119", "120", "121", "123", "124", "125", "126", "127", "128"]
+    q_list = ["126"]
     q_ids = json.load(open("./data/q2id2.0.json", "r", encoding="utf-8"))
     for index, question_id in enumerate(q_list):
         # if index in [0, 1, 2, 3, 4, 5, 6]:
