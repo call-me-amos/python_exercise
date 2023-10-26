@@ -20,7 +20,7 @@ def test_bot(user_name, text):
     url = "http://10.4.42.48:40121/tls/smartChat/testReply"
     mode = 1
     if text == "":
-        chat_id = base64.encodebytes(("tongzhiwei#" + user_name).encode("utf-8"))
+        chat_id = base64.encodebytes(("tongzhiwei#" + str(user_name)).encode("utf-8"))
         print(f"开启会话: user:{user_name}, chatId={str(chat_id, 'utf-8')}")
         mode = 2
     dataJson = {
@@ -32,6 +32,7 @@ def test_bot(user_name, text):
 
     }
     test_bot_res = requests.post(url=url, json=dataJson)
+    print(f"test_bot_res={test_bot_res.json()}")
     return test_bot_res.json()
 
 
@@ -59,18 +60,12 @@ def update_ask_slot(user_name, intention):
     return update_ask_slot_res.json()
 
 
-"""
-    excel表头：    phone_id        direction       msg_type         content
-    对应cell：     （row, 1）       （row, 2）      （row, 3）        （row, 4）
-"""
-
-
 def process_reply(row_array):
     print(f"process_reply={str(row_array)}")
-    row_phone_id = row_array[3]
-    row_direction = row_array[4]
-    row_msg_type = row_array[6]
-    row_content = row_array[7]
+    row_phone_id = str(row_array[2])
+    row_direction = str(row_array[3])
+    row_msg_type = str(row_array[5])
+    row_content = str(row_array[6])
 
     if "" == row_content:
         print("回复空字符串")
