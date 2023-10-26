@@ -13,6 +13,12 @@ def load_file(file_id):
     return data
 
 
+def data_post_process(content, file_name):
+    fp = open("./response/{}".format(file_name), "a+", encoding="utf-8")
+    fp.write(content + "\n")
+    fp.close()
+
+
 def call_http(content):
     # 测试环境
     url = "http://192.168.41.112:40015/nlp/nerAndcategory"
@@ -28,15 +34,21 @@ def call_http(content):
 
 
 if __name__ == '__main__':
-    data_1 = load_file("1-合并后的地址信息.txt")
-    data_2 = load_file("2-市名称.txt")
-    data_3 = load_file("3-行政区名称.txt")
-    data_4 = load_file("4-行政街道名称.txt")
-    data_5 = load_file("5-楼盘名.txt")
+    data_name = "./source_data/1-5-合并后的地址信息"
+    data_1 = load_file(data_name + ".txt")
+    # data_2 = load_file("2-市名称.txt")
+    # data_3 = load_file("3-行政区名称.txt")
+    # data_4 = load_file("4-行政街道名称.txt")
+    # data_5 = load_file("5-楼盘名.txt")
+
+    fp = open("./response/{}".format(data_name + "-response.txt"), "a+", encoding="utf-8")
 
     n = len(data_1)
     print(f"总的地址数据：{n}")
     for len_num in range(n):
+        if "" == data_1[len_num]:
+            print("地址信息为空len_num=" + str(len_num))
+            continue
         resJson = call_http(data_1[len_num])
         city = "null"
         town = "null"
@@ -57,8 +69,12 @@ if __name__ == '__main__':
                 add = ner_result.get("tagSourceValue")
                 continue
 
-        print(f'完整地址： {data_1[len_num]}，{city}，{town}，{street}，{add}')
+        write_content = f'{data_1[len_num]}，{city}，{town}，{street}，{add}'
+        print(write_content)
+        fp.write(write_content + "\n")
+
         # if len_num > 2:
         #     print("================")
         #     break
+    fp.close()
     print("============= over!")

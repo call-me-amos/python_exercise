@@ -19,10 +19,11 @@ def test_bot(user_name, text):
         #"weChat": "WeiDongMing", #测试
         "weChat": "tongzhiwei", #新回测配置
         #"weChat": "fantong",
+        #"weChat": "xiaohao",
         #"weChat": "13683560870",
         #"weChat": "12361597",
         "eventType": mode,
-        #"preRobotAskId": 179,
+        #"preRobotAskId": 124,
         "messageId": uuid.uuid4().hex,
         "reply": text
 
