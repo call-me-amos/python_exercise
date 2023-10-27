@@ -91,8 +91,6 @@ def process_reply(row_array):
     row_msg_type = str(row_array[5])
     row_content = str(row_array[6])
 
-    # row_direction = "2"
-    # row_content = "洪果女士，我看到您完善了信息，浙江杭州市萧山区禹洲泊朗廷轩营销中心89m?的毛坯装修，全半包计划选择半包，您想要的风格是现代简约，2023-11-01装修，2024-10-15可以量房。这些信息没问题的话，我尽快帮您安排1-4家公司免费量房出方案和报价，可以吗？"
     if "" == row_content:
         print("回复空字符串")
         return None
@@ -113,15 +111,18 @@ def process_reply(row_array):
     # 开启会话
     if "我通过了你的联系人验证请求，现在我们可以开始聊天了" == row_content or "我已经添加了你，现在我们可以开始聊天了。" == row_content:
         create_session(row_phone_id)
-    elif "2" == row_direction and (operator.contains(row_content, "我看到您完善了信息") or operator.contains(row_content, "hello，咱们填写的信息是")):
+        return "success"
+    if "2" == row_direction and (operator.contains(row_content, "我看到您完善了信息") or operator.contains(row_content, "hello，咱们填写的信息是")):
         miniProgramFormatRes = miniProgramFormat.get_tag(row_content, row_send_time)
         print(f"小程序卡结构化结果：{miniProgramFormatRes}")
         if miniProgramFormatRes is not None:
             historyRecordMiniProgram_res = historyRecordMiniProgram(row_phone_id, miniProgramFormatRes)
-            print(f"回复小程序卡内容处理完成{historyRecordMiniProgram_res}")
-    elif "1" == row_direction:
+            print(f"回复小程序卡内容处理完成,res:{historyRecordMiniProgram_res}")
+        return "success"
+    if "1" == row_direction:
         # 用户回复。走话术推荐逻辑，完成标签提取
         user_reply(row_phone_id, row_content, row_direction)
+        return "success"
     else:
         # 顾问回复-提问。通过字符相似度匹配逻辑，判断顾问是否在提问
         label_obj_res = get_label_obj(row_content)
@@ -145,7 +146,7 @@ def process_reply(row_array):
 
 if __name__ == '__main__':
     # 打开文件
-    data_df = pd.read_excel('C:\\Users\\amos.tong\\Desktop\\历史记录-标签提取\\聊天记录+顾问意图训练数据.xls', sheet_name='Sheet2')
+    data_df = pd.read_excel('C:\\Users\\amos.tong\\Desktop\\历史记录-标签提取\\聊天记录+顾问意图训练数据.xls', sheet_name='91324de5-26e6-4718-875a-5b75201')
 
     for index, row in data_df.iterrows():
         process_reply_res = process_reply(row)
