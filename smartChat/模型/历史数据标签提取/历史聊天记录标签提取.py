@@ -108,6 +108,10 @@ def process_reply(row_array):
         print("引用消息")
         row_content = row_content.split("- - - - - - - - - - - - - - -")[1]
 
+    # 测试代码
+    if row_content == "有合适的方案和报价，是有考虑10-12月份装修是嘛？":
+        print("测试数据")
+
     # 开启会话
     if "我通过了你的联系人验证请求，现在我们可以开始聊天了" == row_content or "我已经添加了你，现在我们可以开始聊天了。" == row_content:
         create_session(row_phone_id)
@@ -146,7 +150,7 @@ def process_reply(row_array):
 
 if __name__ == '__main__':
     # 打开文件
-    data_df = pd.read_excel('C:\\Users\\amos.tong\\Desktop\\历史记录-标签提取\\聊天记录+顾问意图训练数据.xls', sheet_name='91324de5-26e6-4718-875a-5b75201')
+    data_df = pd.read_excel('C:\\Users\\amos.tong\\Desktop\\历史记录-标签提取\\1-测试表格.xlsx', sheet_name='汇总自测数据')
 
     for index, row in data_df.iterrows():
         process_reply_res = process_reply(row)
