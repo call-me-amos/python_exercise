@@ -22,7 +22,7 @@ def load_file(file_id):
 
 
 def user_reply(user_name, text, direction):
-    url = "http://10.4.42.48:40121/tls/smartChat/historyRecordReply"
+    url = "http://192.168.41.142:40701/tls/smartChat/historyRecordReply"
     mode = 1
     dataJson = {
         "user": user_name,
@@ -38,7 +38,7 @@ def user_reply(user_name, text, direction):
 
 
 def create_session(user_name):
-    url = "http://10.4.42.48:40121/tls/smartChat/historyRecordCreate"
+    url = "http://192.168.41.142:40701/tls/smartChat/historyRecordCreate"
     chat_id = base64.encodebytes(("tongzhiwei#" + str(user_name)).encode("utf-8"))
     logger.info(f"开启会话: user:{user_name}, chatId={str(chat_id, 'utf-8')}")
     dataJson = {
@@ -64,7 +64,7 @@ def get_label_obj(text):
 
 
 def update_ask_slot(user_name, intention):
-    url = "http://10.4.42.48:40121/tls/smartChat/testForHistoryUpdateAskSlot"
+    url = "http://192.168.41.142:40701/tls/smartChat/testForHistoryUpdateAskSlot"
     dataJson = {
         "user": user_name,
         "weChat": "tongzhiwei",
@@ -75,7 +75,7 @@ def update_ask_slot(user_name, intention):
 
 
 def historyRecordMiniProgram(user_name, message={}):
-    url = "http://10.4.42.48:40121/tls/smartChat/historyRecordMiniProgram"
+    url = "http://192.168.41.142:40701/tls/smartChat/historyRecordMiniProgram"
     dataJson = {
         "user": user_name,
         "weChat": "tongzhiwei"
@@ -87,7 +87,7 @@ def historyRecordMiniProgram(user_name, message={}):
 
 
 def historyRecordFindTagByPhoneId(user_name):
-    url = "http://10.4.42.48:40121/tls/smartChat/historyRecordFindTagByPhoneId"
+    url = "http://192.168.41.142:40701/tls/smartChat/historyRecordFindTagByPhoneId"
     dataJson = {
         "user": user_name,
         "weChat": "tongzhiwei"
