@@ -37,3 +37,8 @@ version
 .sts4-cache/
 /venv
 /.idea/*.xml
+
+.metadata
+.metadata/
+drivers
+DBeaver/General/.dbeaver/*
