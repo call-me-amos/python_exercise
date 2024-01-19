@@ -1,12 +1,12 @@
 
 
 
-@set hivevar_smart_chat_dt = '20231220'
+@set hivevar_smart_chat_dt = '20240118'
 
 select ${hivevar_smart_chat_dt}
 
 -------------------------------------------------------
-
+-- 表3：意图识别准确率
 --- 视图：  v_hive_ads_smart_chat_tb_category_content_report
 drop table if exists hive2.test.tmp_smart_chat_tb_category_content_report;
 

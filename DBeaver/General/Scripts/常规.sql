@@ -25,7 +25,10 @@
 
 
 =======================================================================================================================
--- 某个模板所有的话术id
+-- 注意，sql在presto执行，需要分多次
+--		第一个sql内部union的表需要多次级联查询
+-- 		第二个sql的id依赖第一个sql的查询结果
+-- 【1】某个模板所有的话术id
 select distinct temp_robot_ask_id
 from 
 (
@@ -116,7 +119,8 @@ where temp.temp_robot_ask_id>0
 
 
 
--- 承接上面的sql，查询出来某个模板下面的所有话术id，然后导出详情
+-- 【2】承接上面的sql，查询出来某个模板下面的所有话术id，然后导出详情。
+-- 注意，这里有个问题，如果话术没有配置无响应时间，就不会导出来。
 select cra1.id as "话术id"
 ,cra1.check_type_code 
 ,(
@@ -131,13 +135,24 @@ select cra1.id as "话术id"
 	where dcc.scene =3 and dcc.relate_id =cra1.id 
 	group by dcc.relate_id
 )  as "话术内容：【延迟时间】-【话术内容】"  --as robotAskContent
-,(
+,
+case (
 	select array_join(array_agg(cast(dcc.delay_time as varchar) ||'--'||dcc.content order by dcc.delay_time asc), '
 	')
 	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config dcc
 	where dcc.scene =5 and dcc.relate_id =cra1.id 
 	group by dcc.relate_id
-)  as "用户超时无响应后的话术：【延迟时间】-【话术内容】" --as robotAskContentForNoResponse
+) is null 
+when true then '没配置无响应话术' else 
+(
+	select array_join(array_agg(cast(dcc.delay_time as varchar) ||'--'||dcc.content order by dcc.delay_time asc), '
+	')
+	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config dcc
+	where dcc.scene =5 and dcc.relate_id =cra1.id 
+	group by dcc.relate_id
+)
+end 
+as "用户超时无响应后的话术：【延迟时间】-【话术内容】" --as robotAskContentForNoResponse
 ,adr.intention_name as "用户回复文本分类--意图"
 ,adr.aff_neg_intention_name  as "用户回复肯否意图"
 ,adr.content  as "用户回复内容--归一后的结果"
@@ -161,18 +176,6 @@ order by adr.robot_ask_id asc, adr.relate_robot_ask_id asc;
 
 =====================================================================================
 
-
-
-
-;
-select *
-from 
-hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr 
-where adr.relate_robot_ask_id<=0
-and 
-adr.robot_ask_id in (
-	98
-)
 =======================================================================================================================
 select dcc.relate_id
 ,array_join(array_agg(dcc.content), '
@@ -395,18 +398,21 @@ group by cr.chat_id
 
 select *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
-where qr.chat_id ='ODI2NzEyNzUjd21KaUliREFBQWZWWXNiX1B5NlVmSk5rM1lnS1JkOEE='
+where qr.chat_id ='MTk4NjA4NDYwNDUjd21KaUliREFBQUYxV1hPVTExWmdSNUZJSmJUSU1waGc='
 order by qr.id asc
 
 
 select *, from_unixtime(create_time+8*3600) as create_time, from_unixtime(update_time+8*3600) as update_time
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 where 
+cd.chat_id ='MTgwMjUzOTMxNTQjd21KaUliREFBQVlTcmtXSkJPcHJNQy1UbHN0a3pySXc='
 order by id desc
+
+
 
 select *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-where cr.extend_info like '%371501157%'
+where cr.extend_info like '%4868269%'
 
 select *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
@@ -434,7 +440,7 @@ select from_unixtime(cd.create_time+8*3600) as ct
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
 where cd.chat_id in 
 (
-'OTU4OTcyI3dtSmlJYkRBQUFsWktZVUxBZnhMd0Nxc0l2M2tORzZB'
+'MTg4MjY1MjgxNzkjd21KaUliREFBQWtFd3g5MjVmMnNVdlFlalczRkJBTEE='
 )
 order by id desc
 
@@ -449,17 +455,7 @@ where ccr.chat_id in
 select from_unixtime(cd.create_time+8*3600) as ct,cd.extend_info 
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.extend_info like '%374452250%'
-order by id desc
-
-
-
-select from_unixtime(cd.create_time+8*3600) as ct, *
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.robot_takeover_type =0
-and cd.check_status =1
-and cd.conversation_template_id in (5,6,7,8,9,10,12,13,14,15,16,17,18,  )
-and cd.robot_id = '18098960914'
+where cd.extend_info like '%376184489%'
 order by id desc
 
 
@@ -467,148 +463,98 @@ select from_unixtime(qr.create_time+8*3600) as ct,*
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
 where 
 --qr.chat_id ='MTgxOTQwNjA4MzIjd21KaUliREFBQXBmTjg5WGhUbzJ5NTBCNE0wQUpDckE='
-qr.text_content like '%图片%'
+--qr.text_content like '%图片%'
 order by id desc
 
 
 
 select from_unixtime(cd.create_time+8*3600) as ct
+, from_unixtime(cd.reply_time +8*3600) as rt
 ,* 
 from  hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-where cd.chat_id ='MTkwNzU2OTI5ODMjd21KaUliREFBQVhoLU16V2dPM1NyYms3VXN5YkNzbXc='
-order by id desc
-
-
-select from_unixtime(cd.create_time+8*3600) as ct
-,* 
-from  hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-where cd.check_type_code in ('7!711!71102!59' )
-order by id desc
-
-
-select *
-from 
-(
-	select 
-	qr.chat_id ,
-	cd.extend_info ,
-	from_unixtime(qr.send_time +8*3600) as createTime
-	,qr.text_content
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
-	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd on qr.chat_id = cd.chat_id 
-	where
-	qr.chat_id in (
-	'ODI2NzEyNzUjd21KaUliREFBQWNoZ095Y0xoUHdmbzVQVThTUTVnWUE='
-	)
-	order by qr.id desc
-	--and qr.send_time>1702051200
-	group by qr.chat_id
-)
-
-
-
-select cr.chat_id,cr.robot_id  ,cr.extend_info
-,cd.reply , cd.nlp_reply , cd.source_reply 
-from  
-hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr 
-left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd on cr.chat_id =cd.chat_id 
 where 
- cr.robot_takeover_type =0 and cd.check_type_code ='7!711!71102!13'
- and cd.reply !=''
-order by cd.id  desc
+cd.chat_id ='MTg4MjY1MjgxNzkjd21KaUliREFBQWtFd3g5MjVmMnNVdlFlalczRkJBTEE='
+order by cd.reply_time  desc
+
+
+select from_unixtime(cd.create_time+8*3600) as ct
+,* 
+from  hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+where cd.check_type_code in ('7!711!71102!55' )
+order by id desc
+
+
 
 -----
-select from_unixtime(cd.create_time+8*3600) as createTime
+select from_unixtime(cd.create_time+8*3600) as ct
+,cd.create_time 
 ,cd.transfer_manual_reason 
 ,cd.chat_id, cd.robot_id, cd.uid, cd.check_status, cd.extend_info ,cd.robot_takeover_type 
+,*
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
 where cd.robot_takeover_type =0
-and cd.conversation_template_id =12
-and cd.check_status != 5
-and cd.deleted =0
---and cd.create_time >= 1702396800
+--and cd.deleted =0
+--and cd.conversation_template_id =12
+--and cd.check_status != 5
+--and cd.robot_id in ('17722578189','19065015413','19820810743','18806651721')
+and cd.uid in ('wmJiIbDAAAkMOLXYV1MeW1hmAZGNO_7g','wmJiIbDAAA7WB-ucTyGUxpSCYzhoKyoQ','wmJiIbDAAAT-7Sw5xkyJ4a9IqUrkfYpQ','wmJiIbDAAA9sNGsGZEtynLLfJlVxtNOg','wmJiIbDAAAE6eBhoetth0AXJq3N-AQjA','wmJiIbDAAAOfCudBQUWRakc4uyAWYDKA','wmJiIbDAAA74ORFScfwJhYnEQWMC6WHQ','wmJiIbDAAAbPfHPNzleLlFSqfjs-ccag','wmJiIbDAAA08aKmm5CnresrowfpcCvrA','wmJiIbDAAA5mc0cTUVbYLPFsNEBh4HlQ','wmJiIbDAAAmDngWluKObEd9QWvi4uytg','wmJiIbDAAAUgiraPSSGtksmtUGmcVZoA','wmJiIbDAAAkpFj82PUee1QtGS3uGNIyQ','wmJiIbDAAA9XZ-5o62PRrdBFsLoGgmFg','wmJiIbDAAAWtCQMLerOFkStYRBciWz0A','wmJiIbDAAAF2TbnRU9WuRtpUubEuKIOg','wmJiIbDAAA0xNQlnhQLN1ZZXDP548zJQ','wmJiIbDAAAHGD__ohYo-dl03jJltjMnA','wmJiIbDAAAMqq-p5pJo3Adntjdl7c3qw','wmJiIbDAAAcJlFqYQsZJkyycB7nWkOwg','wmJiIbDAAA6GhrPcfrp2d5Nntmnf6zkg','wmJiIbDAAAzwaT2QTC0c4thGnZTHS8Bw','wmJiIbDAAA2jS7mya1girh7FoIqIGUug','wmJiIbDAAA2POkOIyF_RR1Qw5IKWeUsg','wmJiIbDAAAh-x3ZeGDXkPhXl3YQVvZiw','wmJiIbDAAA89d8vphjGBx4_fHUotB2Wg','wmJiIbDAAAWFyHnNRu-dtpB0E4VAMTIQ','wmJiIbDAAA1aMNzylO3VcjvUMVBEyBsg','wmJiIbDAAANtlp5n4xPeK2ui3zx8dgvw','wmJiIbDAAAxJot1-AEXU-TOu0zT7H-HA','wmJiIbDAAAf1rB_KXrNQkc_Zw5ZFFU8w','wmJiIbDAAAS7ky8IwRLn97qf6dX2WrZA','wmJiIbDAAAibVTrIt1H0UAtvdiFWQ9PQ','wmJiIbDAAAx5gNDJA9iN6SFRMtYItZyA','wmJiIbDAAAt8Te2aWHqb9Aeztgt4jb-Q','wmJiIbDAAAuacOeDB4QIVZXaSl-J1ohQ','wmJiIbDAAAmm7Ft-64pQHE7s-APKy3CA','wmJiIbDAAAKrtB1cut4MveoG8pTWzcow','wmJiIbDAAAKQAEPJ63HmNSfhYV6n3xHw','wmJiIbDAAA6oY0gq5UBgtphl1zZG_FuA','wmJiIbDAAA5C4b00JqM0pTxNFQCmVjmA','wmJiIbDAAA7DRIFtbDmBa74ad9-836wg','wmJiIbDAAAxOoC7MqMlmtgVPIzRDprwA','wmJiIbDAAAd2oQ_kRGrgN2nZv1cxwT-w','wmJiIbDAAAMYZaXiygluBTTsn63IGemA','wmJiIbDAAAHus4Sx1v2ZsO0ABb9pk4Fg','wmJiIbDAAAlKSLu8C7MKC1p2ccgGz16w','wmJiIbDAAA4H4j_0eFgZIRp7BXaWYMEQ','wmJiIbDAAAS840s8WhSK5HejXI4Rwo9Q','wmJiIbDAAAj3PN1ji83x1BbVDv9vw4FQ','wmJiIbDAAAVQ4HBqlvlgJ0XTJmZyj5Vw','wmJiIbDAAA8ukJC-QVAR0mbC2aueRiOg','wmJiIbDAAAnJRNx92P-55F8xQKMvHDig','wmJiIbDAAAbFy5skX7FCyOhL6G9_V50Q','wmJiIbDAAAVSZNQQOoj-7BU7BpZWPcCA','wmJiIbDAAAwFzgxMf7ktpBKz2dWmkVXw')
 order by id  desc
 
 --------
 
 
-
+-- 静默信息
 select 
 from_unixtime(ccr.create_time+8*3600) as ct
 ,ccr.transfer_manual_reason 
 , ccr.extend_info 
+, (json_extract_scalar(ccr.extend_info, '$.silentType')) as silentType
 , *
 --count(distinct ccr.robot_id)
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
 where 
-ccr.check_status  not in (-1) 
+--ccr.check_status  not in (-1) 
 --and 
---json_extract_scalar(ccr.extend_info, '$.transferManualType') ='1'
---(json_extract_scalar(ccr.extend_info, '$.transferManualType') is null or json_extract_scalar(ccr.extend_info, '$.transferManualType') !='1')
---and ccr.robot_id in (
-----    '18124145324'
---)
-and ccr.conversation_template_id in (12, 13, 20, 21)
+--json_extract_scalar(ccr.extend_info, '$.transferManualType') is not null
+--(json_extract_scalar(ccr.extend_info, '$.silentType') is not null and json_extract_scalar(ccr.extend_info, '$.silentType') ='5')
+----json_extract_scalar(ccr.extend_info, '$.silentType') is not null
+--and 
+ccr.conversation_template_id in (12, 13, 20, 21)
 and ccr.robot_takeover_type =0
 and ccr.deleted =0
---and ccr.staff_service_time > 1701699000
-and ccr.create_time >= 1702396800 and ccr.create_time < 1702396800+3600*24
+and ccr.create_time >= 1703174400 and ccr.create_time < 1703174400+3600*24
 --and ccr.chat_id ='MTgxMjQxNDUzMjQjd21KaUliREFBQXpqaU8tcHgxanNiNVhOS0xoN2hMd1E='
+and ccr.transfer_manual_reason !=1
+and ccr.check_status =5
 order by id desc
 
 
-
-
-
-select from_unixtime(ccr.create_time+8*3600) as ct
-, from_unixtime(ccr.staff_service_time +8*3600) as staff_service_time_format 
-,ccr.extend_info 
+--- 还在静默状态的用户
+select 
+from_unixtime(ccr.create_time+8*3600) as ct
 ,ccr.transfer_manual_reason 
+, ccr.extend_info 
+, (json_extract_scalar(ccr.extend_info, '$.silentType')) as silentType
 , *
+--count(distinct ccr.robot_id)
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
 where 
---from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
---where ccr.dt =${hivevar_smart_chat_dt}  and 
-ccr.robot_id in (
-'10342215','24482178','652638','79081421','52648','19860846045','13554701752','10676302','19128456739','82671275','19075693760','19128323473','085472','13554702790','19076199760','13554705247','18038174915','19065037054','18126269084','18002569934','18165747834','19065033242','19075363641','18128823041','18124145324'
-)
+ccr.conversation_template_id in (12, 13, 20, 21)
 and ccr.robot_takeover_type =0
-and ccr.create_time between 1701964800 and 1701964800+3600*24
---and ccr.transfer_manual_reason in 
---(
-----14,5,10,15,17,23,27,28
---3
---)
-order by ccr.id  desc
-;
-
-
-select from_unixtime(ccr.create_time+8*3600) as ct
-,ccr.extend_info 
-,ccr.transfer_manual_reason 
-, *
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
-where 
-ccr.chat_id in 
-(
-'MTgxMjk5NTY0MDcjd21KaUliREFBQTJDZFJNaWNUODNYSTRyWS1ZeHNfV1E='
-)
---ccr.robot_id in (
---'19075699072'
---)
-order by ccr.id  desc
-;
-
+and ccr.deleted =0
+and ccr.check_status =6
+order by id desc
 
 -------------
+--通过电话id查询需求的获权时间。（异常情况需要看项目的获权时间或者需求的创建时间）
 -- 按电话找联系人id
-select id from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_contact where phone_id = 329879559;
+select id from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_contact where phone_id = 320217517;
 -- 按联系人id项目
-select proj_id from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_project where con_id = 32212699;
--- 按项目找需求
-select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_demand where proj_id = 67212826;
+select proj_id,* from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_project where con_id = 9833622;
+-- 按项目id找需求。可能有多个，找有值那个查看获权时间
+select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_demand where proj_id = 44657011;
 
-
+---tips：合并在一起查询很慢
 select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_demand where proj_id in (
     select proj_id from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_project where con_id = (
         select id from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_contact  where phone_id = 373992463
@@ -616,42 +562,66 @@ select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_pro
     );
 ---------------------------
    
-   
+---- 提前抢答，剔除主动取消的
    @set hivevar_smart_chat_dt = '20231220'
-   
--- 托管账号，顾问抢答:转人工之前，顾问发送的消息数（scene：IM）
-select from_unixtime(ccr.create_time+8*3600) as ct
-, json_extract_scalar(ccr.extend_info, '$.phone_id') as phone_id
-, from_unixtime(cwl.send_time/1000+8*3600) as st
-, cwl.text_content 
-,ccr.create_time, ccr.chat_id, ccr.robot_id  , *
-from 
-(
-	select --(select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) 
-	create_time
-	, ccr1.robot_id , ccr1.uid ,ccr1.chat_id ,ccr1.staff_service_time, ccr1.extend_info 
-	, ccr1.chat_start_time
-	from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
-	where ccr1.dt =${hivevar_smart_chat_dt} 
-	and ccr1.robot_takeover_type =0 
-	and ccr1.conversation_template_id in (13, 20, 21)
-) as ccr
-left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link cwl
-	on ccr.robot_id =cwl.profile_custom_id  and ccr.uid = cwl.external_userid 
-where cwl.dt =${hivevar_smart_chat_dt}
---and cwl.send_time between 1000*${hivevar_smart_chat_start_add_time} and 1000*${hivevar_smart_chat_end_add_time}
-and cwl.scene ='RECMSG'
-and ccr.chat_start_time * 1000 >= cwl.send_time
-and cwl.text_content not like '%现在我们可以开始聊天了%'
-and cwl.text_content not like '%现在可以开始聊天了%'
-and ccr.chat_start_time > 1687104000
+  
 
+		select t2.create_time
+		, t2.total_takeover
+		, tb_tmp_quick_response_record_total.quick_response_record_total
+		from 
+		(
+			select	t3.create_time, count(t3.chat_id)  as total_takeover
+			from 
+			(
+					select getday(create_time) as create_time, create_time as create_time_bak, ccr1.robot_id , ccr1.uid ,ccr1.chat_id ,ccr1.staff_service_time
+					from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
+					where ccr1.dt =${hivevar_smart_chat_dt} 
+					and ccr1.robot_takeover_type =0 
+					and ccr1.deleted =0
+					and ccr1.conversation_template_id in (13, 20, 21)
+					and ccr1.create_time >=1700841600
+					and ccr1.transfer_manual_reason !=1				
+			) t3
+			--where t3.create_time ='20231221'
+			group by t3.create_time		
+		) t2
+		left join 
+		(
+			select t4.create_time
+			, count(t4.chat_id) as quick_response_record_total
+			from 
+			(
+				-- 托管账号，顾问抢答:转人工之前，顾问发送的消息数（scene：IM）
+				select ccr.create_time ,ccr.chat_id 
+				from 
+				(
+					select create_time, robot_id , uid ,chat_id ,staff_service_time
+					from 
+					(
+						select getday(create_time) as create_time, create_time as create_time_bak, ccr1.robot_id , ccr1.uid ,ccr1.chat_id ,ccr1.staff_service_time
+						from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
+						where ccr1.dt =${hivevar_smart_chat_dt} 
+						and ccr1.robot_takeover_type =0 
+						and ccr1.deleted =0
+						and ccr1.conversation_template_id in (13, 20, 21)
+						and ccr1.create_time >=1700841600
+						and ccr1.transfer_manual_reason !=1				
+					) t1
+					group by t1.create_time, t1.create_time_bak, t1.robot_id , t1.uid ,t1.chat_id ,t1.staff_service_time
+				) as ccr
+				left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link cwl
+					on ccr.robot_id =cwl.profile_custom_id  and ccr.uid = cwl.external_userid 
+				where cwl.dt =${hivevar_smart_chat_dt}
+		        and cwl.scene ='IM'
+		        and ccr.staff_service_time * 1000 >= cwl.send_time
+		        --and ccr.create_time ='20231221'
+		        group by ccr.create_time,ccr.chat_id			
+			) t4
+			group by t4.create_time
+			
+		) as tb_tmp_quick_response_record_total
+			on t2.create_time = tb_tmp_quick_response_record_total.create_time 
+		
 
-
-
-	        
-	        
-	        
-	        
-	        
 	        

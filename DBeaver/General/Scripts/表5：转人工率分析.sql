@@ -1,9 +1,9 @@
-@set hivevar_smart_chat_dt = '20231220'
+@set hivevar_smart_chat_dt = '20240118'
 
 select ${hivevar_smart_chat_dt}
 
 -------------------------------------------------------
-
+-- 表5：转人工
 -- 视图  v_hive_ads_smart_chat_tb_transfer_manual_reason_report
 drop table if exists hive2.test.tmp_smart_chat_tb_transfer_manual_reason_report;
 
@@ -62,7 +62,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_transfer_manual_reason_r
 							from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 							where ccr1.dt =${hivevar_smart_chat_dt} 
 							and ccr1.robot_takeover_type =0 
-							and ccr1.conversation_template_id in (13, 20, 21)
+							--and ccr1.conversation_template_id in (13, 20, 21)
+							and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 							and ccr1.check_status =5
 						) as tb_temp_ccr
 						group by tb_temp_ccr.create_time
@@ -80,7 +81,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_transfer_manual_reason_r
 								from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 								where ccr1.dt =${hivevar_smart_chat_dt} 
 								and ccr1.robot_takeover_type =0 
-								and ccr1.conversation_template_id in (13, 20, 21)
+								--and ccr1.conversation_template_id in (13, 20, 21)
+								and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 								and ccr1.check_status =5
 								-- 测试
 								--and ccr1.create_time between 1701964800 and 1701964800+3600*24
@@ -91,7 +93,4 @@ create table if not exists hive2.test.tmp_smart_chat_tb_transfer_manual_reason_r
 	) 
 	group by create_time, valid_takeover_total ,transfer_manual_total,transfer_manual_reason
 	
-)
-
-
-;
+);

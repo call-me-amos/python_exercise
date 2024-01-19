@@ -1,12 +1,12 @@
 /**
  * 表2：槽位维度的IM数据（开发情况）
  */
---@set hivevar_smart_chat_start_add_time = to_unixtime(cast ('2023-11-21 00:00:00' as timestamp)) - 8*3600
---@set hivevar_smart_chat_end_add_time = to_unixtime(cast ('2023-11-21 23:59:59' as timestamp)) - 8*3600
-@set hivevar_smart_chat_dt = '20231220'
+@set hivevar_smart_chat_dt = '20240118'
 
 select ${hivevar_smart_chat_dt}
 ---------------------------------------------------------------------------------------------------------------------------------------
+-- 表2：槽位维度的IM 数据
+
 
 -- 视图： v_hive_ads_smart_chat_slot_report
 
@@ -423,7 +423,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_check as
 				and tcr.session_id <> ''
 				and tcr.marked_status =2
 				-- TODO 测试
-				--and tcr.create_time between ${hivevar_smart_chat_start_add_time} and ${hivevar_smart_chat_end_add_time}
 				--and tcr.id = 134167  -- TODO  测试数据
 			) as tb_temp_standard_json
 		) as tb_temp_standard_json_format
@@ -494,12 +493,12 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 					on ccr.robot_id = tb_fisrt_msg_create_time.owner_wechat and ccr.uid = tb_fisrt_msg_create_time.external_userid 
 				where 
 				ccr.dt = ${hivevar_smart_chat_dt} 
-				--and ccr.create_time  between ${hivevar_smart_chat_start_add_time} and ${hivevar_smart_chat_end_add_time}
 				and tb_fisrt_msg_create_time.fisrt_robot_msg_send_time > 0
 				and ccr.staff_service_time > tb_fisrt_msg_create_time.fisrt_robot_msg_send_time
 				
 				and ccr.robot_takeover_type =0 
-				and ccr.conversation_template_id in (13, 20, 21)
+				--and ccr.conversation_template_id in (13, 20, 21)
+				and (ccr.conversation_template_id in (13, 20, 21, 26) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 				and ccr.transfer_manual_reason <> 1
 			) tb_temp
 			group by tb_temp.create_time
@@ -516,11 +515,10 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 					        , (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) as create_time
 					        from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
 					        where ccr.dt = ${hivevar_smart_chat_dt} and conversation_template_id in (13, 20, 21) and robot_takeover_type = 0 and transfer_manual_reason <> 1
-				            --and ccr.create_time between ${hivevar_smart_chat_start_add_time} and ${hivevar_smart_chat_end_add_time}
+				            
 				    ) as temp_ccr 
 				    left join hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail ccd on temp_ccr.chat_id = ccd.chat_id 
 				    where ccd.dt =  ${hivevar_smart_chat_dt} 
-				    --and ccd.create_time  between ${hivevar_smart_chat_start_add_time} and ${hivevar_smart_chat_end_add_time}
 				    and ccd.relate_message_id != '' 
 				    group by temp_ccr.create_time, ccd.chat_id, ccd.check_type_code
 			) m 
@@ -543,19 +541,17 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 				and ccd.reply_time > 0 
 				and ccd.role_type in (1,3,4)
 				and ccr.dt = ${hivevar_smart_chat_dt} 
-				and ccr.conversation_template_id in (13, 20, 21) 
+				--and ccr.conversation_template_id in (13, 20, 21) 
+				and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 				and ccr.robot_takeover_type = 0 
 				and ccr.transfer_manual_reason <> 1
-				--and ccr.create_time between ${hivevar_smart_chat_start_add_time} and ${hivevar_smart_chat_end_add_time}
 			) tb_temp_detail
 			group by tb_temp_detail.create_time, tb_temp_detail.check_type_code
-			--order by tb_temp_detail.check_type_code asc
 	) as tb_collect
 		on tb_actual_send.create_time = tb_collect.create_time and tb_actual_send.check_type_code = tb_collect.check_type_code
-	--order by tb_actual_send.check_type_code asc
 )
 ;
-	
+
 
 drop table if exists hive2.test.tmp_smart_chat_slot_report  ;
 

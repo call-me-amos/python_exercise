@@ -1,8 +1,10 @@
-@set hivevar_smart_chat_dt = '20231220'
+@set hivevar_smart_chat_dt = '20240118'
 
 select ${hivevar_smart_chat_dt}
 
 -------------------------------------------------------
+
+-- 表4：话术维度
 drop table if exists hive2.test.tmp_smart_chat_tb_robot_ask_report;
 
 --视图：  v_hive_ads_smart_chat_tb_robot_ask_report
@@ -204,13 +206,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_robot_ask_report as
 			and tb_temp_qiwei_record_02.slot_name=tb_temp_qiwei_record.slot_name 
 			and tb_temp_qiwei_record_02.script_type=tb_temp_qiwei_record.script_type 
 			and tb_temp_qiwei_record_02.text_content=tb_temp_qiwei_record.text_content
-		
-
-)
-
-
-
-;		
+);		
 
 		
 			

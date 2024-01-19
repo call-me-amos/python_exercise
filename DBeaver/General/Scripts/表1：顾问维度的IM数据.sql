@@ -41,10 +41,13 @@ t1.owner_wechat = t3.profile_custom_id
 
 */
 ------------------------------------------ 报表需求 ---------------------------------------------------------------------------
+--- 分区。需要设置成前一天。如果今天是2023-12-23，那么下面就设置为：20231222。 并且执行时间需要在每天的10点之后，避免依赖大数据的sql还没有更新完数据
+--- 除了第一条sql需要单独执行，后面的sql可以全选，然后一次性执行。选中除第一句sql以外的其他sql，然后使用快捷键：Alt+x 执行。
+@set hivevar_smart_chat_dt = '20240118'
 
-@set hivevar_smart_chat_dt = '20231220'
+--select ${hivevar_smart_chat_dt}
+-- 表1：顾问维度的IM 数据
 
-select ${hivevar_smart_chat_dt}
 
 ----- 删除临时表
 drop table if exists hive2.test.tmp_smart_chat_tb_all_wechat_relate;
@@ -85,7 +88,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_all_wechat_relate as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			and ccr1.conversation_template_id in (13, 20, 21)
+			--and ccr1.conversation_template_id in (13, 20, 21)
+			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 		) as ccr
 			on tb_user_wechat.add_wechat_time = ccr.create_time and tb_user_wechat.owner_wechat=ccr.robot_id
 		--where add_wechat_time ='20231122'  --TODO 测试
@@ -136,9 +140,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_common as
 ) ;
 
 
-
-
-
 create table if not exists hive2.test.tmp_smart_chat_tb_common_takeover as
 (--大数据加微总表--托管用户删微数
 		select ccr.create_time, ccr.robot_id , count(tb_temp_common.delete_wechat_count) as takeover_delete_total
@@ -148,7 +149,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_common_takeover as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			and ccr1.conversation_template_id in (13, 20, 21)
+			--and ccr1.conversation_template_id in (13, 20, 21)
+			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 		) as ccr
 		left join hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_admin_information uai  
 			on uai.wechat = ccr.robot_id  
@@ -192,9 +194,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_common_takeover as
 ;
 
 
-
-
-
 create table if not exists hive2.test.tmp_smart_chat_tb_valid_takeover as
 (
 		-- 有效托管数。剔除首问之前取消托管数的托管数(机器人从没发言)
@@ -219,7 +218,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_valid_takeover as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			and ccr1.conversation_template_id in (13, 20, 21)
+			--and ccr1.conversation_template_id in (13, 20, 21)
+			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 		) as ccr
 		left join 
 		(
@@ -270,11 +270,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_valid_takeover as
 )
 ;
 
-
-
-
-
-
 create table if not exists hive2.test.tmp_smart_chat_tb_self_exit_takeover as
 (
 		-- 有效托管数。剔除首问之前取消托管数的托管数(机器人从没发言)---顾问主动取消数
@@ -289,7 +284,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_self_exit_takeover as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			and ccr1.conversation_template_id in (13, 20, 21)
+			--and ccr1.conversation_template_id in (13, 20, 21)
+			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 			and ccr1.transfer_manual_reason = 1
 		) as ccr
 		left join 
@@ -340,8 +336,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_self_exit_takeover as
 )
 ;
 
-
-
 create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio as
 (
 		-- 消息渗透率：总消息数
@@ -360,9 +354,9 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio as
          	select t.robot_id, t.conversation_template_id
             from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record t
             where t.dt =${hivevar_smart_chat_dt} 
-            --and  t.create_time between ${hivevar_smart_chat_start_add_time} and ${hivevar_smart_chat_end_add_time}
-			and t.conversation_template_id in ( 13, 20,21)
-            and t.robot_takeover_type=0
+			--and t.conversation_template_id in ( 13, 20,21)
+            and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
+			and t.robot_takeover_type=0
             group by t.robot_id, t.conversation_template_id 
          ) c on b.user_id = c.robot_id
          join hive2.ads.v_hive2_ods_mid_t8t_mid_uc_uc_user_we_link wc on  wc.dt =${hivevar_smart_chat_dt} and t.platform_uid = wc.platform_uid 
@@ -371,8 +365,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio as
          	select distinct t.uid
             from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record t
             where  t.dt =${hivevar_smart_chat_dt} 
-            --and  t.create_time  between ${hivevar_smart_chat_start_add_time} and ${hivevar_smart_chat_end_add_time}
-			and t.conversation_template_id in ( 13, 20,21)
+			--and t.conversation_template_id in ( 13, 20,21)
+            and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
             and t.robot_takeover_type=0 
          ) u 
          	on u.uid = wc.user_id
@@ -380,8 +374,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio as
 		group by t.send_time ,b.user_id
 )
 ;
-
-
 
 
 create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio_for_robot as
@@ -399,7 +391,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio_for_ro
 	     		select t.robot_id, t.conversation_template_id
 	            from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record t
 	            where t.dt =${hivevar_smart_chat_dt} 
-				and  t.conversation_template_id in ( 13, 20,21)
+				--and  t.conversation_template_id in ( 13, 20,21)
+	            and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 	            and t.robot_takeover_type=0
 	            group by t.robot_id, t.conversation_template_id 
 	     ) c on t.owner_wechat = c.robot_id
@@ -408,16 +401,14 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio_for_ro
 	     		select distinct t.uid
 	            from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record t
 	            where t.dt =${hivevar_smart_chat_dt} 
-				and t.conversation_template_id in ( 13, 20,21)
+				--and t.conversation_template_id in ( 13, 20,21)
+				and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 	            and t.robot_takeover_type=0 
 	      ) u on u.uid = t.external_userid
 		--where 
 		group by t.create_time ,t.owner_wechat
 ) 
 ;
-
-
-
 
 
 
@@ -437,7 +428,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_self_close as
 						from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 						where ccr1.dt =${hivevar_smart_chat_dt} 
 						and ccr1.robot_takeover_type =0 
-						and ccr1.conversation_template_id in (13, 20, 21)
+						--and ccr1.conversation_template_id in (13, 20, 21)
+						and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 						and ccr1.deleted =0
 						and ccr1.transfer_manual_reason <>1
 					) as ccr
@@ -446,7 +438,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_self_close as
 					and ccd.reply_time >0
 					and ccd.deleted =0
 					and ccd.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
-					and ccd.role_type in (1,3)
+					and ccd.role_type in (1,3,4)
 					group by ccr.create_time, ccr.chat_id ,ccr.robot_id , ccd.check_type_code
 				) as tb_self_close_temp
 				where tb_self_close_temp.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
@@ -471,7 +463,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_rollback_message as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			and ccr1.conversation_template_id in (13, 20, 21)
+			--and ccr1.conversation_template_id in (13, 20, 21)
+			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 		) as ccr
 		left join hive2.ads.v_kudu2_stg_idc_new_t8t_wec_im_im_single_chat_record scr on scr.wechat =ccr.robot_id and scr.toid = ccr.uid 
 		where scr.revokes =1
@@ -496,12 +489,12 @@ create table if not exists hive2.test.tmp_smart_chat_tb_quick_response as
 				from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 				where ccr1.dt =${hivevar_smart_chat_dt} 
 				and ccr1.robot_takeover_type =0 
-				and ccr1.conversation_template_id in (13, 20, 21)
+				--and ccr1.conversation_template_id in (13, 20, 21)
+				and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 			) as ccr
 			left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link cwl
 				on ccr.robot_id =cwl.profile_custom_id  and ccr.uid = cwl.external_userid 
 			where cwl.dt =${hivevar_smart_chat_dt}
-	        --and cwl.send_time between 1000*${hivevar_smart_chat_start_add_time} and 1000*${hivevar_smart_chat_end_add_time}
 	        and cwl.scene ='IM'
 	        and ccr.staff_service_time * 1000 >= cwl.send_time
 	        group by ccr.create_time, ccr.chat_id, ccr.robot_id 
@@ -596,7 +589,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_takeover_no_open_mouth a
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			and ccr1.conversation_template_id in (13, 20, 21)
+			--and ccr1.conversation_template_id in (13, 20, 21)
+			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 		) as tb_ccr
 		left join 
 		( --有效托管
@@ -772,3 +766,15 @@ create table if not exists hive2.test.tmp_smart_chat_tb_smartchat_report as
 ------------------------------- ===================================================================
 
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
