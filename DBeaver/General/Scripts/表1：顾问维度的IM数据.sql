@@ -204,11 +204,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_valid_takeover as
 		, sum(case  
 			when tb_fisrt_msg_create_time.fisrt_robot_msg_send_time=0 then 1
 			when ccr.staff_service_time <= tb_fisrt_msg_create_time.fisrt_robot_msg_send_time  then 1 else 0  end ) as invalid_takeover_total
-		
---		select ccr.staff_service_time 
---		, if(null = tb_fisrt_msg_create_time.fisrt_robot_msg_send_time, 0, tb_fisrt_msg_create_time.fisrt_robot_msg_send_time)
---		,(ccr.staff_service_time - if(null = tb_fisrt_msg_create_time.fisrt_robot_msg_send_time, 0, tb_fisrt_msg_create_time.fisrt_robot_msg_send_time)) as diff
---		,*
 		from 
 		(
 			select (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) create_time
@@ -218,7 +213,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_valid_takeover as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			--and ccr1.conversation_template_id in (13, 20, 21)
 			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 		) as ccr
 		left join 

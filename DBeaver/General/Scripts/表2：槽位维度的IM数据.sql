@@ -1,7 +1,7 @@
 /**
  * 表2：槽位维度的IM数据（开发情况）
  */
-@set hivevar_smart_chat_dt = '20240118'
+@set hivevar_smart_chat_dt = '20240122'
 
 select ${hivevar_smart_chat_dt}
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -498,7 +498,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 				
 				and ccr.robot_takeover_type =0 
 				--and ccr.conversation_template_id in (13, 20, 21)
-				and (ccr.conversation_template_id in (13, 20, 21, 26) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
+				and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 				and ccr.transfer_manual_reason <> 1
 			) tb_temp
 			group by tb_temp.create_time
@@ -542,7 +542,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 				and ccd.role_type in (1,3,4)
 				and ccr.dt = ${hivevar_smart_chat_dt} 
 				--and ccr.conversation_template_id in (13, 20, 21) 
-				and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
+				and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 				and ccr.robot_takeover_type = 0 
 				and ccr.transfer_manual_reason <> 1
 			) tb_temp_detail

@@ -1,5 +1,11 @@
 
 
+-- 根据话术模板id查询所有的话术
+select distinct id
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra
+where cra.relate_template_id =36
+order by id asc
+
 -- 根据模板id，查询树形话术（不会级联）
  SELECT ct.id AS temp_id , ct.template_name as temp_name
  , rac.robot_ask_id AS temp_robot_ask_id, 
@@ -19,7 +25,7 @@
  LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1 ON cra1.id= rac.robot_ask_id
  LEFT JOIN hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr ON adr.robot_ask_id=rac.robot_ask_id
  LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
- WHERE ct.id= 13
+ WHERE ct.id= 36
  ORDER BY ct.id  DESC , rac.robot_ask_id asc
  ;
 
@@ -40,7 +46,7 @@ from
 		 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1 ON cra1.id= rac.robot_ask_id
 		 LEFT JOIN hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr ON adr.robot_ask_id=rac.robot_ask_id
 		 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-		 WHERE ct.id= 13
+		 WHERE ct.id= 36
 	 )
 --	 union  --和下一个union同样的效果
 --	 (
@@ -61,7 +67,7 @@ from
 		LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
 		where adr.robot_ask_id in (
 			--这里的id是上面1个union的结果
-		84,85,89,91,92,93,160
+		720,715,760,756,721,718,717,722
 		)
 		and adr.relate_robot_ask_id > 0
 	 )
@@ -169,7 +175,7 @@ hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_rep
 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1 ON cra1.id= adr.robot_ask_id 
 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
 where adr.robot_ask_id in (
-	84,85,86,88,89,90,91,92,93,96,97,98,99,100,102,103,127,129,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,159,160,161,162,163,310,313
+	715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,836,837,838,839,840,841,842,843
 )
 order by adr.robot_ask_id asc, adr.relate_robot_ask_id asc;
 
@@ -393,9 +399,6 @@ and cd.reply !=''
 group by cr.chat_id
 
 ================================================
-
-
-
 select *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
 where qr.chat_id ='MTk4NjA4NDYwNDUjd21KaUliREFBQUYxV1hPVTExWmdSNUZJSmJUSU1waGc='
@@ -405,31 +408,12 @@ order by qr.id asc
 select *, from_unixtime(create_time+8*3600) as create_time, from_unixtime(update_time+8*3600) as update_time
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 where 
-cd.chat_id ='MTgwMjUzOTMxNTQjd21KaUliREFBQVlTcmtXSkJPcHJNQy1UbHN0a3pySXc='
-order by id desc
-
-
-
-select *
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-where cr.extend_info like '%4868269%'
-
-select *
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-where cr.robot_takeover_type =0 and cr.check_status =5 and cr.grounded_type =1
+cd.chat_id ='MTgwMjUzOTMxNTQjd21KaUliREFBQTk3eUUzd1ZWX3JuVWRhNTBjN1VsRHc='
 order by id desc
 
 select *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-where cr.robot_takeover_type =0  and cr.grounded_type =1
-order by id desc
-
-----------------------------
- select count(*)
-select *
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-where cr.grounded_type =1
-order by id desc
+where cr.extend_info like '%376483195%'
 
 
 select from_unixtime(cd.create_time+8*3600) as ct
@@ -438,34 +422,21 @@ select from_unixtime(cd.create_time+8*3600) as ct
 ,from_unixtime(cd.staff_service_time +8*3600) as sst
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.chat_id in 
+where 
+cd.chat_id in 
 (
-'MTg4MjY1MjgxNzkjd21KaUliREFBQWtFd3g5MjVmMnNVdlFlalczRkJBTEE='
+'OTI0NDYyNTMyI3dtSmlJYkRBQUFxS3VobE9JV2ZVTVd3WmZjRFVySXhn'
 )
+--uid = 'wmJiIbDAAApLIPsZtS93STWFRoYTNw-A'
 order by id desc
-
-
-select ccr.chat_id 
-,ccr.transfer_manual_reason 
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
-where ccr.chat_id in 
 
 
 --  电话id查询 会话记录
 select from_unixtime(cd.create_time+8*3600) as ct,cd.extend_info 
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.extend_info like '%376184489%'
+where cd.extend_info like '%62136921%'
 order by id desc
-
-
-select from_unixtime(qr.create_time+8*3600) as ct,*
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
-where 
---qr.chat_id ='MTgxOTQwNjA4MzIjd21KaUliREFBQXBmTjg5WGhUbzJ5NTBCNE0wQUpDckE='
---qr.text_content like '%图片%'
-order by id desc
-
 
 
 select from_unixtime(cd.create_time+8*3600) as ct
@@ -473,7 +444,7 @@ select from_unixtime(cd.create_time+8*3600) as ct
 ,* 
 from  hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 where 
-cd.chat_id ='MTg4MjY1MjgxNzkjd21KaUliREFBQWtFd3g5MjVmMnNVdlFlalczRkJBTEE='
+cd.chat_id ='MDIxOTQjd21KaUliREFBQXJpYWhtd1VaOGk1VkRsWE9ocFM0SEE='
 order by cd.reply_time  desc
 
 
@@ -483,6 +454,11 @@ from  hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_deta
 where cd.check_type_code in ('7!711!71102!55' )
 order by id desc
 
+select from_unixtime(qr.create_time+8*3600) as ct,*
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
+where 
+qr.chat_id ='MjQ0NjA0NzAjd21KaUliREFBQXBMSVBzWnRTOTNTVFdGUm9ZVE53LUE='
+order by id desc
 
 
 -----
@@ -506,26 +482,23 @@ order by id  desc
 -- 静默信息
 select 
 from_unixtime(ccr.create_time+8*3600) as ct
-,ccr.transfer_manual_reason 
+--,ccr.transfer_manual_reason 
 , ccr.extend_info 
 , (json_extract_scalar(ccr.extend_info, '$.silentType')) as silentType
 , *
 --count(distinct ccr.robot_id)
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
 where 
---ccr.check_status  not in (-1) 
---and 
---json_extract_scalar(ccr.extend_info, '$.transferManualType') is not null
---(json_extract_scalar(ccr.extend_info, '$.silentType') is not null and json_extract_scalar(ccr.extend_info, '$.silentType') ='5')
-----json_extract_scalar(ccr.extend_info, '$.silentType') is not null
---and 
-ccr.conversation_template_id in (12, 13, 20, 21)
+ (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 and ccr.robot_takeover_type =0
-and ccr.deleted =0
-and ccr.create_time >= 1703174400 and ccr.create_time < 1703174400+3600*24
+--and ccr.deleted =0
+--and ccr.create_time >= 1703174400 
+and ccr.create_time < 1705680000
 --and ccr.chat_id ='MTgxMjQxNDUzMjQjd21KaUliREFBQXpqaU8tcHgxanNiNVhOS0xoN2hMd1E='
-and ccr.transfer_manual_reason !=1
-and ccr.check_status =5
+--and ccr.transfer_manual_reason !=1
+and ccr.check_status !=5
+--and ccr.robot_id in('13554702790', '19924512641', '19146449816')
+--and ccr.deleted =1
 order by id desc
 
 
@@ -563,7 +536,7 @@ select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_pro
 ---------------------------
    
 ---- 提前抢答，剔除主动取消的
-   @set hivevar_smart_chat_dt = '20231220'
+   @set hivevar_smart_chat_dt = '20240123'
   
 
 		select t2.create_time
@@ -623,5 +596,37 @@ select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_pro
 		) as tb_tmp_quick_response_record_total
 			on t2.create_time = tb_tmp_quick_response_record_total.create_time 
 		
-
-	        
+--------------------
+        
+			
+			
+	
+			
+		 	select  t.*
+		 	from hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link t
+		 	where t.dt =${hivevar_smart_chat_dt} 
+		 	AND     (t.content like '%不是%' or t.content like '%不在%' or t.content like '%不算%')
+		 	--and  	t.direction = 2 and t.scene='IR' --应答发送消息
+		 	and 	t.direction = 1
+		 	AND     t.content IS NOT NULL
+			AND     t.content NOT LIKE '%现在我们可以开始聊天了%'
+			AND     t.content NOT LIKE '%现在可以开始聊天了%'
+			AND     t.content NOT LIKE '%以上是打招呼内容%'
+			AND     t.message_type <> 10000
+			AND     t.send_message_uid <> '1'			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

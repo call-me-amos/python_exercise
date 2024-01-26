@@ -78,7 +78,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_robot_ask_report as
 						from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 						where ccr1.dt =${hivevar_smart_chat_dt} 
 						and ccr1.robot_takeover_type =0 
-						and ccr1.conversation_template_id in (13, 20, 21)
+						--and ccr1.conversation_template_id in (13, 20, 21)
+						and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 					) as ccr
 					left join 
 					(
@@ -164,7 +165,8 @@ create table if not exists hive2.test.tmp_smart_chat_tb_robot_ask_report as
 												from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 												where ccr1.dt =${hivevar_smart_chat_dt} 
 												and ccr1.robot_takeover_type =0 
-												and ccr1.conversation_template_id in (13, 20, 21)
+												--and ccr1.conversation_template_id in (13, 20, 21)
+												and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
 											) as ccr
 											left join 
 											(
