@@ -89,7 +89,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_all_wechat_relate as
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
 			--and ccr1.conversation_template_id in (13, 20, 21)
-			and (conversation_template_id in (13, 20, 21, 26) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26))
+			and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
 		) as ccr
 			on tb_user_wechat.add_wechat_time = ccr.create_time and tb_user_wechat.owner_wechat=ccr.robot_id
 		--where add_wechat_time ='20231122'  --TODO 测试

@@ -1,11 +1,5 @@
 
 
--- 根据话术模板id查询所有的话术
-select distinct id
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra
-where cra.relate_template_id =36
-order by id asc
-
 -- 根据模板id，查询树形话术（不会级联）
  SELECT ct.id AS temp_id , ct.template_name as temp_name
  , rac.robot_ask_id AS temp_robot_ask_id, 
@@ -174,10 +168,22 @@ from
 hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr
 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1 ON cra1.id= adr.robot_ask_id 
 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-where adr.robot_ask_id in (
-	715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,836,837,838,839,840,841,842,843
+where adr.robot_ask_id in 
+--(
+--	790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850,858,866
+--)
+(
+	-- 根据话术模板id查询所有的话术--仅适用 话术和话术模板绑定的模板（历史模板不支持了）
+	select distinct id
+	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra
+	where cra.relate_template_id =36
+	order by id asc
 )
 order by adr.robot_ask_id asc, adr.relate_robot_ask_id asc;
+
+
+
+
 
 
 =====================================================================================
@@ -435,8 +441,10 @@ order by id desc
 select from_unixtime(cd.create_time+8*3600) as ct,cd.extend_info 
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.extend_info like '%62136921%'
+where cd.extend_info like '%17166936%'
 order by id desc
+
+
 
 
 select from_unixtime(cd.create_time+8*3600) as ct
@@ -614,8 +622,6 @@ select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_pro
 			AND     t.content NOT LIKE '%以上是打招呼内容%'
 			AND     t.message_type <> 10000
 			AND     t.send_message_uid <> '1'			
-			
-			
 			
 			
 			
