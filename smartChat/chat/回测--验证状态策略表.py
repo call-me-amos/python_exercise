@@ -17,9 +17,9 @@ def test_bot(user_name, text):
         #"user": "wmXookCgAArjI0J7V_EJY_d2IeJN6A2A",
         #"weChat": "13683560870", #线上
         #"weChat": "WeiDongMing", #测试
-        #"weChat": "tongzhiwei_test", #新回测配置
+        "weChat": "tongzhiwei_test", #新回测配置
         #"weChat": "tongzhiwei", #新回测配置
-        "weChat": "wdm",
+        #"weChat": "wdm",
         #"weChat": "fantong",
         #"weChat": "xiaohao",
         #"weChat": "13683560870",

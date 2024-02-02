@@ -3,14 +3,16 @@ import requests
     手动取消托管
 '''
 chat_ids = [
-
+    "MTkxNjg1MzY5ODMjd21KaUliREFBQTBoNTFlVktkY3NfXzcxbzhKbEtsOXc="
 ]
 
 
 def call_http(chat_id):
     url = "https://apigw.to8to.com/cgi/tls/smartChat/weWork/rejectTakeover"
+    # url = "http://10.4.42.48:40121/tls/smartChat/weWork/rejectTakeover"
     data = {
         "chatId": chat_id,
+        #"id": ,
         "operateType": 1
     }
     res = requests.post(url=url, json=data)
