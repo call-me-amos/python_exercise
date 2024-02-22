@@ -1,7 +1,7 @@
 
 
 
-@set hivevar_smart_chat_dt = '20240118'
+@set hivevar_smart_chat_dt = '20240221'
 
 select ${hivevar_smart_chat_dt}
 

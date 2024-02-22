@@ -169,6 +169,7 @@ hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1
 LEFT JOIN hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr ON cra1.id= adr.robot_ask_id 
 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
 where cra1.id in 
+--级联和直接通过模板查询
 --(
 --	790
 --)
@@ -176,7 +177,7 @@ where cra1.id in
 	-- 根据话术模板id查询所有的话术--仅适用 话术和话术模板绑定的模板（历史模板不支持了）
 	select distinct id
 	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra
-	where cra.relate_template_id =36
+	where cra.relate_template_id =35
 	order by id asc
 )
 order by adr.robot_ask_id asc, adr.relate_robot_ask_id asc;
@@ -362,7 +363,7 @@ from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_recor
 where 
 cd.chat_id in 
 (
-'ODY4MjU5NzUjd21KaUliREFBQUk4bVp6UnZrdVRDaUtKZUZqaG9xbWc='
+'MTM1NTQ3MDE3NTIjd21KaUliREFBQWREYlB0SmNNbnV5WGtqR1VENlpEaFE='
 )
 order by id desc
 
@@ -383,7 +384,7 @@ select from_unixtime(cd.create_time+8*3600) as ct,cd.extend_info
 ,json_extract_scalar(cd.extend_info , '$.phone_id') as phoneid
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.extend_info like '%302323472%'
+where cd.extend_info like '%220047227%'
 order by id desc
 
 
@@ -391,7 +392,7 @@ order by id desc
 select *, from_unixtime(create_time+8*3600) as create_time, from_unixtime(update_time+8*3600) as update_time
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 where 
-cd.chat_id ='MTkwNjUwMzMxODAjd21KaUliREFBQTRDcWQ3amxFczhCWkFWTWlfZmg4bGc='
+cd.chat_id ='MTk4MjA4MTA3NDMjd21KaUliREFBQXJuNkJFRzJNc2R4NWRRdzJqc3dwZmc='
 order by id desc
 
 
@@ -496,4 +497,179 @@ select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_pro
         )
     );
 ---------------------------
+
+===========================================================
+---
+@set hivevar_smart_chat_dt = '20240217'
+-- 自闭环汇总
+		select tb_self_close_temp_2.create_time, tb_self_close_temp_2.robot_id, count(tb_self_close_temp_2.chat_id) as self_close_total
+		from 
+		(
+				select tb_self_close_temp.create_time ,tb_self_close_temp.chat_id, tb_self_close_temp.robot_id, count(tb_self_close_temp.check_type_code) as self_close_slot_total
+				from 
+				(
+					select ccr.create_time, ccr.chat_id ,ccr.robot_id ,ccd.check_type_code
+					from 
+					(
+						select (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) create_time, ccr1.robot_id , ccr1.chat_id 
+						from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
+						where ccr1.dt =${hivevar_smart_chat_dt} 
+						and ccr1.robot_takeover_type =0 
+						and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+						and ccr1.deleted =0
+						and ccr1.transfer_manual_reason <>1
+						and ccr1.robot_id in ('13554701752','10346305','02194')
+					) as ccr
+					left join hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail ccd on ccr.chat_id = ccd.chat_id 
+					where ccd.dt =${hivevar_smart_chat_dt}
+					and ccd.reply_time >0
+					and ccd.deleted =0
+					and ccd.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
+					and ccd.role_type in (1,3,4)
+					group by ccr.create_time, ccr.chat_id ,ccr.robot_id , ccd.check_type_code
+				) as tb_self_close_temp
+				where tb_self_close_temp.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
+				group by tb_self_close_temp.create_time ,tb_self_close_temp.chat_id, tb_self_close_temp.robot_id
+		) as tb_self_close_temp_2
+		where tb_self_close_temp_2.self_close_slot_total =6  -- 核需到6个槽位
+		group by tb_self_close_temp_2.create_time, tb_self_close_temp_2.robot_id
+		
+		
+===================
+				select tb_self_close_temp.create_time ,tb_self_close_temp.chat_id, tb_self_close_temp.robot_id, count(tb_self_close_temp.check_type_code) as self_close_slot_total
+				from 
+				(
+					select ccr.create_time, ccr.chat_id ,ccr.robot_id ,ccd.check_type_code
+					from 
+					(
+						select (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) create_time, ccr1.robot_id , ccr1.chat_id 
+						from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
+						where ccr1.dt =${hivevar_smart_chat_dt} 
+						and ccr1.robot_takeover_type =0 
+						and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+						and ccr1.deleted =0
+						and ccr1.transfer_manual_reason <>1
+						and ccr1.robot_id in ('13554701752','10346305','02194')
+					) as ccr
+					left join hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail ccd on ccr.chat_id = ccd.chat_id 
+					where ccd.dt =${hivevar_smart_chat_dt}
+					and ccd.reply_time >0
+					and ccd.deleted =0
+					and ccd.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
+					and ccd.role_type in (1,3,4)
+					group by ccr.create_time, ccr.chat_id ,ccr.robot_id , ccd.check_type_code
+				) as tb_self_close_temp
+				where tb_self_close_temp.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
+				group by tb_self_close_temp.create_time ,tb_self_close_temp.chat_id, tb_self_close_temp.robot_id
+   
+				
+				
+				
+				
+				
+				
+========================
+-- 统计林培峰 接管的用户里面 核需标签5个以上的占比
+select chat_id, count(1)
+from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail
+where dt = '20240217'
+   and create_time >= 1704038400
+   and create_time < 1706716800
+  and check_type_code in ('7!711!71102!1', '7!711!71102!2', '7!711!71102!3', '7!711!71102!4', '7!711!71102!6', '7!711!71102!11')
+  and reply <> ''
+  and role_type = 1
+  and execute_status = 6
+  and chat_id in (select chat_id--, count(1)
+                  from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record
+                  where dt = '20240217'
+                    --and conversation_template_id = 13
+                    and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+                    and robot_takeover_type = 0
+--                     and transfer_manual_reason <> 1
+                    and robot_id  in ('13554701752','10346305','02194')
+                     and chat_start_time >= 1704038400
+                     and chat_start_time < 1706716800
+                  )
+group by chat_id
+having count(1) >= 5;
+
+---------------  基于单个会话汇总
+
+select t1.*
+, case  
+	when t2.fisrt_robot_msg_send_time=0 then 0
+	when t1.staff_service_time > t2.fisrt_robot_msg_send_time  then 1 else 0  end  as valid_takeover_total  --1：有效托管 0：无效托管
+from 
+(-- 总的托管用户基表
+			select ccr1.chat_id 
+			, ccr1.robot_id 
+			, ccr1.uid
+			,json_extract_scalar(ccr1.extend_info , '$.phone_id') as phone_id
+			,create_time
+			, getday(create_time) as format_create_time
+			, staff_service_time
+			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
+			where ccr1.dt =${hivevar_smart_chat_dt} 
+			and ccr1.robot_takeover_type =0 
+			and ccr1.deleted =0
+			and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+		
+) as t1 
+left join 
+(---- 有效托管数。剔除首问之前取消托管数的托管数(机器人从没发言)
+			select owner_wechat, external_userid
+			, if(fisrt_robot_msg_send_time is null, 0, fisrt_robot_msg_send_time/1000) as fisrt_robot_msg_send_time
+			from 
+			(
+				select tb_user_wechat.owner_wechat, tb_user_wechat.external_userid
+				, min (tb_cwl.send_time) as fisrt_robot_msg_send_time
+				from 
+				(--  全量好友关系表
+					select owner_wechat
+					, external_userid
+					, uuw.delete_time 
+					from hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_user_wechat uuw
+				) as tb_user_wechat
+				left join hive2.ads.v_hive2_ods_mid_t8t_mid_uc_uc_user_we_link as tb_uwl 
+					on tb_user_wechat.external_userid = tb_uwl.user_id 
+				left join 
+				(--机器人发送的消息
+				 	select  platform_uid ,profile_custom_id , send_time
+				 	from hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link t
+				 	where t.dt =${hivevar_smart_chat_dt} 
+				 	and  t.direction = 2 and t.scene='IR' --应答发送消息
+				 	AND     t.content IS NOT NULL
+					AND     t.content NOT LIKE '%现在我们可以开始聊天了%'
+					AND     t.content NOT LIKE '%现在可以开始聊天了%'
+					AND     t.content NOT LIKE '%以上是打招呼内容%'
+					AND     t.message_type <> 10000
+					AND     t.send_message_uid <> '1'
+				 ) as tb_cwl 
+					on tb_cwl.platform_uid =tb_uwl.platform_uid and tb_user_wechat.owner_wechat = tb_cwl.profile_custom_id 
+				group by tb_user_wechat.owner_wechat, tb_user_wechat.external_userid
+			)
+) t2 on t1.robot_id =t2.owner_wechat and t1.uid =t2.external_userid
+
+
+
+
+
+
+
+-------------------------------------
+select date_format(from_unixtime(chat_start_time, 'Asia/Shanghai'), '%Y-%m-%d %H') as "接粉日期", uid as "外部联系人id", robot_id as "企微号", conversation_template_id,
+       json_extract(extend_info, '$.preTemplateId') as "preTemplateId",
+       json_extract(extend_info, '$.phone_id') as "电话id", transfer_manual_reason as "转人工枚举"
+from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record
+where dt = '20240219'
+  and robot_takeover_type = 0
+  and robot_id not in ('13683560870','18025436210')
+  and (conversation_template_id in (13,20,21,26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13,20,21,26,33,35,36,37,38))
+and chat_start_time >= 1708185600
+
+
+
+
+
+
 

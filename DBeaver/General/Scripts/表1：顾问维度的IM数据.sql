@@ -44,7 +44,7 @@ and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_ex
 ------------------------------------------ 报表需求 ---------------------------------------------------------------------------
 --- 分区。需要设置成前一天。如果今天是2023-12-23，那么下面就设置为：20231222。 并且执行时间需要在每天的10点之后，避免依赖大数据的sql还没有更新完数据
 --- 除了第一条sql需要单独执行，后面的sql可以全选，然后一次性执行。选中除第一句sql以外的其他sql，然后使用快捷键：Alt+x 执行。
-@set hivevar_smart_chat_dt = '20240201'
+@set hivevar_smart_chat_dt = '20240221'
 
 --select ${hivevar_smart_chat_dt}
 -- 表1：顾问维度的IM 数据
@@ -150,7 +150,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_common_takeover as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			--and ccr1.conversation_template_id in (13, 20, 21)
 			and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
 		) as ccr
 		left join hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_admin_information uai  
@@ -279,7 +278,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_self_exit_takeover as
 			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 			where ccr1.dt =${hivevar_smart_chat_dt} 
 			and ccr1.robot_takeover_type =0 
-			--and ccr1.conversation_template_id in (13, 20, 21)
 			and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
 			and ccr1.transfer_manual_reason = 1
 		) as ccr
@@ -349,7 +347,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio as
          	select t.robot_id, t.conversation_template_id
             from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record t
             where t.dt =${hivevar_smart_chat_dt} 
-			--and t.conversation_template_id in ( 13, 20,21)
             and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
 			and t.robot_takeover_type=0
             group by t.robot_id, t.conversation_template_id 
@@ -360,7 +357,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio as
          	select distinct t.uid
             from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record t
             where  t.dt =${hivevar_smart_chat_dt} 
-			--and t.conversation_template_id in ( 13, 20,21)
             and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
             and t.robot_takeover_type=0 
          ) u 
@@ -386,7 +382,6 @@ create table if not exists hive2.test.tmp_smart_chat_tb_cal_message_ratio_for_ro
 	     		select t.robot_id, t.conversation_template_id
 	            from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record t
 	            where t.dt =${hivevar_smart_chat_dt} 
-				--and  t.conversation_template_id in ( 13, 20,21)
 	            and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
 	            and t.robot_takeover_type=0
 	            group by t.robot_id, t.conversation_template_id 

@@ -1,4 +1,4 @@
-@set hivevar_smart_chat_dt = '20240201'
+@set hivevar_smart_chat_dt = '20240221'
 select ${hivevar_smart_chat_dt}
 --- 顾问有效托管信息
 ===================================
@@ -70,9 +70,9 @@ select ${hivevar_smart_chat_dt}
 			
 			
 			
-		where create_time > 1706371200 and create_time <1706803200 -- TODO 就取近期的数据
-		and ccr.uid = 'wmJiIbDAAA9DK-qjiQaxieS9v_HauMlQ'
-		and ccr.robot_id = '19860845604'
+		where create_time >= 1706716800 and create_time <1708531200 -- TODO 就取近期的数据
+		and ccr.uid = 'wmJiIbDAAABBeaG87WdPUslJNJDz6xOA'
+		and ccr.robot_id = '19811976159'
 
 
 ----------------------   超时没有转人工
