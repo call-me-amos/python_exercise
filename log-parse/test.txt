@@ -1,0 +1,2412 @@
+[
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "xJzFeo4BqHwFSwFuwtjl",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475404-5971",
+			"th": "fast-delegate-executor129",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"log_topic": "kafka-java",
+			"txt": "chartId=MTgxOTQwNjA4MzIjd21KaUliREFBQWkzQVdTMEstZGgzUE1ISzFNTXZCdHc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602baf284c2400001665790abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTgxOTQwNjA4MzIjd21KaUliREFBQWkzQVdTMEstZGgzUE1ISzFNTXZCdHc=\",\"latestSendFlag\":\"59195687662646489\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 206796715,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-13a9ecd9-ec40-4da7-b61e-371d7b40aa31",
+			"ln": "175",
+			"@timestamp": "2024-03-26T12:39:23.281Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$20:39:23.281",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.71",
+				"hostname": "idc-bj-kvm-toc-java-v33id"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T12:39:23.281Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTgxOTQwNjA4MzIjd21KaUliREFBQWkzQVdTMEstZGgzUE1ISzFNTXZCdHc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602baf284c2400001665790abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTgxOTQwNjA4MzIjd21KaUliREFBQWkzQVdTMEstZGgzUE1ISzFNTXZCdHc=\",\"latestSendFlag\":\"59195687662646489\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711456763281
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "5Nakeo4BeyUma909Os2Z",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"version": "6.8.6",
+				"name": "10.30.0.73"
+			},
+			"ln": "175",
+			"ts": "2024-03-26$20:02:43.114",
+			"@timestamp": "2024-03-26T12:02:43.114Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-14534c71-ca2c-421c-8e96-1cf57bcf3ef5",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475403-11529",
+			"type": "java",
+			"seq": 103995473,
+			"prospector": {
+				"type": "log"
+			},
+			"th": "fast-delegate-executor27",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"proj": "t8t-tbt-tls",
+			"lv": "INFO",
+			"iid": "sc",
+			"input": {
+				"type": "log"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"txt": "chartId=NzAyMjczNDEjd21KaUliREFBQUVMTkZKYUhOcFhIYl95VzhzTmJfaEE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602b25a84c24000016619a0abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQUVMTkZKYUhOcFhIYl95VzhzTmJfaEE=\",\"latestSendFlag\":\"59193487395773748\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T12:02:43.114Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzAyMjczNDEjd21KaUliREFBQUVMTkZKYUhOcFhIYl95VzhzTmJfaEE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602b25a84c24000016619a0abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQUVMTkZKYUhOcFhIYl95VzhzTmJfaEE=\",\"latestSendFlag\":\"59193487395773748\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711454563114
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "t06Meo4BeyUma909RWl_",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-26T11:36:33.872Z",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"iid": "sc",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"prospector": {
+				"type": "log"
+			},
+			"beat": {
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"name": "10.30.0.73"
+			},
+			"ts": "2024-03-26$19:36:33.872",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ln": "175",
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475403-5606",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-aac4e617-f9d0-4c30-a0de-f14fc5c53c58",
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor157",
+			"txt": "chartId=MTkwNjUwMzMxODAjd21KaUliREFBQVpySDhFbmdmcm9qS2xIX1VvMlpxZnc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602ac3984c240000165cf82abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQVpySDhFbmdmcm9qS2xIX1VvMlpxZnc=\",\"latestSendFlag\":\"59192323613304260\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"seq": 5799990,
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"logstash_mark": "11.146_java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T11:36:33.872Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNjUwMzMxODAjd21KaUliREFBQVpySDhFbmdmcm9qS2xIX1VvMlpxZnc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602ac3984c240000165cf82abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQVpySDhFbmdmcm9qS2xIX1VvMlpxZnc=\",\"latestSendFlag\":\"59192323613304260\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711452993872
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "YXZoeo4BeyUma909cc0z",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-26T10:57:25.422Z",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"iid": "sc",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"prospector": {
+				"type": "log"
+			},
+			"beat": {
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"name": "10.30.0.73"
+			},
+			"ts": "2024-03-26$18:57:25.422",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ln": "175",
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475402-18870",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-0e339783-3a4f-4aa1-9f58-2f5c87244633",
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor370",
+			"txt": "chartId=NzAyMjczNDEjd21KaUliREFBQXN2b0dzcW5EQURjWkZXbHhHVHZ6SXc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602a30d84c240000164ddb6abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQXN2b0dzcW5EQURjWkZXbHhHVHZ6SXc=\",\"latestSendFlag\":\"59189975155426795\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"seq": 86446114,
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"logstash_mark": "11.146_java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T10:57:25.422Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzAyMjczNDEjd21KaUliREFBQXN2b0dzcW5EQURjWkZXbHhHVHZ6SXc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602a30d84c240000164ddb6abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQXN2b0dzcW5EQURjWkZXbHhHVHZ6SXc=\",\"latestSendFlag\":\"59189975155426795\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711450645422
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "AS1leo4Bw9qD93s8ogIL",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ts": "2024-03-26$18:54:20.309",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.72",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"iid": "sc",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"txt": "chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQVh6R3pzMzR0cGVTcjQyaHZnRGVyRVE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602a25384c240000164c910abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQVh6R3pzMzR0cGVTcjQyaHZnRGVyRVE=\",\"latestSendFlag\":\"59189384642762247\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"seq": 199642124,
+			"bsid": "queue-9b402215-d62a-4205-a5a3-6652e9d6a7d2",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475402-11203",
+			"input": {
+				"type": "log"
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"proj": "t8t-tbt-tls",
+			"ln": "175",
+			"logstash_mark": "11.146_java",
+			"@timestamp": "2024-03-26T10:54:20.309Z",
+			"lv": "INFO",
+			"type": "java",
+			"prospector": {
+				"type": "log"
+			},
+			"m": "autoRecoverTakeover",
+			"log_topic": "kafka-java",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"th": "fast-delegate-executor84"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T10:54:20.309Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQVh6R3pzMzR0cGVTcjQyaHZnRGVyRVE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602a25384c240000164c910abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQVh6R3pzMzR0cGVTcjQyaHZnRGVyRVE=\",\"latestSendFlag\":\"59189384642762247\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711450460309
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "Dzk-eo4BqHwFSwFu1fHR",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"proj": "t8t-tbt-tls",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"@timestamp": "2024-03-26T10:11:56.210Z",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475401-9019",
+			"prospector": {
+				"type": "log"
+			},
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=MzgyNzUwNjEjd21KaUliREFBQXBkSWhNLUVfV1RSaWk2WGJJS01CTEE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602986384c24000016402d5abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MzgyNzUwNjEjd21KaUliREFBQXBkSWhNLUVfV1RSaWk2WGJJS01CTEE=\",\"latestSendFlag\":\"59187245923088969\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"beat": {
+				"name": "10.30.0.72",
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"ln": "175",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-0d16fbf2-b575-448a-972e-93db6350acad",
+			"seq": 127094360,
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"th": "fast-delegate-executor277",
+			"ts": "2024-03-26$18:11:56.210",
+			"type": "java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T10:11:56.210Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MzgyNzUwNjEjd21KaUliREFBQXBkSWhNLUVfV1RSaWk2WGJJS01CTEE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602986384c24000016402d5abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MzgyNzUwNjEjd21KaUliREFBQXBkSWhNLUVfV1RSaWk2WGJJS01CTEE=\",\"latestSendFlag\":\"59187245923088969\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711447916210
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "KNAweo4BeyUma909yO4U",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ln": "175",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"proj": "t8t-tbt-tls",
+			"ts": "2024-03-26$17:56:38.152",
+			"lv": "INFO",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.73",
+				"hostname": "idc-bj-kvm-toc-java-l925d"
+			},
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"txt": "chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQVRUdVdyaGdySnRKYk1IRnVKZEptMnc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660294cd84c240000163b70babcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQVRUdVdyaGdySnRKYk1IRnVKZEptMnc=\",\"latestSendFlag\":\"59185909991180193\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"prospector": {
+				"type": "log"
+			},
+			"seq": 82275856,
+			"log_topic": "kafka-java",
+			"logstash_mark": "11.146_java",
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-26T09:56:38.152Z",
+			"th": "fast-delegate-executor380",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475401-12179",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"iid": "sc",
+			"bsid": "queue-a2d1a143-ff4b-42b6-bd38-62c627dc097e"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T09:56:38.152Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQVRUdVdyaGdySnRKYk1IRnVKZEptMnc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660294cd84c240000163b70babcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQVRUdVdyaGdySnRKYk1IRnVKZEptMnc=\",\"latestSendFlag\":\"59185909991180193\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711446998152
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "8doTeo4BqHwFSwFutYz2",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ln": "175",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"proj": "t8t-tbt-tls",
+			"ts": "2024-03-26$17:20:32.877",
+			"lv": "INFO",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.71",
+				"hostname": "idc-bj-kvm-toc-java-v33id"
+			},
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"txt": "chartId=MTkwNjUwMzMxODAjd21KaUliREFBQUZNZ3hISEQxdlFCczFlN24xNTJtZnc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66028c5884c240000162955eabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQUZNZ3hISEQxdlFCczFlN24xNTJtZnc=\",\"latestSendFlag\":\"59184162574125180\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"prospector": {
+				"type": "log"
+			},
+			"seq": 89744657,
+			"log_topic": "kafka-java",
+			"logstash_mark": "11.146_java",
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-26T09:20:32.877Z",
+			"th": "fast-delegate-executor82",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475400-2670",
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"iid": "sc",
+			"bsid": "queue-356339c1-301e-4597-868a-906478bb3672"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T09:20:32.877Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNjUwMzMxODAjd21KaUliREFBQUZNZ3hISEQxdlFCczFlN24xNTJtZnc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66028c5884c240000162955eabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQUZNZ3hISEQxdlFCczFlN24xNTJtZnc=\",\"latestSendFlag\":\"59184162574125180\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711444832877
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "DgsVeo4BvuObRaR4OyE_",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475400-7933",
+			"th": "fast-delegate-executor190",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"log_topic": "kafka-java",
+			"txt": "chartId=MTkxNjg1MzM1NzMjd21KaUliREFBQWJhbFBJT01rQ3B3Umc0N3dOMllqVWc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66028a3084c2400001627fc3abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkxNjg1MzM1NzMjd21KaUliREFBQWJhbFBJT01rQ3B3Umc0N3dOMllqVWc=\",\"latestSendFlag\":\"59183205370017567\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 141594151,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-6a163d10-d9e6-4c47-975a-af29e2850e85",
+			"ln": "175",
+			"@timestamp": "2024-03-26T09:11:21.031Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$17:11:21.031",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.72",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T09:11:21.031Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkxNjg1MzM1NzMjd21KaUliREFBQWJhbFBJT01rQ3B3Umc0N3dOMllqVWc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66028a3084c2400001627fc3abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkxNjg1MzM1NzMjd21KaUliREFBQWJhbFBJT01rQ3B3Umc0N3dOMllqVWc=\",\"latestSendFlag\":\"59183205370017567\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711444281031
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "cvq9eY4BqHwFSwFuUjDv",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"type": "java",
+			"log_topic": "kafka-java",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"bsid": "queue-dfa5a522-b55a-44b8-9031-6c7e426a362d",
+			"input": {
+				"type": "log"
+			},
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"name": "10.30.0.73",
+				"version": "6.8.6"
+			},
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$15:50:31.331",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475399-17350",
+			"seq": 55743325,
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor290",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"@timestamp": "2024-03-26T07:50:31.331Z",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"prospector": {
+				"type": "log"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"ln": "175",
+			"txt": "chartId=MTAzNDYzMDUjd21KaUliREFBQThZZ0gzV202ckkwNTNPZGJnUHRTVFE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602773e84c24000015f7e1cabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTAzNDYzMDUjd21KaUliREFBQThZZ0gzV202ckkwNTNPZGJnUHRTVFE=\",\"latestSendFlag\":\"59178761032071520\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"lv": "INFO"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T07:50:31.331Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTAzNDYzMDUjd21KaUliREFBQThZZ0gzV202ckkwNTNPZGJnUHRTVFE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602773e84c24000015f7e1cabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTAzNDYzMDUjd21KaUliREFBQThZZ0gzV202ckkwNTNPZGJnUHRTVFE=\",\"latestSendFlag\":\"59178761032071520\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711439431331
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "fJmyeY4BeyUma909MJBa",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"type": "java",
+			"log_topic": "kafka-java",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"bsid": "queue-f70def74-6f35-4ebb-9dc9-6e05f08732e8",
+			"input": {
+				"type": "log"
+			},
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-8uzjf",
+				"name": "10.30.0.72",
+				"version": "6.8.6"
+			},
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$15:38:18.717",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475399-10150",
+			"seq": 122934113,
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor157",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"@timestamp": "2024-03-26T07:38:18.717Z",
+			"prospector": {
+				"type": "log"
+			},
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"ln": "175",
+			"txt": "chartId=NzkwODE0MjEjd21KaUliREFBQXdTLUl6Umh3UFB4N2dYTGlxWWMyelE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602746184c24000015ec532abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzkwODE0MjEjd21KaUliREFBQXdTLUl6Umh3UFB4N2dYTGlxWWMyelE=\",\"latestSendFlag\":\"59177623056426481\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"lv": "INFO"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T07:38:18.717Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzkwODE0MjEjd21KaUliREFBQXdTLUl6Umh3UFB4N2dYTGlxWWMyelE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602746184c24000015ec532abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzkwODE0MjEjd21KaUliREFBQXdTLUl6Umh3UFB4N2dYTGlxWWMyelE=\",\"latestSendFlag\":\"59177623056426481\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711438698717
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "Szk9eY4B8lXX8u2RNFhv",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ln": "175",
+			"@timestamp": "2024-03-26T05:30:33.996Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-d9508b3f-27de-4dd5-93b2-4b2e83b5f71a",
+			"proj": "t8t-tbt-tls",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475397-5553",
+			"iid": "sc",
+			"lv": "INFO",
+			"type": "java",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"th": "fast-delegate-executor246",
+			"ts": "2024-03-26$13:30:33.996",
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-v33id",
+				"name": "10.30.0.71",
+				"version": "6.8.6"
+			},
+			"logstash_mark": "11.146_java",
+			"prospector": {
+				"type": "log"
+			},
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"m": "autoRecoverTakeover",
+			"input": {
+				"type": "log"
+			},
+			"log_topic": "kafka-java",
+			"seq": 189952250,
+			"txt": "chartId=MTkxNjg1MzM1NzMjd21KaUliREFBQW1pei1CU2ZBbUxDUnFCelBjSUVnTXc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602567184c24000015b91ffabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkxNjg1MzM1NzMjd21KaUliREFBQW1pei1CU2ZBbUxDUnFCelBjSUVnTXc=\",\"latestSendFlag\":\"59169945799940416\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T05:30:33.996Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkxNjg1MzM1NzMjd21KaUliREFBQW1pei1CU2ZBbUxDUnFCelBjSUVnTXc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602567184c24000015b91ffabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkxNjg1MzM1NzMjd21KaUliREFBQW1pei1CU2ZBbUxDUnFCelBjSUVnTXc=\",\"latestSendFlag\":\"59169945799940416\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711431033996
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "7XgqeY4BvuObRaR44fu3",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"type": "java",
+			"log_topic": "kafka-java",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"bsid": "queue-2009fa2c-68df-4712-910b-3a423c14b964",
+			"input": {
+				"type": "log"
+			},
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-v33id",
+				"name": "10.30.0.71",
+				"version": "6.8.6"
+			},
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$13:10:35.480",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475396-33509",
+			"seq": 117871970,
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor303",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"@timestamp": "2024-03-26T05:10:35.480Z",
+			"prospector": {
+				"type": "log"
+			},
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"ln": "175",
+			"txt": "chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQVl3ZmVFUEVuTk1JQ2RPU0xBc0dJZ2c=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660251c284c24000015b8767abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQVl3ZmVFUEVuTk1JQ2RPU0xBc0dJZ2c=\",\"latestSendFlag\":\"59168747264793247\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"lv": "INFO"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T05:10:35.480Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQVl3ZmVFUEVuTk1JQ2RPU0xBc0dJZ2c=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660251c284c24000015b8767abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQVl3ZmVFUEVuTk1JQ2RPU0xBc0dJZ2c=\",\"latestSendFlag\":\"59168747264793247\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711429835480
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "1U8keY4BvuObRaR4OKoj",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ln": "175",
+			"@timestamp": "2024-03-26T05:03:16.800Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-45263e31-d431-429e-a31c-6bda5faab024",
+			"proj": "t8t-tbt-tls",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475396-9053",
+			"iid": "sc",
+			"lv": "INFO",
+			"type": "java",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"th": "fast-delegate-executor187",
+			"ts": "2024-03-26$13:03:16.800",
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"name": "10.30.0.73",
+				"version": "6.8.6"
+			},
+			"logstash_mark": "11.146_java",
+			"prospector": {
+				"type": "log"
+			},
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"m": "autoRecoverTakeover",
+			"input": {
+				"type": "log"
+			},
+			"log_topic": "kafka-java",
+			"seq": 151827121,
+			"txt": "chartId=MDIxOTQjd21KaUliREFBQWxudjJXbnBRRG5HamFOSk94QWhIT2c=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602500c84c24000015b817aabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQWxudjJXbnBRRG5HamFOSk94QWhIT2c=\",\"latestSendFlag\":\"59168726531240177\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T05:03:16.800Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MDIxOTQjd21KaUliREFBQWxudjJXbnBRRG5HamFOSk94QWhIT2c=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602500c84c24000015b817aabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQWxudjJXbnBRRG5HamFOSk94QWhIT2c=\",\"latestSendFlag\":\"59168726531240177\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711429396800
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "wpYjeY4B8lXX8u2RFT8I",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475396-17123",
+			"th": "fast-delegate-executor133",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"txt": "chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQTRSWE83TmFLNkdadWNObHdVMWxnRVE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66024fc384c24000015b80f0abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQTRSWE83TmFLNkdadWNObHdVMWxnRVE=\",\"latestSendFlag\":\"59168235629949859\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 89867946,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-7071756e-b955-47b4-8fc8-431d48d28717",
+			"ln": "175",
+			"@timestamp": "2024-03-26T05:02:03.809Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$13:02:03.809",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.71",
+				"hostname": "idc-bj-kvm-toc-java-v33id"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T05:02:03.809Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQTRSWE83TmFLNkdadWNObHdVMWxnRVE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66024fc384c24000015b80f0abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQTRSWE83TmFLNkdadWNObHdVMWxnRVE=\",\"latestSendFlag\":\"59168235629949859\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711429323809
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "pwQeeY4BeyUma909JOmD",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"version": "6.8.6",
+				"name": "10.30.0.73"
+			},
+			"ln": "175",
+			"ts": "2024-03-26$12:56:41.128",
+			"@timestamp": "2024-03-26T04:56:41.128Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-a4480da9-e8ba-40eb-88f8-887fa36e42c4",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475396-11126",
+			"type": "java",
+			"seq": 123346814,
+			"prospector": {
+				"type": "log"
+			},
+			"th": "fast-delegate-executor28",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"proj": "t8t-tbt-tls",
+			"lv": "INFO",
+			"iid": "sc",
+			"input": {
+				"type": "log"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"txt": "chartId=MTgxOTQwNjA4MzIjd21KaUliREFBQW1FcUNtUVZkLXNiVEc2Z0Z1ZjliZGc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66024e8084c24000015b7d6fabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTgxOTQwNjA4MzIjd21KaUliREFBQW1FcUNtUVZkLXNiVEc2Z0Z1ZjliZGc=\",\"latestSendFlag\":\"59168330828448487\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T04:56:41.128Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTgxOTQwNjA4MzIjd21KaUliREFBQW1FcUNtUVZkLXNiVEc2Z0Z1ZjliZGc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66024e8084c24000015b7d6fabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTgxOTQwNjA4MzIjd21KaUliREFBQW1FcUNtUVZkLXNiVEc2Z0Z1ZjliZGc=\",\"latestSendFlag\":\"59168330828448487\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711429001128
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "1JYIeY4BvuObRaR4r-qc",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475395-14689",
+			"th": "fast-delegate-executor171",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"log_topic": "kafka-java",
+			"txt": "chartId=MTkwNjUwMzMxODAjd21KaUliREFBQXBMNlZUWW1TUjNKYU1uUlZIbVZreHc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660248fe84c24000015b693cabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQXBMNlZUWW1TUjNKYU1uUlZIbVZreHc=\",\"latestSendFlag\":\"59166504854110779\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 90602243,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-0afdf643-26b5-44aa-afb5-946e9f6ca799",
+			"ln": "175",
+			"@timestamp": "2024-03-26T04:33:13.072Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$12:33:13.072",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.72",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T04:33:13.072Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNjUwMzMxODAjd21KaUliREFBQXBMNlZUWW1TUjNKYU1uUlZIbVZreHc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660248fe84c24000015b693cabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQXBMNlZUWW1TUjNKYU1uUlZIbVZreHc=\",\"latestSendFlag\":\"59166504854110779\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711427593072
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "WXAIeY4BqHwFSwFuM2W8",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"type": "java",
+			"log_topic": "kafka-java",
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$12:32:41.425",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"m": "autoRecoverTakeover",
+			"beat": {
+				"name": "10.30.0.72",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf",
+				"version": "6.8.6"
+			},
+			"th": "fast-delegate-executor160",
+			"seq": 88541477,
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475395-14898",
+			"@timestamp": "2024-03-26T04:32:41.425Z",
+			"ln": "175",
+			"bsid": "queue-50245b4a-5b06-4fd9-9d3e-51cbdb975957",
+			"logstash_mark": "11.146_java",
+			"proj": "t8t-tbt-tls",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"prospector": {
+				"type": "log"
+			},
+			"iid": "sc",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQXlrRTlkMXNXeTdacmJOX0gzb3h4OUE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660248e084c24000015b6747abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQXlrRTlkMXNXeTdacmJOX0gzb3h4OUE=\",\"latestSendFlag\":\"59166485739141854\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T04:32:41.425Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQXlrRTlkMXNXeTdacmJOX0gzb3h4OUE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660248e084c24000015b6747abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQXlrRTlkMXNXeTdacmJOX0gzb3h4OUE=\",\"latestSendFlag\":\"59166485739141854\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711427561425
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "b40HeY4BvuObRaR4VzHj",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"type": "java",
+			"log_topic": "kafka-java",
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$12:31:45.070",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"m": "autoRecoverTakeover",
+			"beat": {
+				"name": "10.30.0.73",
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"version": "6.8.6"
+			},
+			"th": "fast-delegate-executor200",
+			"seq": 62251396,
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475396-2136",
+			"@timestamp": "2024-03-26T04:31:45.070Z",
+			"ln": "175",
+			"bsid": "queue-1cb7e82d-bf16-4e68-8628-fb337fbcb45c",
+			"logstash_mark": "11.146_java",
+			"proj": "t8t-tbt-tls",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"prospector": {
+				"type": "log"
+			},
+			"iid": "sc",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=MTAzNDYzMDUjd21KaUliREFBQWlIa0hEamcyQ2ZOWXc0X3N2Y1lqR1E=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660248a884c24000015b6564abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTAzNDYzMDUjd21KaUliREFBQWlIa0hEamcyQ2ZOWXc0X3N2Y1lqR1E=\",\"latestSendFlag\":\"59166429404951504\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T04:31:45.070Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTAzNDYzMDUjd21KaUliREFBQWlIa0hEamcyQ2ZOWXc0X3N2Y1lqR1E=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660248a884c24000015b6564abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTAzNDYzMDUjd21KaUliREFBQWlIa0hEamcyQ2ZOWXc0X3N2Y1lqR1E=\",\"latestSendFlag\":\"59166429404951504\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711427505070
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "RD3BeI4BqHwFSwFuvW7u",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ln": "175",
+			"@timestamp": "2024-03-26T03:14:53.175Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-f344e730-9ce7-4412-b3ad-0bd5211a636b",
+			"proj": "t8t-tbt-tls",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475395-4460",
+			"iid": "sc",
+			"lv": "INFO",
+			"type": "java",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"th": "fast-delegate-executor36",
+			"ts": "2024-03-26$11:14:53.175",
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-v33id",
+				"name": "10.30.0.71",
+				"version": "6.8.6"
+			},
+			"logstash_mark": "11.146_java",
+			"prospector": {
+				"type": "log"
+			},
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"m": "autoRecoverTakeover",
+			"input": {
+				"type": "log"
+			},
+			"log_topic": "kafka-java",
+			"seq": 11281369,
+			"txt": "chartId=MTkwNjUwMzMyNDIjd21KaUliREFBQThvN3FmbnUydmtCc3pudDhxYVVUeUE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660236a484c240000159dd68abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMyNDIjd21KaUliREFBQThvN3FmbnUydmtCc3pudDhxYVVUeUE=\",\"latestSendFlag\":\"59162222903881834\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T03:14:53.175Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNjUwMzMyNDIjd21KaUliREFBQThvN3FmbnUydmtCc3pudDhxYVVUeUE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660236a484c240000159dd68abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMyNDIjd21KaUliREFBQThvN3FmbnUydmtCc3pudDhxYVVUeUE=\",\"latestSendFlag\":\"59162222903881834\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711422893175
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "7eG3eI4BqHwFSwFuq_Eo",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-26T03:04:43.402Z",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"iid": "sc",
+			"prospector": {
+				"type": "log"
+			},
+			"beat": {
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-v33id",
+				"name": "10.30.0.71"
+			},
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"ts": "2024-03-26$11:04:43.402",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ln": "175",
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475394-31093",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-11a45cab-b201-4e31-8d03-b007a0ac9f0a",
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor336",
+			"txt": "chartId=NzAyMjczNDEjd21KaUliREFBQXhZdnNVSGc2dFM3SUo5aHFCV2tIWUE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602344284c24000015951d2abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQXhZdnNVSGc2dFM3SUo5aHFCV2tIWUE=\",\"latestSendFlag\":\"59161613145138575\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"seq": 164021924,
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"logstash_mark": "11.146_java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T03:04:43.402Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzAyMjczNDEjd21KaUliREFBQXhZdnNVSGc2dFM3SUo5aHFCV2tIWUE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602344284c24000015951d2abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQXhZdnNVSGc2dFM3SUo5aHFCV2tIWUE=\",\"latestSendFlag\":\"59161613145138575\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711422283402
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "Ey2zeI4B8lXX8u2R8dkX",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475394-39156",
+			"th": "fast-delegate-executor118",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"txt": "chartId=MDIxOTQjd21KaUliREFBQVVxUElaWGZFY1U4akdiejluMkd2Mnc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602334884c2400001591361abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQVVxUElaWGZFY1U4akdiejluMkd2Mnc=\",\"latestSendFlag\":\"59160945197231053\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 138956426,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-605eb2ee-de2a-4a91-85fd-10502b7cd98c",
+			"ln": "175",
+			"@timestamp": "2024-03-26T03:00:33.380Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$11:00:33.380",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.71",
+				"hostname": "idc-bj-kvm-toc-java-v33id"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T03:00:33.380Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MDIxOTQjd21KaUliREFBQVVxUElaWGZFY1U4akdiejluMkd2Mnc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602334884c2400001591361abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQVVxUElaWGZFY1U4akdiejluMkd2Mnc=\",\"latestSendFlag\":\"59160945197231053\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711422033380
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "QXOfeI4B8lXX8u2RFTxw",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"type": "java",
+			"log_topic": "kafka-java",
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$10:37:47.213",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"m": "autoRecoverTakeover",
+			"beat": {
+				"name": "10.30.0.73",
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"version": "6.8.6"
+			},
+			"th": "fast-delegate-executor346",
+			"seq": 16940267,
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475394-11662",
+			"@timestamp": "2024-03-26T02:37:47.213Z",
+			"ln": "175",
+			"bsid": "queue-3ae9be26-5ce5-4878-b05a-151d7dec8509",
+			"logstash_mark": "11.146_java",
+			"proj": "t8t-tbt-tls",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"prospector": {
+				"type": "log"
+			},
+			"iid": "sc",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=NzAyMjczNDEjd21KaUliREFBQWhFMjZvS3ZRQVdPOEljUHlNOHRMc0E=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66022df284c240000157e3c0abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQWhFMjZvS3ZRQVdPOEljUHlNOHRMc0E=\",\"latestSendFlag\":\"59159579002303082\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T02:37:47.213Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzAyMjczNDEjd21KaUliREFBQWhFMjZvS3ZRQVdPOEljUHlNOHRMc0E=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66022df284c240000157e3c0abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQWhFMjZvS3ZRQVdPOEljUHlNOHRMc0E=\",\"latestSendFlag\":\"59159579002303082\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711420667213
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "hlSGeI4BvuObRaR4ppZB",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"proj": "t8t-tbt-tls",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"@timestamp": "2024-03-26T02:11:10.276Z",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475393-41810",
+			"prospector": {
+				"type": "log"
+			},
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=NzkwODE0MjEjd21KaUliREFBQTgtSTM5am9TWDZHbk4tQW42d0dhZlE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660227b584c24000015730ababcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzkwODE0MjEjd21KaUliREFBQTgtSTM5am9TWDZHbk4tQW42d0dhZlE=\",\"latestSendFlag\":\"59157982072730380\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"beat": {
+				"name": "10.30.0.71",
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-v33id"
+			},
+			"ln": "175",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-471f37f5-d73f-4412-b93d-942346878904",
+			"seq": 51765952,
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"th": "fast-delegate-executor297",
+			"ts": "2024-03-26$10:11:10.276",
+			"type": "java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T02:11:10.276Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzkwODE0MjEjd21KaUliREFBQTgtSTM5am9TWDZHbk4tQW42d0dhZlE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660227b584c24000015730ababcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzkwODE0MjEjd21KaUliREFBQTgtSTM5am9TWDZHbk4tQW42d0dhZlE=\",\"latestSendFlag\":\"59157982072730380\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711419070276
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "im6BeI4B8lXX8u2RSIWP",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-26T02:05:19.943Z",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"iid": "sc",
+			"prospector": {
+				"type": "log"
+			},
+			"beat": {
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-v33id",
+				"name": "10.30.0.71"
+			},
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"ts": "2024-03-26$10:05:19.943",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ln": "175",
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475393-32558",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-d6807e21-3f97-428a-a866-8a7b233666b6",
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor15",
+			"txt": "chartId=MDIxOTQjd21KaUliREFBQVRBaXlSQjhBQmJFek56NGVZQVA5NFE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602265784c240000157145eabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQVRBaXlSQjhBQmJFek56NGVZQVA5NFE=\",\"latestSendFlag\":\"59157644250141151\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"seq": 19187933,
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"logstash_mark": "11.146_java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T02:05:19.943Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MDIxOTQjd21KaUliREFBQVRBaXlSQjhBQmJFek56NGVZQVA5NFE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602265784c240000157145eabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQVRBaXlSQjhBQmJFek56NGVZQVA5NFE=\",\"latestSendFlag\":\"59157644250141151\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711418719943
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "PvhheI4BeyUma909_J7z",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-26T01:31:09.424Z",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"iid": "sc",
+			"prospector": {
+				"type": "log"
+			},
+			"beat": {
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-v33id",
+				"name": "10.30.0.71"
+			},
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"ts": "2024-03-26$09:31:09.424",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ln": "175",
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475392-29252",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-861deb02-51dc-4e0c-adb0-9ede4bf9e36d",
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor288",
+			"txt": "chartId=MTgxOTQwNjA4MzIjd21KaUliREFBQTRKbXhseVVTdWhVeG5mUnpfV3NlWXc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66021e5484c2400001561461abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTgxOTQwNjA4MzIjd21KaUliREFBQTRKbXhseVVTdWhVeG5mUnpfV3NlWXc=\",\"latestSendFlag\":\"59155593756793056\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"seq": 35791914,
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"logstash_mark": "11.146_java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T01:31:09.424Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTgxOTQwNjA4MzIjd21KaUliREFBQTRKbXhseVVTdWhVeG5mUnpfV3NlWXc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_66021e5484c2400001561461abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTgxOTQwNjA4MzIjd21KaUliREFBQTRKbXhseVVTdWhVeG5mUnpfV3NlWXc=\",\"latestSendFlag\":\"59155593756793056\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711416669424
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.26",
+		"_type": "doc",
+		"_id": "dxY9eI4BvuObRaR4zgS8",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"version": "6.8.6",
+				"name": "10.30.0.73"
+			},
+			"ln": "175",
+			"ts": "2024-03-26$08:51:36.681",
+			"@timestamp": "2024-03-26T00:51:36.681Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-2c1d4f15-85d8-4cd0-8293-fa8808b683e7",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475392-6418",
+			"type": "java",
+			"seq": 135461468,
+			"prospector": {
+				"type": "log"
+			},
+			"th": "fast-delegate-executor104",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"proj": "t8t-tbt-tls",
+			"lv": "INFO",
+			"iid": "sc",
+			"input": {
+				"type": "log"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"txt": "chartId=MDIxOTQjd21KaUliREFBQUdxcEQ4bloyOXQzTGktWGp5ZHpSTFE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602151084c240000155bcd3abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQUdxcEQ4bloyOXQzTGktWGp5ZHpSTFE=\",\"latestSendFlag\":\"59153208471347833\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-26T00:51:36.681Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MDIxOTQjd21KaUliREFBQUdxcEQ4bloyOXQzTGktWGp5ZHpSTFE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6602151084c240000155bcd3abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQUdxcEQ4bloyOXQzTGktWGp5ZHpSTFE=\",\"latestSendFlag\":\"59153208471347833\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711414296681
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "U3TLd44BeyUma9093XrJ",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"type": "java",
+			"log_topic": "kafka-java",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"bsid": "queue-1ce34b83-27c6-4c9b-aac4-def7f2bc47e1",
+			"input": {
+				"type": "log"
+			},
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-8uzjf",
+				"name": "10.30.0.72",
+				"version": "6.8.6"
+			},
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-26$06:47:05.920",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475390-1990",
+			"seq": 52957446,
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor223",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"@timestamp": "2024-03-25T22:47:05.920Z",
+			"prospector": {
+				"type": "log"
+			},
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"ln": "175",
+			"txt": "chartId=MTkwNjUwMzMyNDIjd21KaUliREFBQWNoeDJBbUlvZ0NHX21hNXgtYm5KclE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601f7e184c240000155a83dabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMyNDIjd21KaUliREFBQWNoeDJBbUlvZ0NHX21hNXgtYm5KclE=\",\"latestSendFlag\":\"59145737708868549\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"lv": "INFO"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T22:47:05.920Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNjUwMzMyNDIjd21KaUliREFBQWNoeDJBbUlvZ0NHX21hNXgtYm5KclE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601f7e184c240000155a83dabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMyNDIjd21KaUliREFBQWNoeDJBbUlvZ0NHX21hNXgtYm5KclE=\",\"latestSendFlag\":\"59145737708868549\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711406825920
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "FWcyd44Bw9qD93s8-Osr",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"proj": "t8t-tbt-tls",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"@timestamp": "2024-03-25T20:00:10.367Z",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475387-3712",
+			"prospector": {
+				"type": "log"
+			},
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=MTkwNjUwMzMyNDIjd21KaUliREFBQXlOWWVkd1M4V2ptT21zNDlOMTlXVUE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601d0c184c240000155a13eabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMyNDIjd21KaUliREFBQXlOWWVkd1M4V2ptT21zNDlOMTlXVUE=\",\"latestSendFlag\":\"59136140074981047\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"beat": {
+				"name": "10.30.0.72",
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"ln": "175",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-217cb771-6561-45ae-96d3-44d280594784",
+			"seq": 171486078,
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"th": "fast-delegate-executor167",
+			"ts": "2024-03-26$04:00:10.367",
+			"type": "java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T20:00:10.367Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNjUwMzMyNDIjd21KaUliREFBQXlOWWVkd1M4V2ptT21zNDlOMTlXVUE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601d0c184c240000155a13eabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMyNDIjd21KaUliREFBQXlOWWVkd1M4V2ptT21zNDlOMTlXVUE=\",\"latestSendFlag\":\"59136140074981047\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711396810367
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "zmKddo4B8lXX8u2RSMn1",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"proj": "t8t-tbt-tls",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"@timestamp": "2024-03-25T17:16:40.074Z",
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475384-32031",
+			"prospector": {
+				"type": "log"
+			},
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=NzAyMjczNDEjd21KaUliREFBQVRwSzhGRjZxbEZOYmtFSjVlRm45WFE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601aa6f84c2400001559826abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQVRwSzhGRjZxbEZOYmtFSjVlRm45WFE=\",\"latestSendFlag\":\"59125911856292628\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"beat": {
+				"name": "10.30.0.71",
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-v33id"
+			},
+			"ln": "175",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-4e31da05-48cf-4ad5-84b8-436d2656969d",
+			"seq": 184585619,
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"th": "fast-delegate-executor318",
+			"ts": "2024-03-26$01:16:40.074",
+			"type": "java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T17:16:40.074Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzAyMjczNDEjd21KaUliREFBQVRwSzhGRjZxbEZOYmtFSjVlRm45WFE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601aa6f84c2400001559826abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQVRwSzhGRjZxbEZOYmtFSjVlRm45WFE=\",\"latestSendFlag\":\"59125911856292628\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711387000074
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "PPH5dY4B8lXX8u2R0vwk",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-8uzjf",
+				"version": "6.8.6",
+				"name": "10.30.0.72"
+			},
+			"ln": "175",
+			"ts": "2024-03-25$22:18:04.366",
+			"@timestamp": "2024-03-25T14:18:04.366Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-c49973ed-ac57-4693-81c4-3ee571b4dd36",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475382-114",
+			"type": "java",
+			"seq": 610831,
+			"prospector": {
+				"type": "log"
+			},
+			"th": "fast-delegate-executor286",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"proj": "t8t-tbt-tls",
+			"lv": "INFO",
+			"iid": "sc",
+			"input": {
+				"type": "log"
+			},
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"txt": "chartId=MTkxNjg1MzY5Nzkjd21KaUliREFBQUVHa0hiZS16akNwaGVZTWxlSDY3bnc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601809384c24000015520dfabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkxNjg1MzY5Nzkjd21KaUliREFBQUVHa0hiZS16akNwaGVZTWxlSDY3bnc=\",\"latestSendFlag\":\"59115208709075028\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T14:18:04.366Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkxNjg1MzY5Nzkjd21KaUliREFBQUVHa0hiZS16akNwaGVZTWxlSDY3bnc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601809384c24000015520dfabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkxNjg1MzY5Nzkjd21KaUliREFBQUVHa0hiZS16akNwaGVZTWxlSDY3bnc=\",\"latestSendFlag\":\"59115208709075028\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711376284366
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "Xhu6dY4BeyUma909spf-",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0047-475380-9370",
+			"th": "fast-delegate-executor356",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.71"
+			},
+			"txt": "chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQV9ZdlNPcDYzbDNqaDZpRWVVNHdqZkE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601706e84c240000154b351abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQV9ZdlNPcDYzbDNqaDZpRWVVNHdqZkE=\",\"latestSendFlag\":\"59111063052230028\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 53028951,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-80f86e81-3f8c-44ef-a695-7e0fef4d4f98",
+			"ln": "175",
+			"@timestamp": "2024-03-25T13:09:11.189Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-25$21:09:11.189",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.71",
+				"hostname": "idc-bj-kvm-toc-java-v33id"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T13:09:11.189Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTM1NTQ3MDE3NTIjd21KaUliREFBQV9ZdlNPcDYzbDNqaDZpRWVVNHdqZkE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601706e84c240000154b351abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDE3NTIjd21KaUliREFBQV9ZdlNPcDYzbDNqaDZpRWVVNHdqZkE=\",\"latestSendFlag\":\"59111063052230028\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711372151189
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "1hi6dY4BeyUma909YeWd",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475380-6381",
+			"th": "fast-delegate-executor324",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"txt": "chartId=MTAzNDYzMDUjd21KaUliREFBQVdfZFlYQlhObUQxU0liMDJvMHlCbXc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601705984c240000154b218abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTAzNDYzMDUjd21KaUliREFBQVdfZFlYQlhObUQxU0liMDJvMHlCbXc=\",\"latestSendFlag\":\"59111460155196233\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 197378404,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-306d2157-da87-4692-9dc9-d0e22a832865",
+			"ln": "175",
+			"@timestamp": "2024-03-25T13:08:50.429Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-25$21:08:50.429",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.72",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T13:08:50.429Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTAzNDYzMDUjd21KaUliREFBQVdfZFlYQlhObUQxU0liMDJvMHlCbXc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601705984c240000154b218abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTAzNDYzMDUjd21KaUliREFBQVdfZFlYQlhObUQxU0liMDJvMHlCbXc=\",\"latestSendFlag\":\"59111460155196233\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711372130429
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "uttVdY4BvuObRaR4RciQ",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ln": "175",
+			"@timestamp": "2024-03-25T11:18:25.065Z",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-768cd773-9ec2-49be-89d6-6d5ae002ef05",
+			"proj": "t8t-tbt-tls",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475378-14255",
+			"iid": "sc",
+			"lv": "INFO",
+			"type": "java",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"th": "fast-delegate-executor281",
+			"ts": "2024-03-25$19:18:25.065",
+			"beat": {
+				"hostname": "idc-bj-kvm-toc-java-8uzjf",
+				"name": "10.30.0.72",
+				"version": "6.8.6"
+			},
+			"logstash_mark": "11.146_java",
+			"prospector": {
+				"type": "log"
+			},
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"m": "autoRecoverTakeover",
+			"input": {
+				"type": "log"
+			},
+			"log_topic": "kafka-java",
+			"seq": 99904612,
+			"txt": "chartId=MTM1NTQ3MDM1MDIjd21KaUliREFBQWRSZ1U3bUgwTDVGLW84Mnp2d05QX0E=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601567884c240000152d52fabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDM1MDIjd21KaUliREFBQWRSZ1U3bUgwTDVGLW84Mnp2d05QX0E=\",\"latestSendFlag\":\"59104834784015279\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T11:18:25.065Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTM1NTQ3MDM1MDIjd21KaUliREFBQWRSZ1U3bUgwTDVGLW84Mnp2d05QX0E=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601567884c240000152d52fabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTM1NTQ3MDM1MDIjd21KaUliREFBQWRSZ1U3bUgwTDVGLW84Mnp2d05QX0E=\",\"latestSendFlag\":\"59104834784015279\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711365505065
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "enVGdY4BvuObRaR4Ctyw",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ts": "2024-03-25$19:01:43.820",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.73",
+				"hostname": "idc-bj-kvm-toc-java-l925d"
+			},
+			"iid": "sc",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"txt": "chartId=NzAyMjczNDEjd21KaUliREFBQWxpR2UxRmtJSDZSQWt3Rlh3ZVBSQlE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601528f84c2400001521491abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQWxpR2UxRmtJSDZSQWt3Rlh3ZVBSQlE=\",\"latestSendFlag\":\"59103415636245600\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"seq": 165646556,
+			"bsid": "queue-4d69cbd4-f4f2-4e3a-a506-0d9dc256e71d",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475378-9946",
+			"input": {
+				"type": "log"
+			},
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"proj": "t8t-tbt-tls",
+			"ln": "175",
+			"logstash_mark": "11.146_java",
+			"@timestamp": "2024-03-25T11:01:43.820Z",
+			"lv": "INFO",
+			"type": "java",
+			"prospector": {
+				"type": "log"
+			},
+			"m": "autoRecoverTakeover",
+			"log_topic": "kafka-java",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"th": "fast-delegate-executor272"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T11:01:43.820Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzAyMjczNDEjd21KaUliREFBQWxpR2UxRmtJSDZSQWt3Rlh3ZVBSQlE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601528f84c2400001521491abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzAyMjczNDEjd21KaUliREFBQWxpR2UxRmtJSDZSQWt3Rlh3ZVBSQlE=\",\"latestSendFlag\":\"59103415636245600\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711364503820
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "2AYidY4BeyUma909aIJl",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-25T10:22:31.278Z",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"iid": "sc",
+			"prospector": {
+				"type": "log"
+			},
+			"beat": {
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-l925d",
+				"name": "10.30.0.73"
+			},
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"ts": "2024-03-25$18:22:31.278",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ln": "175",
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475378-3243",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-78c06662-05ce-4d9c-b9c4-b9c1a6fb1d70",
+			"proj": "t8t-tbt-tls",
+			"th": "fast-delegate-executor101",
+			"txt": "chartId=MDIxOTQjd21KaUliREFBQUlGVFo2N3RaVFFPemVmT3ZYX1Qwc3c=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601495e84c240000150e44babcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQUlGVFo2N3RaVFFPemVmT3ZYX1Qwc3c=\",\"latestSendFlag\":\"59101480985961764\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"seq": 24551516,
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"logstash_mark": "11.146_java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T10:22:31.278Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MDIxOTQjd21KaUliREFBQUlGVFo2N3RaVFFPemVmT3ZYX1Qwc3c=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_6601495e84c240000150e44babcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MDIxOTQjd21KaUliREFBQUlGVFo2N3RaVFFPemVmT3ZYX1Qwc3c=\",\"latestSendFlag\":\"59101480985961764\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711362151278
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "le4fdY4BqHwFSwFub-BX",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"ln": "175",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"proj": "t8t-tbt-tls",
+			"ts": "2024-03-25$18:19:33.089",
+			"lv": "INFO",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.72",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"txt": "chartId=MTkwNjUwMzMxODAjd21KaUliREFBQTNweXNTV2sxZ2REelpTSS15a0tMWmc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660148a984c240000150dd05abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQTNweXNTV2sxZ2REelpTSS15a0tMWmc=\",\"latestSendFlag\":\"59101302788149497\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"prospector": {
+				"type": "log"
+			},
+			"seq": 94304690,
+			"log_topic": "kafka-java",
+			"logstash_mark": "11.146_java",
+			"m": "autoRecoverTakeover",
+			"@timestamp": "2024-03-25T10:19:33.089Z",
+			"th": "fast-delegate-executor161",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475377-24522",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"type": "java",
+			"input": {
+				"type": "log"
+			},
+			"iid": "sc",
+			"bsid": "queue-04b8efca-a532-4997-a8dd-e452879996f0"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T10:19:33.089Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNjUwMzMxODAjd21KaUliREFBQTNweXNTV2sxZ2REelpTSS15a0tMWmc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660148a984c240000150dd05abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNjUwMzMxODAjd21KaUliREFBQTNweXNTV2sxZ2REelpTSS15a0tMWmc=\",\"latestSendFlag\":\"59101302788149497\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711361973089
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "mF8sdY4BeyUma909ajNx",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"iid": "sc",
+			"cmid": "t8t-tbt-tls.sc-0a1e0048-475377-14963",
+			"th": "fast-delegate-executor158",
+			"proj": "t8t-tbt-tls",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"log_topic": "kafka-java",
+			"host": {
+				"name": "10.30.0.72"
+			},
+			"txt": "chartId=NzkwODE0MjEjd21KaUliREFBQTJtU0JMNFVHSEFGTWg0cmlkVi1QYnc=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660148aa84c240000150dd06abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzkwODE0MjEjd21KaUliREFBQTJtU0JMNFVHSEFGTWg0cmlkVi1QYnc=\",\"latestSendFlag\":\"59101300726922732\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"type": "java",
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"lv": "INFO",
+			"prospector": {
+				"type": "log"
+			},
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"seq": 94262616,
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"bsid": "queue-258763c0-7f71-4619-8dd2-80d255c205f1",
+			"ln": "175",
+			"@timestamp": "2024-03-25T10:19:31.036Z",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"ts": "2024-03-25$18:19:31.036",
+			"beat": {
+				"version": "6.8.6",
+				"name": "10.30.0.72",
+				"hostname": "idc-bj-kvm-toc-java-8uzjf"
+			},
+			"m": "autoRecoverTakeover"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T10:19:31.036Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=NzkwODE0MjEjd21KaUliREFBQTJtU0JMNFVHSEFGTWg0cmlkVi1QYnc=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660148aa84c240000150dd06abcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"NzkwODE0MjEjd21KaUliREFBQTJtU0JMNFVHSEFGTWg0cmlkVi1QYnc=\",\"latestSendFlag\":\"59101300726922732\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711361971036
+		]
+	},
+	{
+		"_index": "log-java-idc-inde-2024.03.25",
+		"_type": "doc",
+		"_id": "Y7gYdY4BqHwFSwFuyHis",
+		"_version": 1,
+		"_score": "",
+		"_source": {
+			"proj": "t8t-tbt-tls",
+			"iid": "sc",
+			"lg": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"@timestamp": "2024-03-25T10:11:40.822Z",
+			"host": {
+				"name": "10.30.0.73"
+			},
+			"log_topic": "kafka-java",
+			"cmid": "t8t-tbt-tls.sc-0a1e0049-475377-9093",
+			"prospector": {
+				"type": "log"
+			},
+			"logstash_mark": "11.146_java",
+			"input": {
+				"type": "log"
+			},
+			"txt": "chartId=MTkwNzU2OTI5MTcjd21KaUliREFBQUhQekV6N1ltOUZZT3hqOHpYbzZFaVE=, 自动恢复机器人托管，并且发送消息 smartChatData={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660146d484c240000150c6dbabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNzU2OTI5MTcjd21KaUliREFBQUhQekV6N1ltOUZZT3hqOHpYbzZFaVE=\",\"latestSendFlag\":\"59100830552736990\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}",
+			"beat": {
+				"name": "10.30.0.73",
+				"version": "6.8.6",
+				"hostname": "idc-bj-kvm-toc-java-l925d"
+			},
+			"ln": "175",
+			"file": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log",
+			"bsid": "queue-cf084316-3d32-4b52-874d-37d4eb91090e",
+			"seq": 207932467,
+			"lv": "INFO",
+			"cl": "com.to8to.tbt.tls.smartChat.service.chat.delayEvent.DelaySendMessageHandleEvent",
+			"m": "autoRecoverTakeover",
+			"log": {
+				"file": {
+					"path": "/data/logs/java/logs/t8t-tbt-tls-sc-main.log"
+				}
+			},
+			"th": "fast-delegate-executor139",
+			"ts": "2024-03-25$18:11:40.822",
+			"type": "java"
+		},
+		"fields": {
+			"@timestamp": [
+				"2024-03-25T10:11:40.822Z"
+			]
+		},
+		"highlight": {
+			"txt": [
+				"chartId=MTkwNzU2OTI5MTcjd21KaUliREFBQUhQekV6N1ltOUZZT3hqOHpYbzZFaVE=, @kibana-highlighted-field@自@/kibana-highlighted-field@@kibana-highlighted-field@动@/kibana-highlighted-field@@kibana-highlighted-field@恢@/kibana-highlighted-field@@kibana-highlighted-field@复@/kibana-highlighted-field@@kibana-highlighted-field@机@/kibana-highlighted-field@@kibana-highlighted-field@器@/kibana-highlighted-field@@kibana-highlighted-field@人@/kibana-highlighted-field@@kibana-highlighted-field@托@/kibana-highlighted-field@@kibana-highlighted-field@管@/kibana-highlighted-field@，@kibana-highlighted-field@并@/kibana-highlighted-field@@kibana-highlighted-field@且@/kibana-highlighted-field@@kibana-highlighted-field@发@/kibana-highlighted-field@@kibana-highlighted-field@送@/kibana-highlighted-field@@kibana-highlighted-field@消@/kibana-highlighted-field@@kibana-highlighted-field@息@/kibana-highlighted-field@ @kibana-highlighted-field@smartChatData@/kibana-highlighted-field@={\"bizJson\":{\"trip\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"recommendType\":0,\"disappearTime\":0,\"messageId\":\"WECSMG_RECMSG_660146d484c240000150c6dbabcdefgh\",\"title\":\"用户或者顾问开口，且处于暂停状态需要发送超时取消或者继续托管事件\",\"questionList\":\"[]\"},\"definedMsgType\":\"T:TextLinkMsg\",\"groupId\":\"MTkwNzU2OTI5MTcjd21KaUliREFBQUhQekV6N1ltOUZZT3hqOHpYbzZFaVE=\",\"latestSendFlag\":\"59100830552736990\",\"messageEventList\":[\"AUTO_RECOVER_TAKEOVER\"]}"
+			],
+			"proj": [
+				"@kibana-highlighted-field@t8t@/kibana-highlighted-field@-@kibana-highlighted-field@tbt@/kibana-highlighted-field@-@kibana-highlighted-field@tls@/kibana-highlighted-field@"
+			]
+		},
+		"sort": [
+			1711361500822
+		]
+	}
+]

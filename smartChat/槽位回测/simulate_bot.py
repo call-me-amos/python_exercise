@@ -12,7 +12,7 @@ def load_file(file_id):
     :param file_id:
     :return:
     """
-    data = open("./data/corpus2.0/{}.txt".format(file_id), "r", encoding="utf-8")
+    data = open("./data/corpus3.0/{}.txt".format(file_id), "r", encoding="utf-8")
     data = [line.strip().split("||")[0].strip() for line in data]
     return data
 
@@ -89,7 +89,8 @@ def data_post_process(question_id, resp, text, question):
     state = {k: v for k, v in state.items() if v}
     fp.write(state.get("提问槽位", " ") + "&" + question + "&" + text + "&" + str(temp.get("nextRobotAskContent", " "))
              + "&" + str(state.get("当前槽位值", " ")) + "&" + str(state.get("当前意图", " ")) + "&" + str(
-        state.get("执行下一策略", " ")) + "&" + str(state.get("执行下一槽位", " ")) + "&" + str(state) + "\n")
+        state.get("执行下一策略", " ")) + "&" + str(state.get("执行下一槽位", " ")) + "&" + str(state)
+             + "&" + state.get("条件跳转：命中规则名", " ") + "\n")
     fp.close()
     end_flag = False
 
@@ -100,8 +101,12 @@ def data_post_process(question_id, resp, text, question):
 
 def single_test():
     #q_list = ["119", "120", "121", "123", "124", "125", "126", "127", "128"]
-    q_list = ["126"]
-    q_ids = json.load(open("./data/q2id2.0.json", "r", encoding="utf-8"))
+    # q_list = ["119"]
+    # q_ids = json.load(open("./data/q2id2.0.json", "r", encoding="utf-8"))
+
+    q_list = ["1119"]
+    # q_list = ["119"]
+    q_ids = json.load(open("./data/q3id3.0.json", "r", encoding="utf-8"))
     for index, question_id in enumerate(q_list):
         # if index in [0, 1, 2, 3, 4, 5, 6]:
         #     continue

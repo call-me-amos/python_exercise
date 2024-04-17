@@ -3,6 +3,7 @@ import requests
 import uuid
 
 
+preRobotAskId = 0
 def test_bot(user_name, text):
     #url = "https://apigw.to8to.com/cgi/tls/smartChat/testReply"
     url = "http://10.4.42.48:40121/tls/smartChat/testReply"
@@ -17,15 +18,11 @@ def test_bot(user_name, text):
         #"user": "wmXookCgAArjI0J7V_EJY_d2IeJN6A2A",
         #"weChat": "13683560870", #线上
         #"weChat": "WeiDongMing", #测试
-        "weChat": "tongzhiwei_test", #新回测配置
+        "weChat": "wdm", #新回测配置
         #"weChat": "tongzhiwei", #新回测配置
         #"weChat": "wdm",
-        #"weChat": "fantong",
-        #"weChat": "xiaohao",
-        #"weChat": "13683560870",
-        #"weChat": "12361597",
         "eventType": mode,
-        #"preRobotAskId": 124,
+        "preRobotAskId": preRobotAskId,
         "messageId": uuid.uuid4().hex,
         "reply": text
 

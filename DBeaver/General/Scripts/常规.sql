@@ -1,330 +1,4 @@
 
-
--- 根据模板id，查询树形话术（不会级联）
- SELECT ct.id AS temp_id , ct.template_name as temp_name
- , rac.robot_ask_id AS temp_robot_ask_id, 
- (
-	CASE cra1.check_type_code
-	WHEN '7!711!71102!1' THEN '装修时间'  WHEN '7!711!71102!2' THEN '房屋面积'  WHEN '7!711!71102!3' THEN '小区名称'  WHEN '7!711!71102!4' THEN '房屋类型'  WHEN '7!711!71102!5' THEN '装修风格'  WHEN '7!711!71102!6' THEN '意向量房时间'  WHEN '7!711!71102!7' THEN '居住类型'  WHEN '7!711!71102!8' THEN '工程量'  WHEN '7!711!71102!9' THEN '街道'  WHEN '7!711!71102!10' THEN '区县'  WHEN '7!711!71102!11' THEN '姓氏'  WHEN '7!711!71102!12' THEN '是否全屋定制'  WHEN '7!711!71102!13' THEN '交房时间'  WHEN '7!711!71102!14' THEN '时间'  WHEN '7!711!71102!15' THEN '装修预算'  WHEN '7!711!71102!16' THEN '城市'  WHEN '7!711!71102!17' THEN '电话'  WHEN '7!711!71102!18' THEN '预约全屋定制'  WHEN '7!711!71102!19' THEN '硬装需求'  WHEN '7!711!71102!21' THEN '手机号'  WHEN '7!711!71102!22' THEN '装修用途'  WHEN '7!711!71102!23' THEN '外出回来时间'  WHEN '7!711!71102!24' THEN '工程量-只有局改空间'  WHEN '7!711!71102!25' THEN '工程量-只有局改详情'  WHEN '7!711!71102!26' THEN '工程量-缺少水电'  WHEN '7!711!71102!27' THEN '工程量-只做墙面'  WHEN '7!711!71102!28' THEN '工程量-非局改范围'  WHEN '7!711!71102!29' THEN '工程量-无空间和局改详情'  WHEN '7!711!71102!31' THEN '工程量-只有否定局改空间'  WHEN '7!711!71102!32' THEN '工程量-只有否定局改详情'  WHEN '7!711!71102!33' THEN '工程量-未识别到工程量'  WHEN '7!711!71102!30' THEN '房屋类型-自建房'  WHEN '7!711!71102!34' THEN '装修类型'  WHEN '7!711!71102!35' THEN '装修时间-三个月外'  WHEN '7!711!71102!36' THEN '量房时间-一个月外'  WHEN '7!711!71102!50' THEN '交房时间-三个月后交房'  WHEN '7!711!71102!40' THEN '地址追问-城市'  WHEN '7!711!71102!41' THEN '地址追问-城市澄清问'  WHEN '7!711!71102!42' THEN '地址追问-小区地址-农村自建房'  WHEN '7!711!71102!43' THEN '地址追问-小区地址-非农村自建房'  WHEN '7!711!71102!44' THEN '地址追问-小区地址-模糊楼盘'  WHEN '7!711!71102!45' THEN '地址追问-小区地址-收到户型图'  WHEN '7!711!71102!46' THEN '地址追问-小区地址-回复房屋信息'  WHEN '7!711!71102!47' THEN '地址追问-小区地址-咨询设计方案'  WHEN '7!711!71102!48' THEN '地址追问-小区地址-咨询报价'
-	END
- ) AS temp_robot_ask_id_slot 
- , adr.intention_name AS intention, adr.aff_neg_intention_name AS aff_intention, adr.content AS default_reply, adr.relate_robot_ask_id AS relate_robot_ask_id, 
- (
-	CASE cra2.check_type_code
-	WHEN '7!711!71102!1' THEN '装修时间'  WHEN '7!711!71102!2' THEN '房屋面积'  WHEN '7!711!71102!3' THEN '小区名称'  WHEN '7!711!71102!4' THEN '房屋类型'  WHEN '7!711!71102!5' THEN '装修风格'  WHEN '7!711!71102!6' THEN '意向量房时间'  WHEN '7!711!71102!7' THEN '居住类型'  WHEN '7!711!71102!8' THEN '工程量'  WHEN '7!711!71102!9' THEN '街道'  WHEN '7!711!71102!10' THEN '区县'  WHEN '7!711!71102!11' THEN '姓氏'  WHEN '7!711!71102!12' THEN '是否全屋定制'  WHEN '7!711!71102!13' THEN '交房时间'  WHEN '7!711!71102!14' THEN '时间'  WHEN '7!711!71102!15' THEN '装修预算'  WHEN '7!711!71102!16' THEN '城市'  WHEN '7!711!71102!17' THEN '电话'  WHEN '7!711!71102!18' THEN '预约全屋定制'  WHEN '7!711!71102!19' THEN '硬装需求'  WHEN '7!711!71102!21' THEN '手机号'  WHEN '7!711!71102!22' THEN '装修用途'  WHEN '7!711!71102!23' THEN '外出回来时间'  WHEN '7!711!71102!24' THEN '工程量-只有局改空间'  WHEN '7!711!71102!25' THEN '工程量-只有局改详情'  WHEN '7!711!71102!26' THEN '工程量-缺少水电'  WHEN '7!711!71102!27' THEN '工程量-只做墙面'  WHEN '7!711!71102!28' THEN '工程量-非局改范围'  WHEN '7!711!71102!29' THEN '工程量-无空间和局改详情'  WHEN '7!711!71102!31' THEN '工程量-只有否定局改空间'  WHEN '7!711!71102!32' THEN '工程量-只有否定局改详情'  WHEN '7!711!71102!33' THEN '工程量-未识别到工程量'  WHEN '7!711!71102!30' THEN '房屋类型-自建房'  WHEN '7!711!71102!34' THEN '装修类型'  WHEN '7!711!71102!35' THEN '装修时间-三个月外'  WHEN '7!711!71102!36' THEN '量房时间-一个月外'  WHEN '7!711!71102!50' THEN '交房时间-三个月后交房'  WHEN '7!711!71102!40' THEN '地址追问-城市'  WHEN '7!711!71102!41' THEN '地址追问-城市澄清问'  WHEN '7!711!71102!42' THEN '地址追问-小区地址-农村自建房'  WHEN '7!711!71102!43' THEN '地址追问-小区地址-非农村自建房'  WHEN '7!711!71102!44' THEN '地址追问-小区地址-模糊楼盘'  WHEN '7!711!71102!45' THEN '地址追问-小区地址-收到户型图'  WHEN '7!711!71102!46' THEN '地址追问-小区地址-回复房屋信息'  WHEN '7!711!71102!47' THEN '地址追问-小区地址-咨询设计方案'  WHEN '7!711!71102!48' THEN '地址追问-小区地址-咨询报价'
-	END
- ) AS relate_robot_ask_id_slot
- FROM hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_conversation_template ct 
- LEFT JOIN  hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_conversation_robot_ask_config rac ON ct.id=rac.conversation_template_id
- LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1 ON cra1.id= rac.robot_ask_id
- LEFT JOIN hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr ON adr.robot_ask_id=rac.robot_ask_id
- LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
- WHERE ct.id= 36
- ORDER BY ct.id  DESC , rac.robot_ask_id asc
- ;
-
-
-=======================================================================================================================
--- 注意，sql在presto执行，需要分多次
---		第一个sql内部union的表需要多次级联查询
--- 		第二个sql的id依赖第一个sql的查询结果
--- 【1】某个模板所有的话术id
-select distinct temp_robot_ask_id
-from 
-(
---模版中的话术和关联话术
-	 (
-		 select rac.robot_ask_id AS temp_robot_ask_id
-		 FROM hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_conversation_template ct 
-		 LEFT JOIN  hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_conversation_robot_ask_config rac ON ct.id=rac.conversation_template_id
-		 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1 ON cra1.id= rac.robot_ask_id
-		 LEFT JOIN hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr ON adr.robot_ask_id=rac.robot_ask_id
-		 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-		 WHERE ct.id= 36
-	 )
---	 union  --和下一个union同样的效果
---	 (
---		 select adr.relate_robot_ask_id AS temp_robot_ask_id
---		 FROM hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_conversation_template ct 
---		 LEFT JOIN  hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_conversation_robot_ask_config rac ON ct.id=rac.conversation_template_id
---		 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1 ON cra1.id= rac.robot_ask_id
---		 LEFT JOIN hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr ON adr.robot_ask_id=rac.robot_ask_id
---		 LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
---		 WHERE ct.id= 13
---	 )
-	 ---- 下面的union看情况，可能有2个以上，结束的标志就是没有新的话术id出现
-	 union 
-	 (
-	 	select adr.relate_robot_ask_id AS temp_robot_ask_id
-		from 
-		hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr
-		LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-		where adr.robot_ask_id in (
-			--这里的id是上面1个union的结果
-		720,715,760,756,721,718,717,722
-		)
-		and adr.relate_robot_ask_id > 0
-	 )
-	 union 
-	 (
-	 	select adr.relate_robot_ask_id AS temp_robot_ask_id
-		from 
-		hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr
-		LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-		where adr.robot_ask_id in (
-			----这里的id是上面2个union 合并的结果
-		84,85,86,89,90,91,92,93,96,97,98,99,100,102,103,127,131,136,137,138,139,140,141,142,143,146,147,148,149,151,152,153,154,155,160,162,163,310,313
-		)
-		and adr.relate_robot_ask_id > 0
-	 )
-	 union 
-	 (
-	 	select adr.relate_robot_ask_id AS temp_robot_ask_id
-		from 
-		hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr
-		LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-		where adr.robot_ask_id in (
-			----这里的id是上面3个union 合并的结果
-		84,85,86,88,89,90,91,92,93,96,97,98,99,100,102,103,127,129,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,159,160,162,163,310,313
-		)
-		and adr.relate_robot_ask_id > 0
-	 )
-	 union 
-	 (
-	 	select adr.relate_robot_ask_id AS temp_robot_ask_id
-		from 
-		hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr
-		LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-		where adr.robot_ask_id in (
-			----这里的id是上面4个union 合并的结果
-		84,85,86,88,89,90,91,92,93,96,97,98,99,100,102,103,127,129,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,159,160,161,162,163,310,313
-		)
-		and adr.relate_robot_ask_id > 0
-	 )
-	 union 
-	 (
-	 	select adr.relate_robot_ask_id AS temp_robot_ask_id
-		from 
-		hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr
-		LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-		where adr.robot_ask_id in (
-			----这里的id是上面5个union 合并的结果
-		84,85,86,88,89,90,91,92,93,96,97,98,99,100,102,103,127,129,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,159,160,161,162,163,310,313
-		)
-		and adr.relate_robot_ask_id > 0
-	 )
-	 ---上面两个union返回id不在新增新的id，不再union了
-) as temp
-where temp.temp_robot_ask_id>0
-
-
-
--- 【2】承接上面的sql，查询出来某个模板下面的所有话术id，然后导出详情。
--- 注意，这里有个问题，如果话术没有配置无响应时间，就不会导出来。
-select cra1.id as "话术id"
-,cra1.check_type_code 
-,(
-	CASE cra1.check_type_code
-	WHEN '7!711!71102!1' THEN '装修时间'  WHEN '7!711!71102!2' THEN '房屋面积'  WHEN '7!711!71102!3' THEN '小区名称'  WHEN '7!711!71102!4' THEN '房屋类型'  WHEN '7!711!71102!5' THEN '装修风格'  WHEN '7!711!71102!6' THEN '意向量房时间'  WHEN '7!711!71102!7' THEN '居住类型'  WHEN '7!711!71102!8' THEN '工程量'  WHEN '7!711!71102!9' THEN '街道'  WHEN '7!711!71102!10' THEN '区县'  WHEN '7!711!71102!11' THEN '姓氏'  WHEN '7!711!71102!12' THEN '是否全屋定制'  WHEN '7!711!71102!13' THEN '交房时间'  WHEN '7!711!71102!14' THEN '时间'  WHEN '7!711!71102!15' THEN '装修预算'  WHEN '7!711!71102!16' THEN '城市'  WHEN '7!711!71102!17' THEN '电话'  WHEN '7!711!71102!18' THEN '预约全屋定制'  WHEN '7!711!71102!19' THEN '硬装需求'  WHEN '7!711!71102!21' THEN '手机号'  WHEN '7!711!71102!22' THEN '装修用途'  WHEN '7!711!71102!23' THEN '外出回来时间'  WHEN '7!711!71102!24' THEN '工程量-只有局改空间'  WHEN '7!711!71102!25' THEN '工程量-只有局改详情'  WHEN '7!711!71102!26' THEN '工程量-缺少水电'  WHEN '7!711!71102!27' THEN '工程量-只做墙面'  WHEN '7!711!71102!28' THEN '工程量-非局改范围'  WHEN '7!711!71102!29' THEN '工程量-无空间和局改详情'  WHEN '7!711!71102!31' THEN '工程量-只有否定局改空间'  WHEN '7!711!71102!32' THEN '工程量-只有否定局改详情'  WHEN '7!711!71102!33' THEN '工程量-未识别到工程量'  WHEN '7!711!71102!30' THEN '房屋类型-自建房'  WHEN '7!711!71102!34' THEN '装修类型'  WHEN '7!711!71102!35' THEN '装修时间-三个月外'  WHEN '7!711!71102!36' THEN '量房时间-一个月外'  WHEN '7!711!71102!50' THEN '交房时间-三个月后交房'  WHEN '7!711!71102!40' THEN '地址追问-城市'  WHEN '7!711!71102!41' THEN '地址追问-城市澄清问'  WHEN '7!711!71102!42' THEN '地址追问-小区地址-农村自建房'  WHEN '7!711!71102!43' THEN '地址追问-小区地址-非农村自建房'  WHEN '7!711!71102!44' THEN '地址追问-小区地址-模糊楼盘'  WHEN '7!711!71102!45' THEN '地址追问-小区地址-收到户型图'  WHEN '7!711!71102!46' THEN '地址追问-小区地址-回复房屋信息'  WHEN '7!711!71102!47' THEN '地址追问-小区地址-咨询设计方案'  WHEN '7!711!71102!48' THEN '地址追问-小区地址-咨询报价'
-	END
- )  as "话术槽位" --AS relate_robot_ask_id_slot
-,(
-	select array_join(array_agg(cast(dcc.delay_time as varchar) ||'--'||dcc.content order by dcc.delay_time asc), '
-	')
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config dcc
-	where dcc.scene =3 and dcc.relate_id =cra1.id 
-	group by dcc.relate_id
-)  as "话术内容：【延迟时间】-【话术内容】"  --as robotAskContent
-,
-case (
-	select array_join(array_agg(cast(dcc.delay_time as varchar) ||'--'||dcc.content order by dcc.delay_time asc), '
-	')
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config dcc
-	where dcc.scene =5 and dcc.relate_id =cra1.id 
-	group by dcc.relate_id
-) is null 
-when true then '没配置无响应话术' else 
-(
-	select array_join(array_agg(cast(dcc.delay_time as varchar) ||'--'||dcc.content order by dcc.delay_time asc), '
-	')
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config dcc
-	where dcc.scene =5 and dcc.relate_id =cra1.id 
-	group by dcc.relate_id
-)
-end 
-as "用户超时无响应后的话术：【延迟时间】-【话术内容】" --as robotAskContentForNoResponse
-,adr.intention_name as "用户回复文本分类--意图"
-,adr.aff_neg_intention_name  as "用户回复肯否意图"
-,adr.content  as "用户回复内容--归一后的结果"
-,adr.relate_robot_ask_id as "关联话术id"
-,cra2.check_type_code 
-,(
-	CASE cra2.check_type_code
-	WHEN '7!711!71102!1' THEN '装修时间'  WHEN '7!711!71102!2' THEN '房屋面积'  WHEN '7!711!71102!3' THEN '小区名称'  WHEN '7!711!71102!4' THEN '房屋类型'  WHEN '7!711!71102!5' THEN '装修风格'  WHEN '7!711!71102!6' THEN '意向量房时间'  WHEN '7!711!71102!7' THEN '居住类型'  WHEN '7!711!71102!8' THEN '工程量'  WHEN '7!711!71102!9' THEN '街道'  WHEN '7!711!71102!10' THEN '区县'  WHEN '7!711!71102!11' THEN '姓氏'  WHEN '7!711!71102!12' THEN '是否全屋定制'  WHEN '7!711!71102!13' THEN '交房时间'  WHEN '7!711!71102!14' THEN '时间'  WHEN '7!711!71102!15' THEN '装修预算'  WHEN '7!711!71102!16' THEN '城市'  WHEN '7!711!71102!17' THEN '电话'  WHEN '7!711!71102!18' THEN '预约全屋定制'  WHEN '7!711!71102!19' THEN '硬装需求'  WHEN '7!711!71102!21' THEN '手机号'  WHEN '7!711!71102!22' THEN '装修用途'  WHEN '7!711!71102!23' THEN '外出回来时间'  WHEN '7!711!71102!24' THEN '工程量-只有局改空间'  WHEN '7!711!71102!25' THEN '工程量-只有局改详情'  WHEN '7!711!71102!26' THEN '工程量-缺少水电'  WHEN '7!711!71102!27' THEN '工程量-只做墙面'  WHEN '7!711!71102!28' THEN '工程量-非局改范围'  WHEN '7!711!71102!29' THEN '工程量-无空间和局改详情'  WHEN '7!711!71102!31' THEN '工程量-只有否定局改空间'  WHEN '7!711!71102!32' THEN '工程量-只有否定局改详情'  WHEN '7!711!71102!33' THEN '工程量-未识别到工程量'  WHEN '7!711!71102!30' THEN '房屋类型-自建房'  WHEN '7!711!71102!34' THEN '装修类型'  WHEN '7!711!71102!35' THEN '装修时间-三个月外'  WHEN '7!711!71102!36' THEN '量房时间-一个月外'  WHEN '7!711!71102!50' THEN '交房时间-三个月后交房'  WHEN '7!711!71102!40' THEN '地址追问-城市'  WHEN '7!711!71102!41' THEN '地址追问-城市澄清问'  WHEN '7!711!71102!42' THEN '地址追问-小区地址-农村自建房'  WHEN '7!711!71102!43' THEN '地址追问-小区地址-非农村自建房'  WHEN '7!711!71102!44' THEN '地址追问-小区地址-模糊楼盘'  WHEN '7!711!71102!45' THEN '地址追问-小区地址-收到户型图'  WHEN '7!711!71102!46' THEN '地址追问-小区地址-回复房屋信息'  WHEN '7!711!71102!47' THEN '地址追问-小区地址-咨询设计方案'  WHEN '7!711!71102!48' THEN '地址追问-小区地址-咨询报价'
-	END
- )  as "关联槽位"  --AS relate_robot_ask_id_slot
---,adr.stop_robot_msg 
-from 
-hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra1
-LEFT JOIN hive2.ads.v_kudu2_stg_it4_slave_t8t_tbt_tls_tls_smart_chat_robot_ask_default_reply  adr ON cra1.id= adr.robot_ask_id 
-LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra2 ON cra2.id= adr.relate_robot_ask_id
-where cra1.id in 
---级联和直接通过模板查询
---(
---	790
---)
-(
-	-- 根据话术模板id查询所有的话术--仅适用 话术和话术模板绑定的模板（历史模板不支持了）
-	select distinct id
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask cra
-	where cra.relate_template_id =35
-	order by id asc
-)
-order by adr.robot_ask_id asc, adr.relate_robot_ask_id asc;
-
-
-
-
-
-
-=====================================================================================
-
-=======================================================================================================================
-select dcc.relate_id
-,array_join(array_agg(dcc.content), '
-')
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config dcc
-where dcc.scene =3 and dcc.relate_id =20
-group by dcc.relate_id
----------------------------------------------------------------------------------------------------------------------------
-
-select *
-from hive2.ads.v_kudu_stg_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link
-
---select c.profile_custom_id, l.user_id,c.extra     聚合聊天平台消息查询
-select *
-from hive2.ads.v_kudu_stg_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link c
-left join hive2.ads.v_kudu2_stg_mid_t8t_mid_uc_uc_user_we_link l on c.platform_uid = l.platform_uid
-WHERE 
-c.extra ='WECSMG_RECMSG_64c1e5aecae32d0001ca27fbabcdefgh'
-c.profile_custom_id='19811976519' AND l.user_id = 'wmJiIbDAAAGBlTrKiOCrF864ofrhY4IA'
-group by c.profile_custom_id, l.user_id,c.extra 
-
-
-SELECT count(*)
-SELECT  *
-FROM hive2.ads.v_kudu2_stg_idc_new_t8t_mid_ucchat_uc_wechat_chatdata wc
-where wc.from_id ='wmJiIbDAAAGBlTrKiOCrF864ofrhY4IA'
-where 
-(
-	wc.from_id in ('19820812539', '19076158042', '595443', '18813863425', '13509682240', '10412506', '19860846340')
-	or wc.tolist  in ('19820812539', '19076158042', '595443', '18813863425', '13509682240', '10412506', '19860846340')
-)
-and cast(wc.msg_time as bigint)/1000  >=to_unixtime(cast ('2023-05-11 00:00:00' as timestamp)) - 8*3600 
-and cast(wc.msg_time as bigint)/1000 < to_unixtime(cast ('2023-05-11 23:59:59' as timestamp)) - 8*3600
-;
-
-------------------------------------------------------------------------------------------------------------------------------
-
-SELECT *
-FROM hive2.ads..v_kudu2_stg_idc_new_t8t_mid_ucchat_uc_wechat_chatdata wc
-where wc.content  like '%+毛坯%'
-limit 20000
-==
-
--- 微联托管状态 聚合聊天 
-select * from hive2.ads.v_kudu2_stg_idc_new_t8t_wec_im_im_session
-where unique_id ='wmJiIbDAAA0u99dVahiqac4Ua8g73ZJQ';
-
-
-
-------------------------
-===========================================================================================================================
-
--- 推荐次数  
-select count(*) from 
-(
-	select chat_id,relate_message_id 
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
-	where behavior_status =1
-	and cb.create_time >=to_unixtime(cast ('2023-12-01 00:00:0' as timestamp)) - 8*3600 
-	and cb.create_time <to_unixtime(cast ('2023-12-20 00:00:0' as timestamp)) - 8*3600
-	group by cb.chat_id, cb.relate_message_id 
-) as temp
-
---- 点击次数	
-select count(*) from 
-(
-	select chat_id,relate_message_id 
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
-	where behavior_status =2
-	and cb.create_time >=to_unixtime(cast ('2023-12-01 00:00:0' as timestamp)) - 8*3600 
-	and cb.create_time <to_unixtime(cast ('2023-12-20 00:00:0' as timestamp)) - 8*3600
-	group by cb.chat_id, cb.relate_message_id 
-) as temp
-
--- 采纳   
-select count(*) from 
-(
-	select chat_id,relate_message_id 
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
-	where behavior_status =3
-	and cb.create_time >=to_unixtime(cast ('2023-12-01 00:00:0' as timestamp)) - 8*3600 
-	and cb.create_time <to_unixtime(cast ('2023-12-20 00:00:0' as timestamp)) - 8*3600
-	group by cb.chat_id, cb.relate_message_id 
-) as temp
-
---- 会话id-用户回复-推荐话术-顾问实际发送
-select 
-temp.id, temp.chat_id, temp.relate_message_id
-, temp.user_reply_id
-, temp.user_reply_text_content
-, from_unixtime(temp.user_reply_create_time+8*3600) as user_reply_create_time
-, temp.recommend_text_content
-, from_unixtime(temp.recommend_create_time+8*3600) as recommend_create_time
-, temp.weChat_next_id
-, weChat_next_detail.text_content as actual_text_content
-, from_unixtime(weChat_next_detail.create_time +8*3600) as actual_create_time
-, ccr.extend_info 
-, weChat_next_detail.id as weChat_next_detail_id
-from 
-(
-	select 
-	cb.id, cb1.chat_id, cb1.relate_message_id
-	, user_reply.id as user_reply_id
-	, user_reply.text_content as user_reply_text_content
-	, user_reply.create_time as user_reply_create_time
-	, qr.text_content as recommend_text_content
-	, qr.create_time  as recommend_create_time
-	, min(weChat_next.id) as weChat_next_id
-	from 
-	---先去除重复的推荐
-	(
-		select min(id) as id, chat_id,relate_message_id
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior 
-		where behavior_status =1
-		and create_time >=to_unixtime(cast ('2023-12-01 00:00:0' as timestamp)) - 8*3600 
-		and create_time <to_unixtime(cast ('2023-12-20 00:00:0' as timestamp)) - 8*3600
-		group by chat_id,relate_message_id
-	)  as cb
-	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb1 on cb.id=cb1.id   
-	---推荐话术内容
-	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr on cb1.recommend_message_id = qr.id 
-	-- 用户回复的消息
-	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record user_reply 
-	on cb1.relate_message_id = user_reply.answer_relate_message_id and user_reply.direction = 1 and user_reply.answer_relate_message_id !=''
-	-- 承接用户回复之后，顾问回复的第一条话术  -- 行转列
-	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record weChat_next 
-	on cb1.chat_id = weChat_next.chat_id and weChat_next.direction = 2 and weChat_next.send_time >= user_reply.send_time
-	
-	group by cb.id, cb1.chat_id, cb1.relate_message_id, user_reply.id, user_reply.text_content, user_reply.create_time , qr.text_content, qr.create_time 
-) as temp
-left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record weChat_next_detail 
-on temp.weChat_next_id = weChat_next_detail.id and weChat_next_detail.id is not null
-left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr on temp.chat_id = ccr.chat_id and ccr.deleted = 0 
-
-
-=====================================================================================
 ------------------------------------------------------------------
 --trusteeship_status 0：未托管，1托管中，2取消托管
 select * 
@@ -334,7 +8,7 @@ where unique_id ='wmJiIbDAAAu3aWzXN6Ne_LQR5QEJstvA' and wechat ='085472' and tru
 
 
 
----------------------------------
+---------------------------------  行转列
 select cr.chat_id  
 , min(cr.extend_info) as extend_info --电话id
 , min(case when cd.check_type_code='7!711!71102!4' then cd.reply end) as HOUSE_TYPE --房屋类型
@@ -354,6 +28,9 @@ and cd.reply !=''
 group by cr.chat_id
 
 ================================================
+
+
+---账号取消托管，  存量的用户需要主动取消托管
 select from_unixtime(cd.create_time+8*3600) as ct
 ,cd.extend_info 
 ,json_extract_scalar(cd.extend_info , '$.phone_id') as phoneid
@@ -361,12 +38,15 @@ select from_unixtime(cd.create_time+8*3600) as ct
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
 where 
-cd.chat_id in 
+cd.robot_id  in 
 (
-'MTM1NTQ3MDE3NTIjd21KaUliREFBQWREYlB0SmNNbnV5WGtqR1VENlpEaFE='
+'52648',	'533327','25384282','79082174','86825975','86835702','tongzhiwei','fantong','0196','13683560870','010450757','19076199802','19924512641','19071463969','19168536979','13714057126','19860846047','18124142504','18126462094','18038174915','18194057743','19065033242','19076125944','18025393154','18038174267','18124144642','19076199760','13554702790','19075699072'
 )
+--and cd.check_status !=5
+and cd.robot_takeover_type =0
 order by id desc
 
+      
 --
 select from_unixtime(cd.create_time+8*3600) as ct
 ,cd.extend_info 
@@ -375,24 +55,81 @@ select from_unixtime(cd.create_time+8*3600) as ct
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
 where 
-uid = 'wmJiIbDAAA9mW-LcAcoz_AK0QxHZ1Cxg'
+cd.strategy_scene =8
 order by id desc
 
 
 --  电话id查询 会话记录
-select from_unixtime(cd.create_time+8*3600) as ct,cd.extend_info 
+select from_unixtime(cd.create_time+8*3600) as ct
+,cd.extend_info 
 ,json_extract_scalar(cd.extend_info , '$.phone_id') as phoneid
+,from_unixtime(cd.staff_service_time +8*3600) as sst
+,cd.check_status 
+,cd.transfer_manual_reason 
 , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.extend_info like '%220047227%'
+where
+--cd.uid in (
+--'wmJiIbDAAAGIUC30eD7vkNaTuEPygCSQ','wmJiIbDAAAYezmk1oQ2b1XJYUMnecOcw','wmJiIbDAAAEliqPoQxg4QyqPRnlZWeKQ','wmJiIbDAAAQQftIU57VTgXbbusGw0WLA','wmJiIbDAAAv5fu8AT8kjt-OZfTRFdcYg','wmJiIbDAAAsJOkNzFnvrTG8-CblJ5Jgg','wmJiIbDAAAYWtdT3BBQ1YY1DTMqZ3_2g','wmJiIbDAAAXKOOkOnawBlBbq2FLVc_Ag','wmJiIbDAAAraL6Unl1dqpzcaATL1Mt8g','wmJiIbDAAAfIomozUqkabUT1zVTK6a7A','wmJiIbDAAA3TklvnZ8IAUdI72jCeFCvw','wmJiIbDAAAB_AtRJ2euBEiBLJmOoR0sQ','wmJiIbDAAA6ZOmskWC7ss7C28xEwMULA'
+--)
+cd.extend_info like '%369877609%'
+--cd.robot_id in ('10732163','15361532146', '17744967690','18129976274')
+order by id desc
+limit 100
+
+
+
+select from_unixtime(cd.create_time+8*3600) as ct
+,cd.extend_info 
+,json_extract_scalar(cd.extend_info , '$.phone_id') as phoneid
+,from_unixtime(cd.staff_service_time +8*3600) as sst
+, *
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
+where 
+--cd.chat_id ='MTkwNjUwMTc2MDQjd21KaUliREFBQW5XY0loSUlYMmZEMzgyUjQ5M3Nxdnc='
+cd.uid ='wmJiIbDAAA-D2XhCIx-cxbnSPeFAV5Eg'
 order by id desc
 
 
+select from_unixtime(t.create_time+8*3600) as "创建时间",* from 
+hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior t
+where 
+t.behavior_status >=5
+--and t.chat_id ='MTkwNzU2OTE0NDgjd21KaUliREFBQW1PTG1xNVJDb0JrdDFORWlTUl9UYkE='
+and t.we_chat in
+(
+'79081421','70227341','19168533573','13554703502','19065033242','19065037246','19065037545','13554701752','10346305','02194','19065033180','18124142504'
+)
+and t.create_time >=to_unixtime(cast ('2024-03-18 00:00:0' as timestamp)) - 8*3600 
+and t.create_time < to_unixtime(cast ('2024-04-15 00:00:0' as timestamp)) - 8*3600 
+----------------------------------
 
-select *, from_unixtime(create_time+8*3600) as create_time, from_unixtime(update_time+8*3600) as update_time
+select from_unixtime(cd.create_time+8*3600) as ct
+,cd.check_status 
+,cd.extend_info 
+,json_extract_scalar(cd.extend_info , '$.phone_id') as phoneid
+,from_unixtime(cd.staff_service_time +8*3600) as sst
+, *
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
+where 
+cd.chat_id in 
+(
+'MTk4MjA4MTA3NDMjd21KaUliREFBQXlxQXNzemRUY3dac2hmNGpFekZpWkE='
+)
+order by id desc
+-------------------------
+
+select from_unixtime(create_time+8*3600) as create_time
+, from_unixtime(update_time+8*3600) as update_time
+, cd.check_type_code 
+, cd.reply 
+, cd.source_reply 
+, cd.nlp_reply 
+, *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 where 
-cd.chat_id ='MTk4MjA4MTA3NDMjd21KaUliREFBQXJuNkJFRzJNc2R4NWRRdzJqc3dwZmc='
+cd.chat_id ='MTk4MjA4MTA3NDMjd21KaUliREFBQWhqb3g3NnRpZHdtNW8yekdqOGtpUlE='
+and cd.deleted =0
 order by id desc
 
 
@@ -401,7 +138,7 @@ select from_unixtime(cd.create_time+8*3600) as ct
 ,* 
 from  hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 where 
-cd.chat_id ='MzgxMTIxNzYjd21KaUliREFBQVBfSWxfYWY1TTJwUDdsQVdSU2tvbVE='
+cd.chat_id ='MTM1NTQ3MDI2NDcjd21KaUliREFBQUNoQ3NGYmlwLVU2dG1JVnhwVVhqX0E='
 order by cd.reply_time  desc
 
 
@@ -411,33 +148,33 @@ from  hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_deta
 where cd.check_type_code in ('7!711!71102!55' )
 order by id desc
 
+
 select from_unixtime(qr.create_time+8*3600) as ct,*
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
 where 
-qr.chat_id ='MjQ0NjA0NzAjd21KaUliREFBQXBMSVBzWnRTOTNTVFdGUm9ZVE53LUE='
-order by id desc
+--qr.chat_id ='MTM1NTQ3MDM1MDIjd21KaUliREFBQUkzYVBvZ1BVandRbzVweW14VllIVUE='
+qr.text_content like '%hi在不咯%'
+and create_time >=to_unixtime(cast ('2024-03-26 00:00:0' as timestamp)) - 8*3600 
+and create_time < to_unixtime(cast ('2024-03-27 00:00:0' as timestamp)) - 8*3600 
+order by id 
 
 
 select *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
-where qr.chat_id ='MTk4NjA4NDYwNDUjd21KaUliREFBQUYxV1hPVTExWmdSNUZJSmJUSU1waGc='
+where 
+--qr.text_content like '%津南区小站菊香园%'
+qr.chat_id ='MTkwNzU2OTE0NDgjd21KaUliREFBQW1PTG1xNVJDb0JrdDFORWlTUl9UYkE='
 order by qr.id asc
+;
 
 
------
-select from_unixtime(cd.create_time+8*3600) as ct
-,cd.create_time 
-,cd.transfer_manual_reason 
-,cd.chat_id, cd.robot_id, cd.uid, cd.check_status, cd.extend_info ,cd.robot_takeover_type 
-,*
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cd
-where cd.robot_takeover_type =0
---and cd.deleted =0
---and cd.conversation_template_id =12
---and cd.check_status != 5
---and cd.robot_id in ('17722578189','19065015413','19820810743','18806651721')
-and cd.uid in ('wmJiIbDAAAwFzgxMf7ktpBKz2dWmkVXw')
-order by id  desc
+--  用户行为
+select from_unixtime(ccb.create_time+8*3600) as ct,
+* 
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior ccb
+where ccb.behavior_status in (5,6,7,8,9,10)
+
+
 
 --------
 
@@ -533,143 +270,241 @@ select dem_id,granted_time,granted_uid from hive2.ads.v_kudu_stg_crm_t8t_mid_pro
 		) as tb_self_close_temp_2
 		where tb_self_close_temp_2.self_close_slot_total =6  -- 核需到6个槽位
 		group by tb_self_close_temp_2.create_time, tb_self_close_temp_2.robot_id
-		
-		
-===================
-				select tb_self_close_temp.create_time ,tb_self_close_temp.chat_id, tb_self_close_temp.robot_id, count(tb_self_close_temp.check_type_code) as self_close_slot_total
-				from 
-				(
-					select ccr.create_time, ccr.chat_id ,ccr.robot_id ,ccd.check_type_code
+----------------------
+		@set hivevar_smart_chat_dt = '20240227'
+					select tb_temp_vt.create_time, tb_temp_vt.valid_takeover_total
+					,tb_temp_transfer_manual_total.transfer_manual_total
+					,tb_temp_ccr_02.transfer_manual_reason transfer_manual_reason
+					, tb_temp_ccr_02.transfer_manual_num
+					, round(cast(tb_temp_ccr_02.transfer_manual_num as double)/ tb_temp_transfer_manual_total.transfer_manual_total, 2)  as  transfer_manual_total_rate
 					from 
-					(
-						select (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) create_time, ccr1.robot_id , ccr1.chat_id 
-						from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
-						where ccr1.dt =${hivevar_smart_chat_dt} 
-						and ccr1.robot_takeover_type =0 
-						and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
-						and ccr1.deleted =0
-						and ccr1.transfer_manual_reason <>1
-						and ccr1.robot_id in ('13554701752','10346305','02194')
-					) as ccr
-					left join hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail ccd on ccr.chat_id = ccd.chat_id 
-					where ccd.dt =${hivevar_smart_chat_dt}
-					and ccd.reply_time >0
-					and ccd.deleted =0
-					and ccd.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
-					and ccd.role_type in (1,3,4)
-					group by ccr.create_time, ccr.chat_id ,ccr.robot_id , ccd.check_type_code
-				) as tb_self_close_temp
-				where tb_self_close_temp.check_type_code in ('7!711!71102!4', '7!711!71102!1', '7!711!71102!3', '7!711!71102!2', '7!711!71102!6', '7!711!71102!11')
-				group by tb_self_close_temp.create_time ,tb_self_close_temp.chat_id, tb_self_close_temp.robot_id
-   
-				
-				
-				
-				
-				
-				
-========================
--- 统计林培峰 接管的用户里面 核需标签5个以上的占比
-select chat_id, count(1)
-from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail
-where dt = '20240217'
-   and create_time >= 1704038400
-   and create_time < 1706716800
-  and check_type_code in ('7!711!71102!1', '7!711!71102!2', '7!711!71102!3', '7!711!71102!4', '7!711!71102!6', '7!711!71102!11')
-  and reply <> ''
-  and role_type = 1
-  and execute_status = 6
-  and chat_id in (select chat_id--, count(1)
-                  from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record
-                  where dt = '20240217'
-                    --and conversation_template_id = 13
-                    and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
-                    and robot_takeover_type = 0
---                     and transfer_manual_reason <> 1
-                    and robot_id  in ('13554701752','10346305','02194')
-                     and chat_start_time >= 1704038400
-                     and chat_start_time < 1706716800
-                  )
-group by chat_id
-having count(1) >= 5;
-
----------------  基于单个会话汇总
-
-select t1.*
-, case  
-	when t2.fisrt_robot_msg_send_time=0 then 0
-	when t1.staff_service_time > t2.fisrt_robot_msg_send_time  then 1 else 0  end  as valid_takeover_total  --1：有效托管 0：无效托管
-from 
-(-- 总的托管用户基表
-			select ccr1.chat_id 
-			, ccr1.robot_id 
-			, ccr1.uid
-			,json_extract_scalar(ccr1.extend_info , '$.phone_id') as phone_id
-			,create_time
-			, getday(create_time) as format_create_time
-			, staff_service_time
-			from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
-			where ccr1.dt =${hivevar_smart_chat_dt} 
-			and ccr1.robot_takeover_type =0 
-			and ccr1.deleted =0
-			and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+					(--总的有效托管数
+						select vt.create_time, sum(vt.valid_takeover_total) valid_takeover_total 
+						from hive2.test.tmp_smart_chat_tb_valid_takeover vt
+						group by vt.create_time
+					) as tb_temp_vt
+					left join 
+					(---总的转人工数（包含无效托管数）
+						select tb_temp_ccr.create_time , count(1) as transfer_manual_total
+						from 
+						(
+							select (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) create_time
+							from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
+							where ccr1.dt =${hivevar_smart_chat_dt} 
+							and ccr1.robot_takeover_type =0 
+							and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+							and ccr1.check_status =5
+						) as tb_temp_ccr
+						group by tb_temp_ccr.create_time
+					) as tb_temp_transfer_manual_total
+						on tb_temp_vt.create_time = tb_temp_transfer_manual_total.create_time
+					left join 
+					(--转人工原因分组
+					
+					
+							select tb_temp_ccr.create_time ,tb_temp_ccr.transfer_manual_reason, count(1) as transfer_manual_num
+							select *
+							from 
+							(
+								select (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) create_time
+								,  ccr1.transfer_manual_reason
+								,ccr1.chat_id 
+								
+								--select ccr1.robot_id 
+								from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
+								where ccr1.dt =${hivevar_smart_chat_dt} 
+								and ccr1.robot_takeover_type =0 
+								and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+								and ccr1.check_status =5
+								and ccr1.transfer_manual_reason = 2 
+								and ccr1.create_time >=1708963200 and ccr1.create_time <1709049600
+							
+							
+							) as tb_temp_ccr
+							
+							group by tb_temp_ccr.create_time ,tb_temp_ccr.transfer_manual_reason
+							
+							
+							
+							
+							
+					) as tb_temp_ccr_02
+						on tb_temp_vt.create_time =  tb_temp_ccr_02.create_time			
 		
-) as t1 
-left join 
-(---- 有效托管数。剔除首问之前取消托管数的托管数(机器人从没发言)
-			select owner_wechat, external_userid
-			, if(fisrt_robot_msg_send_time is null, 0, fisrt_robot_msg_send_time/1000) as fisrt_robot_msg_send_time
-			from 
-			(
-				select tb_user_wechat.owner_wechat, tb_user_wechat.external_userid
-				, min (tb_cwl.send_time) as fisrt_robot_msg_send_time
-				from 
-				(--  全量好友关系表
-					select owner_wechat
-					, external_userid
-					, uuw.delete_time 
-					from hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_user_wechat uuw
-				) as tb_user_wechat
-				left join hive2.ads.v_hive2_ods_mid_t8t_mid_uc_uc_user_we_link as tb_uwl 
-					on tb_user_wechat.external_userid = tb_uwl.user_id 
-				left join 
-				(--机器人发送的消息
-				 	select  platform_uid ,profile_custom_id , send_time
-				 	from hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link t
-				 	where t.dt =${hivevar_smart_chat_dt} 
-				 	and  t.direction = 2 and t.scene='IR' --应答发送消息
-				 	AND     t.content IS NOT NULL
-					AND     t.content NOT LIKE '%现在我们可以开始聊天了%'
-					AND     t.content NOT LIKE '%现在可以开始聊天了%'
-					AND     t.content NOT LIKE '%以上是打招呼内容%'
-					AND     t.message_type <> 10000
-					AND     t.send_message_uid <> '1'
-				 ) as tb_cwl 
-					on tb_cwl.platform_uid =tb_uwl.platform_uid and tb_user_wechat.owner_wechat = tb_cwl.profile_custom_id 
-				group by tb_user_wechat.owner_wechat, tb_user_wechat.external_userid
-			)
-) t2 on t1.robot_id =t2.owner_wechat and t1.uid =t2.external_userid
+		
+		
+		
+		
+
+-------------------------
+
+						select t6.dialog_version              as "会话版本"
+     , chat_date                      as "日期"
+     , t6.id                          as "ID"
+     , t6.send_user                   as "顾问编码"
+     , t6.accept_user                 as "用户编码"
+     , t6.external_userid             as "外部联系人编码"
+     , t6.we_link_nick_name           as "机器人或顾问昵称"
+     , t6.question                    as "问题内容"
+     , t6.question_send_datetime      as "问题发送时间"
+     , t6.responses                   as "用户回复内容"
+     , t6.response_send_datetime      as "用户回复时间"
+     , t6.next_id                     as "下一个问题ID"
+     , t6.next_question               as "下一个问题"
+     , t6.next_question_send_datetime as "下一个问题发送时间"
+     , t6.next_responses              as "下一个问题用户回复内容"
+     , t6.next_response_send_datetime as "下一个问题用户回复时间"
+from (select t5.dialog_version
+           , date_format(from_unixtime(t5.question_send_time / 1000, 'Asia/Shanghai'), '%Y-%m-%d')               as chat_date
+           , t5.id
+           , t5.send_user
+           , t5.accept_user
+           , t5.external_userid
+           , t5.we_link_nick_name
+           , t5.question
+           , t5.question_send_time
+           , date_format(from_unixtime(t5.question_send_time / 1000, 'Asia/Shanghai'), '%Y-%m-%d %H:%i:%s')      as question_send_datetime
+           , t5.responses
+           , date_format(from_unixtime(t5.response_send_time / 1000, 'Asia/Shanghai'), '%Y-%m-%d %H:%i:%s')      as response_send_datetime
+           , t5.next_id
+           , t5.next_question
+           , date_format(from_unixtime(t5.next_question_send_time / 1000, 'Asia/Shanghai'), '%Y-%m-%d %H:%i:%s') as next_question_send_datetime
+           , t5.next_responses
+           , date_format(from_unixtime(t5.next_response_send_time / 1000, 'Asia/Shanghai'), '%Y-%m-%d %H:%i:%s') as next_response_send_datetime
+      from (select t4.dialog_version
+                 , t4.id
+                 , t4.send_user
+                 , t4.accept_user
+                 , t4.external_userid
+                 , t4.we_link_nick_name
+                 , t4.question
+                 , t4.question_send_time
+                 , t4.responses
+                 , t4.response_send_time
+                 , lead(t4.id) over (partition by t4.accept_user order by t4.question_send_time) as next_id
+                , lead(t4.question) over (partition by t4.accept_user order by t4.question_send_time) as next_question
+                , lead(t4.question_send_time) over (partition by t4.accept_user order by t4.question_send_time) as next_question_send_time
+                , lead(t4.responses) over (partition by t4.accept_user order by t4.question_send_time) as next_responses
+                , lead(t4.response_send_time) over (partition by t4.accept_user order by t4.question_send_time) as next_response_send_time
+            from (select t3.dialog_version
+                       , t3.id
+                       , t3.send_user
+                       , t3.accept_user
+                       , t3.external_userid
+                       , t3.we_link_nick_name
+                       , t3.question
+                       , t3.question_send_time
+                       , array_join(array_agg(t3.response), chr(10)) as responses
+                       , min(t3.response_send_time)                  as response_send_time
+                  from (select t1.dialog_version,
+                               t1.id,
+                               t1.send_user,
+                               t1.accept_user,
+                               t1.owner_wechat,
+                               t1.we_link_nick_name,
+                               t1.relate_message_id,
+                               t1.external_userid,
+                               t1.send_time    as question_send_time,
+                               t1.send_status,
+                               t1.call_back_time,
+                               t1.content      as question,
+                               t1.message_type as question_msg_type,
+                               t2.send_time    as response_send_time,
+                               t2.content      as response,
+                               t2.message_type as response_msg_type,
+                               ROW_NUMBER()       over (partition by t1.send_user, t1.accept_user, t1.send_time order by t2.send_time) as response_rank
+                        from (select w.id,
+                                     w.profile_platform_uid as                                                                                                                                                                                                send_user,
+                                     w.platform_uid         as                                                                                                                                                                                                accept_user,
+                                     m.owner_wechat,
+                                     w.we_link_nick_name,
+                                     w.send_time,
+                                     lead(w.send_time)                                                                                                                                                                                                        over (partition by w.profile_platform_uid, w.platform_uid order by w.send_time) as next_send_time, w.content,
+                                     w.message_type,
+                                     c.user_id              as                                                                                                                                                                                                external_userid,
+                                     t.send_status,
+                                     t.relate_message_id,
+                                     t.call_back_time,
+                                     case when d.conversation_template_id in (5, 6, 7) then 1.0 when d.conversation_template_id = 12 then 1.1 when d.conversation_template_id in (8, 9, 10) then 2.0 when d.conversation_template_id = 13 then 2.5 else 0 end dialog_version
+                              from (select id, profile_platform_uid, platform_uid, we_link_nick_name, send_time, direction, content, message_type, external_userid from hive2.ads.v_kudu2_stg_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link) w
+                                       join (select send_user, accept_user, owner_wechat from hive2.ads.v_kudu2_stg_idc_new_t8t_mid_wec_wec_wechat_single_send_message_log group by send_user, accept_user, owner_wechat) m on m.send_user = w.profile_platform_uid and m.accept_user = w.platform_uid
+                                       join (select robot_id, conversation_template_id
+                                             from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record
+                                             where robot_id!='13683560870'
+                                             group by robot_id, conversation_template_id) d on m.owner_wechat = d.robot_id
+                                       left join hive2.ads.v_kudu2_stg_mid_t8t_mid_uc_uc_user_we_link c on w.platform_uid = c.platform_uid
+                                       left join (select send_user, accept_user, send_status, min(call_back_time) call_back_time, content, uuid as relate_message_id from hive2.ads.v_kudu2_stg_idc_new_t8t_mid_wec_wec_wechat_single_send_message_log group by send_user, accept_user, send_status, content, uuid) t
+                                                 on t.send_user = w.profile_platform_uid and t.accept_user = w.platform_uid and t.content = w.content
+                              where w.send_time >= 1691683200000
+                                and w.send_time < 1694448000000
+                                and w.direction = 2
+                                and w.content not like '我通过了%'
+                                and w.content not like '我已经添加了%'
+                              order by w.profile_platform_uid, w.platform_uid, w.send_time) t1
+                                 left join (select w.profile_platform_uid as send_user, w.platform_uid as accept_user, w.we_link_nick_name, w.send_time, w.content, w.message_type
+                                            from (select profile_platform_uid, platform_uid, we_link_nick_name, send_time, direction, content, message_type from hive2.ads.v_kudu2_stg_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link) w
+                                                     join (select send_user, accept_user from hive2.ads.v_kudu2_stg_idc_new_t8t_mid_wec_wec_wechat_single_send_message_log group by send_user, accept_user) t on t.send_user = w.profile_platform_uid and t.accept_user = w.platform_uid
+                                            where w.send_time >= 1691683200000
+                                              and w.send_time < 1694448000000
+                                              and w.direction = 1
+                                              and w.content not like '我通过了%'
+                                              and w.content not like '我已经添加了%'
+                                            order by w.profile_platform_uid, w.platform_uid, w.send_time) t2 on t1.send_user = t2.send_user and t1.accept_user = t2.accept_user and (t1.send_time <= t2.send_time and (t2.send_time < t1.next_send_time or t1.next_send_time is null))
+                        where t1.dialog_version!=0.0) t3
+                  where t3.question is not null
+                    and t3.question!=''
+                    and t3.response is not null
+                    and t3.response!=''
+                  group by t3.dialog_version, t3.id, t3.send_user, t3.accept_user, t3.external_userid, t3.we_link_nick_name, t3.question, t3.question_send_time) t4) t5) t6
+order by t6.dialog_version, t6.chat_date, t6.send_user, t6.accept_user, t6.question_send_time;
+
+select r.tag_text
+from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail d
+join hive2.ads.v_kudu2_stg_idc_new_t8t_nlp_fls_nlp_tag_content_record r on cast( d.id as varchar) = r.bussiness_id and r.bussiness_key='intelligentPlatform'
+where d.dt='20230911' and d.check_type_code = '7!711!71102!3'
+  and r.create_time>=1691683200 and r.create_time<1694448000;
+
+--------------------------------  【用户发送消息】企微接收时间-微联接收时间
+select from_unixtime(t1.send_time/1000 +8*3600) as f_send_time
+, from_unixtime(t1.ctime /1000 +8*3600) as f_ctime
+, (t1.ctime-t1.send_time ) as diff_time_ms
+, (t1.ctime-t1.send_time )/1000 as diff_time_s
+, t1.*
+--select count(*)
+from hive2.ads.v_kudu_stg_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link t1
+where t1.scene='RECMSG' 
+and t1.direction=1
+and t1.ctime/1000 >= to_unixtime(cast ('2024-03-05 00:00:0' as timestamp)) - 8*3600 
+and t1.ctime/1000 < to_unixtime(cast ('2024-03-06 00:00:0' as timestamp)) - 8*3600 
+and t1.external_userid !=''
+AND     t1.text_content  !=''
+AND     t1.content NOT LIKE '%现在我们可以开始聊天了%'
+AND     t1.content NOT LIKE '%现在可以开始聊天了%'
+AND     t1.content NOT LIKE '%以上是打招呼内容%'
+AND     t1.content NOT LIKE '%请先发送联系人验证请求%'
+AND     t1.content NOT LIKE '%请求添加你为朋友%'
+AND     t1.content NOT LIKE '%请求添加你为联系人%'
+AND     t1.content NOT LIKE '%若不同意可拒绝存档%'
+AND     t1.content NOT LIKE '%工作变更%'
+AND     t1.message_type <> 10000
+AND     t1.send_message_uid <> '1'
+and (t1.ctime-t1.send_time )/1000>0
+---
 
 
 
+---顾问发送的文本消息
+select from_unixtime(qr.create_time+8*3600) as ct,*
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
+where qr.direction =2
+and qr.system_type =0
+and qr.message_type =1
+and qr.create_time >=to_unixtime(cast ('2024-03-10 00:00:0' as timestamp)) - 8*3600 
+and qr.create_time < to_unixtime(cast ('2024-03-14 00:00:0' as timestamp)) - 8*3600 
+order by id 
 
 
-
-
--------------------------------------
-select date_format(from_unixtime(chat_start_time, 'Asia/Shanghai'), '%Y-%m-%d %H') as "接粉日期", uid as "外部联系人id", robot_id as "企微号", conversation_template_id,
-       json_extract(extend_info, '$.preTemplateId') as "preTemplateId",
-       json_extract(extend_info, '$.phone_id') as "电话id", transfer_manual_reason as "转人工枚举"
-from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record
-where dt = '20240219'
-  and robot_takeover_type = 0
-  and robot_id not in ('13683560870','18025436210')
-  and (conversation_template_id in (13,20,21,26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13,20,21,26,33,35,36,37,38))
-and chat_start_time >= 1708185600
-
-
-
-
-
+    
+    
 
 

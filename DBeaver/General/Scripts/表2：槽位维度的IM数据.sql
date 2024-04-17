@@ -495,7 +495,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 				and ccr.staff_service_time > tb_fisrt_msg_create_time.fisrt_robot_msg_send_time
 				
 				and ccr.robot_takeover_type =0 
-				and (ccr.conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+				and (ccr.conversation_template_id in (${hivevar_array_conversation_template_id}) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (${hivevar_array_conversation_template_id}))
 				and ccr.transfer_manual_reason <> 1
 			) tb_temp
 			group by tb_temp.create_time
@@ -512,7 +512,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 					        , (select to_unixtime(cast (getday(create_time,'yyyy-MM-dd 00:00:00') as timestamp)) - 8*3600) as create_time
 					        from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr
 					        where ccr.dt = ${hivevar_smart_chat_dt} 
-					        and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+					        and (conversation_template_id in (${hivevar_array_conversation_template_id}) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (${hivevar_array_conversation_template_id}))
 					        and robot_takeover_type = 0 and transfer_manual_reason <> 1
 				            
 				    ) as temp_ccr 
@@ -540,7 +540,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_slot_send_clollect as
 				and ccd.reply_time > 0 
 				and ccd.role_type in (1,3,4)
 				and ccr.dt = ${hivevar_smart_chat_dt} 
-				and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+				and (conversation_template_id in (${hivevar_array_conversation_template_id}) or cast(json_extract(ccr.extend_info, '$.preTemplateId') as int) in (${hivevar_array_conversation_template_id}))
 				and ccr.robot_takeover_type = 0 
 				and ccr.transfer_manual_reason <> 1
 			) tb_temp_detail

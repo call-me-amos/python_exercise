@@ -1,4 +1,4 @@
-@set hivevar_smart_chat_dt = '20240221'
+@set hivevar_smart_chat_dt = '20240226'
 
 select ${hivevar_smart_chat_dt}
 
@@ -44,6 +44,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_transfer_manual_reason_r
 					when 	28	 then '策略转人工'
 					when 	7	 then '机器人自闭环'
 					when 	24	 then '机器人自闭环'
+					else cast(tb_temp_ccr_02.transfer_manual_reason as varchar)
 					end as transfer_manual_reason
 					, tb_temp_ccr_02.transfer_manual_num
 					, round(cast(tb_temp_ccr_02.transfer_manual_num as double)/ tb_temp_transfer_manual_total.transfer_manual_total, 2)  as  transfer_manual_total_rate
@@ -62,7 +63,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_transfer_manual_reason_r
 							from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 							where ccr1.dt =${hivevar_smart_chat_dt} 
 							and ccr1.robot_takeover_type =0 
-							and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+							and (conversation_template_id in (${hivevar_array_conversation_template_id}) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (${hivevar_array_conversation_template_id}))
 							and ccr1.check_status =5
 						) as tb_temp_ccr
 						group by tb_temp_ccr.create_time
@@ -80,7 +81,7 @@ create table if not exists hive2.test.tmp_smart_chat_tb_transfer_manual_reason_r
 								from hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record ccr1
 								where ccr1.dt =${hivevar_smart_chat_dt} 
 								and ccr1.robot_takeover_type =0 
-								and (conversation_template_id in (13, 20, 21, 26,33,35,36,37,38) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (13, 20, 21, 26,33,35,36,37,38))
+								and (conversation_template_id in (${hivevar_array_conversation_template_id}) or cast(json_extract(extend_info, '$.preTemplateId') as int) in (${hivevar_array_conversation_template_id}))
 								and ccr1.check_status =5
 								-- 测试
 								--and ccr1.create_time between 1701964800 and 1701964800+3600*24

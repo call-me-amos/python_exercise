@@ -15,11 +15,6 @@ import log
 
 logger = log.set_log('history_record_server', 'logs', False)
 
-def load_file(file_id):
-    data = open("./{}".format(file_id), "r", encoding="utf-8")
-    data = [line.strip() for line in data]
-    return data
-
 
 def user_reply(user_name, text, direction):
     url = "http://192.168.41.142:40701/tls/smartChat/historyRecordReply"

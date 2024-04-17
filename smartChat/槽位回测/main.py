@@ -7,19 +7,14 @@ import time
 import requests
 import uuid
 
+# 企微测试账号
+# robot_id = "wdm"
+robot_id = "fantong"
 
 def test_bot(user_name, text):
-
-    """
-
-    :param user_name:
-    :param text:
-    :return:
-    """
-    
     # url = "https://apigw.to8to.com/cgi/tls/smartChat/testReply"
     # url = "http://10.4.41.34:8849/tls/smartChat/testReply"
-    url = "http://192.168.41.142:40701/tls/smartChat/testReply"
+    url = "http://10.4.42.48:40121/tls/smartChat/testReply"
     mode = 1
     if text == "":
         print("开启会话: chatId:", user_name)
@@ -27,7 +22,7 @@ def test_bot(user_name, text):
     data = {
         "user": user_name,
         # "weChat": "xiaohao",
-        "weChat": "WeiDongMing",
+        "weChat": robot_id,
         "eventType": mode,
         "reply": text
     }
@@ -45,7 +40,6 @@ def single_test_bot(user_name, text, question_id):
     :return:
     """
 
-    # url = "https://apigw.to8to.com/cgi/tls/smartChat/testReply"
     # url = "http://10.4.41.34:8849/tls/smartChat/testReply"
     # url = "http://192.168.41.142:40701/tls/smartChat/testReply"
     url = "http://10.4.42.48:40121/tls/smartChat/testReply"
@@ -55,7 +49,7 @@ def single_test_bot(user_name, text, question_id):
         mode = 2
     data = {
         "user": user_name,
-        "weChat": "WeiDongMing",
+        "weChat": robot_id,
         "eventType": mode,
         "reply": text,
         "preRobotAskId": int(question_id)
