@@ -104,8 +104,19 @@ def single_test():
     # q_list = ["119"]
     # q_ids = json.load(open("./data/q2id2.0.json", "r", encoding="utf-8"))
 
-    q_list = ["1119"]
-    # q_list = ["119"]
+    # 房屋类型  1119
+    # 工程量   1120
+    # 装修用途  1121
+    # 城市        1122
+    # 是否交房  1160
+    # 交房时间  1124
+    # 小区地址  1190
+    # 房屋面积  1127
+    # 装修时间-引导   1118
+    # 姓氏    1129
+    # q_list = ["1119", "1120", "1121", "1122", "1160", "1124", "1190", "1127", "1118", "1129"]
+
+    q_list = ["1124"]
     q_ids = json.load(open("./data/q3id3.0.json", "r", encoding="utf-8"))
     for index, question_id in enumerate(q_list):
         # if index in [0, 1, 2, 3, 4, 5, 6]:

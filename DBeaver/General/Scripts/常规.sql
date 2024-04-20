@@ -72,7 +72,7 @@ where
 --cd.uid in (
 --'wmJiIbDAAAGIUC30eD7vkNaTuEPygCSQ','wmJiIbDAAAYezmk1oQ2b1XJYUMnecOcw','wmJiIbDAAAEliqPoQxg4QyqPRnlZWeKQ','wmJiIbDAAAQQftIU57VTgXbbusGw0WLA','wmJiIbDAAAv5fu8AT8kjt-OZfTRFdcYg','wmJiIbDAAAsJOkNzFnvrTG8-CblJ5Jgg','wmJiIbDAAAYWtdT3BBQ1YY1DTMqZ3_2g','wmJiIbDAAAXKOOkOnawBlBbq2FLVc_Ag','wmJiIbDAAAraL6Unl1dqpzcaATL1Mt8g','wmJiIbDAAAfIomozUqkabUT1zVTK6a7A','wmJiIbDAAA3TklvnZ8IAUdI72jCeFCvw','wmJiIbDAAAB_AtRJ2euBEiBLJmOoR0sQ','wmJiIbDAAA6ZOmskWC7ss7C28xEwMULA'
 --)
-cd.extend_info like '%369877609%'
+cd.extend_info like '%380179974%'
 --cd.robot_id in ('10732163','15361532146', '17744967690','18129976274')
 order by id desc
 limit 100
@@ -163,7 +163,7 @@ select *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
 where 
 --qr.text_content like '%津南区小站菊香园%'
-qr.chat_id ='MTkwNzU2OTE0NDgjd21KaUliREFBQW1PTG1xNVJDb0JrdDFORWlTUl9UYkE='
+qr.chat_id ='MTkwNjUwMzc1NDUjd21KaUliREFBQWlPRElxRjRSQWNKbERuUm9XTl82dkE='
 order by qr.id asc
 ;
 
@@ -504,7 +504,11 @@ and qr.create_time < to_unixtime(cast ('2024-03-14 00:00:0' as timestamp)) - 8*3
 order by id 
 
 
-    
-    
+
+
+
+
+
+
 
 
