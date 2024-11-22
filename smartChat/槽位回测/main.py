@@ -10,6 +10,7 @@ import uuid
 # 企微测试账号
 # robot_id = "wdm"
 robot_id = "fantong"
+# robot_id = "aiCall"
 
 def test_bot(user_name, text):
     # url = "https://apigw.to8to.com/cgi/tls/smartChat/testReply"

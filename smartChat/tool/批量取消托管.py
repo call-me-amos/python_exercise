@@ -3,7 +3,7 @@ import requests
     手动取消托管
 '''
 chat_ids = [
-    "MTkxNDY0NjcwNTYjd21KaUliREFBQUZ6ckowVDUxcnlDRHl5OVlzOTlQaUE="
+    "MTg4MjY1MjgxNzkjd21KaUliREFBQXhraXFZUW1hdzVHLXhVY00zSWJIS1E="
 ]
 
 
@@ -13,7 +13,8 @@ def call_http(chat_id):
     data = {
         "chatId": chat_id,
         #"id": ,
-        "operateType": 1
+        "operateType": 1,
+        "transferManualReason": 126
     }
     res = requests.post(url=url, json=data)
 

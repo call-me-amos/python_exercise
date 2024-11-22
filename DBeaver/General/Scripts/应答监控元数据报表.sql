@@ -7,6 +7,51 @@ select ${hivevar_array_conversation_template_id}
 
 ===========================================================================================================================
 
+-----------------------机器人自闭环口径
+select cr.chat_id 
+,min(from_unixtime(cd.create_time+8*3600)) as create_time
+,json_extract_scalar(min(cr.extend_info) , '$.phone_id') as phoneid
+, min(case when cd.check_type_code='7!711!71102!1' then cd.reply end) as TIME1 --装修时间
+, min(case when cd.check_type_code='7!711!71102!4' then cd.reply end) as HOUSE_TYPE --房屋类型
+, min(case when cd.check_type_code='7!711!71102!3' then cd.reply end) as HOUSE_ADDRESS --小区名称
+, min(case when cd.check_type_code='7!711!71102!2' then cd.reply end) as AREA --房屋面积
+, min(case when cd.check_type_code='7!711!71102!6' then cd.reply end) as MEASUREMENT_TIME --意向量房时间
+, min(case when cd.check_type_code='7!711!71102!22' then cd.reply end) as DECORATION_USE --装修用途
+, min(case when cd.check_type_code='7!711!71102!20' then cd.reply end) as "是否交房" 
+, min(case when cd.check_type_code='7!711!71102!8' then cd.reply end) as "工程量" 
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd on cd.chat_id =cr.chat_id 
+where cr.deleted =0
+and cr.deleted =0
+and cd.id  is not null
+and cr.robot_takeover_type =0
+--and cr.conversation_template_id =47
+and cr.create_time >=to_unixtime(cast ('2024-05-01 00:00:0' as timestamp)) - 8*3600 
+and cd.role_type =1
+group by cr.chat_id 
+;
+
+---------------------------------  行转列
+select cr.chat_id  
+, min(cr.extend_info) as extend_info --电话id
+, min(case when cd.check_type_code='7!711!71102!4' then cd.reply end) as HOUSE_TYPE --房屋类型
+, min(case when cd.check_type_code='7!711!71102!2' then cd.reply end) as AREA --房屋面积
+, min(case when cd.check_type_code='7!711!71102!1' then cd.reply end) as TIME --装修时间
+, min(case when cd.check_type_code='7!711!71102!13' then cd.reply end) as COMPLETION_DATE --交房时间
+, min(case when cd.check_type_code='7!711!71102!6' then cd.reply end) as MEASUREMENT_TIME --意向量房时间
+, min(case when cd.check_type_code='7!711!71102!11' then cd.reply end) as LAST_NAME --姓氏
+--, concat_ws(',', collect_set(case when cd.check_type_code not in ('7!711!71102!4') then cd.reply end)) as other --其他字段
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+left join hive2.ads.v_hive2_ods_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd on cr.chat_id = cd.chat_id 
+where  cr.extend_info in (
+
+)
+and cr.deleted =0
+and cd.reply !=''
+group by cr.chat_id
+
+================================================
+
 -- 推荐次数  
 select count(*) from 
 (
@@ -117,7 +162,7 @@ left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_
 
 
 ----  根据话术模板id，级联查询所有的话术
-@set var_relate_template_id = 37
+@set var_relate_template_id = 47
 
 (
 	select cra1.id as "话术id"
