@@ -1,9 +1,9 @@
-import wget
 import requests
 import openpyxl
 import mimetypes
 import os
 from urllib.parse import urlparse
+import json
 
 def get_image_extension(url):
     # Send a HEAD request to get the Content-Type
@@ -37,7 +37,10 @@ def download_image(url, output_path):
     # Ensure the output path has the correct extension
     output_filename = os.path.basename(output_path)
     if not output_filename.endswith(extension):
-        output_path = os.path.splitext(output_path)[0] + extension
+        if isinstance(extension, tuple):
+            output_path = os.path.splitext(output_path)[0] + str(extension[0])
+        else:
+            output_path = os.path.splitext(output_path)[0] + extension
 
     with open(output_path, 'wb') as f:
         for chunk in response.iter_content(chunk_size=8192):
@@ -48,15 +51,15 @@ def download_image(url, output_path):
 
 if __name__ == '__main__':
     # 打开文件
-    fileName = 'C:\\Users\\amos.tong\\Desktop\\\表情包\\\表情包URL.xlsx'
+    fileName = 'C:\\Users\\amos.tong\\Desktop\\\DBeaver_export\\\语料-图片+企微表情包.xlsx'
     workbook = openpyxl.load_workbook(fileName)
 
     # 获取工作表列表
     sheet_names = workbook.get_sheet_names()
-    print("工作表列表:", sheet_names)
 
     # 选择要操作的工作表
-    worksheet = workbook['Sheet1']  # 替换为你要读取的工作表名称
+    # worksheet = workbook['企微表情']
+    worksheet = workbook['企微表情']
 
     # 获取工作表的行数和列数
     num_rows = worksheet.max_row
@@ -65,9 +68,14 @@ if __name__ == '__main__':
 
     # 遍历工作表并读取数据
     for row_index in range(2, num_rows+1):
-        img_url = worksheet.cell(row_index, 1).value
-        output_path = f"C:\\Users\\amos.tong\\Desktop\\\表情包\\img_{row_index}.png"
-        download_image(img_url, output_path)
+        if row_index > 1000:
+            print(f" 大小超额了 ============   over！")
+            break
+        img_url_json_str = worksheet.cell(row_index, 9).value
+        img_url_json = json.loads(img_url_json_str)
+        url = img_url_json["url"]
+        output_path = f"C:\\Users\\amos.tong\\Desktop\\\表情包回测\\企微表情\\企微表情_{row_index}.png"
+        download_image(url, output_path)
 
     # 关闭工作簿
     workbook.close()
