@@ -12,7 +12,7 @@ name_count = 0
     data1   待排序的集合
     data2  按照这个模板排序
 """
-def fun_sorted_by_default_arr(data1, data2):
+def fun_list_sorted_by_default_arr(data1, data2):
     # data1 = ["bxx", "axx", "dxx", "foo", "cxx", "exx", "bar"]
     # data2 = ["axx", "bxx", "cxx", "dxx", "exx"]
 
@@ -24,6 +24,24 @@ def fun_sorted_by_default_arr(data1, data2):
 
     # 3. 合并结果：先按 data2 顺序排列匹配项，再添加未匹配项
     return sorted_matched + unmatched
+
+def fun_obj_sorted_by_default_arr(data1, data2):
+    # data1 = {"a":"b","c":"d"}
+    # data2 = ["axx", "bxx", "cxx", "dxx", "exx"]
+
+    # 1. 筛选出data1中存在且在data2中的键
+    matched_keys = [key for key in data2 if key in data1]
+
+    # 2. 创建排序后的字典（按data2顺序）
+    sorted_dict = {key: data1[key] for key in matched_keys}
+
+    # 3. 添加未匹配的键值对
+    for key, value in data1.items():
+        if key not in data2:
+            sorted_dict[key] = value
+
+    # 4. 合并结果
+    return sorted_dict
 
 
 def main(data1="", data2="", data3="", data4="", data5="",
@@ -152,7 +170,7 @@ def fun_collect_but_no_close_slot(data1, data2, data3, data4, data5,
         if data11 in none_list or data11 != '30天内':
             collect_but_no_close_slot.append("交房时间")
 
-    result["收集但不满足闭环的槽位"] = fun_sorted_by_default_arr(collect_but_no_close_slot, data14)
+    result["收集但不满足闭环的槽位"] = fun_list_sorted_by_default_arr(collect_but_no_close_slot, data14)
 
 def fun_status_for_slot(data1, data2, data3, data4, data5,
                         data6, data7, data8, data9, data10,
@@ -261,7 +279,7 @@ def fun_status_for_slot(data1, data2, data3, data4, data5,
     else:
         status_for_slot["城市"] = "收集并且满足闭环"
 
-    result["每个槽位的状态"] = fun_sorted_by_default_arr(status_for_slot, data14)
+    result["每个槽位的状态"] = fun_obj_sorted_by_default_arr(status_for_slot, data14)
 
 def fun_no_collect_slot(data1, data2, data3, data4, data5,
                         data6, data7, data8, data9, data10,
@@ -323,7 +341,7 @@ def fun_no_collect_slot(data1, data2, data3, data4, data5,
     if name_count == 0 and data7 == '':
         no_collect_slot.append("姓氏")
 
-    result["未收集槽位"] = fun_sorted_by_default_arr(no_collect_slot, data14)
+    result["未收集槽位"] = fun_list_sorted_by_default_arr(no_collect_slot, data14)
 
 
 
@@ -335,25 +353,28 @@ def fun_no_collect_slot(data1, data2, data3, data4, data5,
 
 params = {
     "data1": "90天内",
-    "data2": "旧房翻新",
-    "data3": "径贝新村100868号",
-    "data4": "1000个平",
-    "data5": "一个月内",
-    "data6": "自",
-    "data7": "",
-    "data8": "不用&工程量-否定局改空间：厨房，卫生间；工程量-否定局改详情:水电",
-    "data9": "",
-    "data10": "",
-    "data11": "30天内",
+    "data2": "毛坯房&毛坯房",
+    "data3": "万科云城",
+    "data4": "毛坯房&毛坯房",
+    "data5": "",
+    "data6": "自住",
+    "data7": "杜",
+    "data8": "未涉及厨房与卫生间时：",
+    "data9": "家装",
+    "data10": "是",
+    "data11": "",
     "data12": [
-        "开场白、询问用户称呼、询问房屋位置、询问小区名称、询问房屋面积、询问房屋类型、询问房屋用途,询问装修时间,询问是否交房,询问量房时间",
-        "开场白、询问用户称呼、询问房屋位置、询"
+        "开场白"
     ],
     "data13": "深圳",
     "data14": [
         "装修时间","工程量","工程量-局改空间","工程量-局改详情","房屋类型","小区名称","城市","房屋面积","量房时间","装修用途","是否交房","交房时间","姓氏"
     ]
 }
+
+# "data14": [
+#     "装修时间","工程量","工程量-局改空间","工程量-局改详情","房屋类型","小区名称","城市","房屋面积","量房时间","装修用途","是否交房","交房时间","姓氏"
+# ]
 
 if __name__ == '__main__':
     result = main(**params)
