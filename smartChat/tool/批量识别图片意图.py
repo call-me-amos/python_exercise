@@ -34,7 +34,7 @@ def call_http(param_image_url, messageType):
 
 if __name__ == '__main__':
     # 打开文件
-    fileName = 'C:\\Users\\amos.tong\\Desktop\\\DBeaver_export\\\语料-图片+企微表情包.xlsx'
+    fileName = 'C:\\Users\\amos.tong\\\Desktop\\\DBeaver_export\\语料-图片+企微表情包.xlsx'
     workbook = openpyxl.load_workbook(fileName)
 
     # 获取工作表列表
