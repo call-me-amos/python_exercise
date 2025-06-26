@@ -16,9 +16,9 @@ select from_unixtime(cr.create_time+8*3600) as "加微时间" ,cr.extend_info
 ,${hivevar_transfer_manual_reason} , *
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
 where
---cr.chat_id ='MTg1MDc5NDA4MDIjd21KaUliREFBQWJkVE9BWldHWDAyVHp0bVRuWkVtYnc='
+--cr.chat_id ='MTA0MTIwOTUjd21KaUliREFBQUZuX1pzOXI2czJsdE1rbUd6REVpRnc='
 --cr.uid ='wmJiIbDAAACOm1LZCiIpX20_7qNbwXwA'
-json_extract_scalar(cr.extend_info  , '$.phone_id')='426073762'
+json_extract_scalar(cr.extend_info  , '$.phone_id')='304803138'
 and cr.create_time >=to_unixtime(cast ('2025-06-10 00:00:0' as timestamp)) - 8*3600 
 order by id desc
 limit 10
@@ -2167,6 +2167,23 @@ left join hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_user_info uinfo
 where uwechat.external_userid in ('wmJiIbDAAAMBnSsWxhXHAla-vt_Opl4w','wmJiIbDAAAqKkQZDtCRafzqcIqLzPw3Q')
 
 
+
+
+
+select from_unixtime(cd.create_time+8*3600) as create_time,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid
+, sp.property_name ,cd.reply ,cd.chat_id 
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on cd.chat_id =cr.chat_id 
+left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+where 
+cd.check_type_code in ('7!711!71102!16','7!711!71102!2')
+and cd.deleted =0
+and cr.deleted =0
+and cr.create_time >=to_unixtime(cast ('2025-06-06 00:00:0' as timestamp)) - 8*3600 
+and cr.strategy_scene =9
+and cd.reply !=''
+order by cd.chat_id  desc
+limit 500
 
 
 

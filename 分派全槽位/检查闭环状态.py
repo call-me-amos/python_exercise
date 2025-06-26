@@ -1,6 +1,7 @@
 import json
 import base64
 import re
+from collections import OrderedDict
 
 none_list = ["", None, "None"]
 allowed_spaces = {'厨房', '卫生间', '厨卫'}
@@ -25,22 +26,39 @@ def fun_list_sorted_by_default_arr(data1, data2):
     # 3. 合并结果：先按 data2 顺序排列匹配项，再添加未匹配项
     return sorted_matched + unmatched
 
-def fun_obj_sorted_by_default_arr(data1, data2):
-    # data1 = {"a":"b","c":"d"}
-    # data2 = ["axx", "bxx", "cxx", "dxx", "exx"]
+# def fun_obj_sorted_by_default_arr(data1, data2):
+#     # data1 = {"a":"b","c":"d"}
+#     # data2 = ["axx", "bxx", "cxx", "dxx", "exx"]
+#
+#     # 1. 筛选出data1中存在且在data2中的键
+#     matched_keys = [key for key in data2 if key in data1]
+#
+#     # 2. 创建排序后的字典（按data2顺序）
+#     sorted_dict = {key: data1[key] for key in matched_keys}
+#
+#     # 3. 添加未匹配的键值对
+#     for key, value in data1.items():
+#         if key not in data2:
+#             sorted_dict[key] = value
+#
+#     # 4. 合并结果
+#     return sorted_dict
 
+
+def fun_obj_sorted_by_default_arr(data1, data2):
     # 1. 筛选出data1中存在且在data2中的键
     matched_keys = [key for key in data2 if key in data1]
 
-    # 2. 创建排序后的字典（按data2顺序）
-    sorted_dict = {key: data1[key] for key in matched_keys}
+    # 2. 创建有序字典（按data2顺序）
+    sorted_dict = OrderedDict()
+    for key in matched_keys:
+        sorted_dict[key] = data1[key]
 
-    # 3. 添加未匹配的键值对
+    # 3. 添加未匹配的键值对（保持原字典顺序）
     for key, value in data1.items():
         if key not in data2:
             sorted_dict[key] = value
 
-    # 4. 合并结果
     return sorted_dict
 
 
@@ -352,8 +370,8 @@ def fun_no_collect_slot(data1, data2, data3, data4, data5,
 
 
 params = {
-    "data1": "90天内",
-    "data2": "毛坯房&毛坯房",
+    "data1": "90天内xxx",
+    "data2": "旧房翻新",
     "data3": "万科云城",
     "data4": "毛坯房&毛坯房",
     "data5": "",
@@ -361,7 +379,7 @@ params = {
     "data7": "杜",
     "data8": "未涉及厨房与卫生间时：",
     "data9": "家装",
-    "data10": "是",
+    "data10": "否",
     "data11": "",
     "data12": [
         "开场白"
@@ -379,3 +397,5 @@ params = {
 if __name__ == '__main__':
     result = main(**params)
     print(json.dumps(result, ensure_ascii=False))
+    print()
+    print(json.dumps(result, ensure_ascii=False, indent=4))
