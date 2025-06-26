@@ -48,6 +48,12 @@ def main(data1="", data2="", data3="", data4="", data5="",
          data6="", data7="", data8="", data9="", data10="",
          data11="", data12=[], data13="", data14=[]):
     result = {}
+
+    ## 每个槽位的状态。1-未收集 2-收集但不满足闭环 3-收集并且满足闭环
+    fun_status_for_slot(data1, data2, data3, data4, data5,
+                        data6, data7, data8, data9, data10,
+                        data11, data12, result, data13, data14)
+
     # 是否闭环
     close_flag = fun_close_flag(data1, data2, data3, data4, data5,
                                 data6, data7, data8, data9, data10,
@@ -57,7 +63,6 @@ def main(data1="", data2="", data3="", data4="", data5="",
         result["finish"] = '核需完成'
         result["未收集槽位"] = []
         result["收集但不满足闭环的槽位"] = []
-        result["每个槽位的状态"] = {}
         return result
 
     ## 未闭环，需要统计哪些槽位没有闭环
@@ -71,11 +76,6 @@ def main(data1="", data2="", data3="", data4="", data5="",
     fun_collect_but_no_close_slot(data1, data2, data3, data4, data5,
                                   data6, data7, data8, data9, data10,
                                   data11, data12, result, data13, data14)
-
-    ## 每个槽位的状态。1-未收集 2-收集但不满足闭环 3-收集并且满足闭环
-    fun_status_for_slot(data1, data2, data3, data4, data5,
-                        data6, data7, data8, data9, data10,
-                        data11, data12, result, data13, data14)
 
     return result
 
