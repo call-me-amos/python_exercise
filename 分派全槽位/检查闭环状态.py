@@ -26,76 +26,19 @@ def fun_list_sorted_by_default_arr(data1, data2):
     # 3. 合并结果：先按 data2 顺序排列匹配项，再添加未匹配项
     return sorted_matched + unmatched
 
-# def fun_obj_sorted_by_default_arr(data1, data2):
-#     # data1 = {"a":"b","c":"d"}
-#     # data2 = ["axx", "bxx", "cxx", "dxx", "exx"]
-#
-#     # 1. 筛选出data1中存在且在data2中的键
-#     matched_keys = [key for key in data2 if key in data1]
-#
-#     # 2. 创建排序后的字典（按data2顺序）
-#     sorted_dict = {key: data1[key] for key in matched_keys}
-#
-#     # 3. 添加未匹配的键值对
-#     for key, value in data1.items():
-#         if key not in data2:
-#             sorted_dict[key] = value
-#
-#     # 4. 合并结果
-#     return sorted_dict
-
-
 def fun_obj_sorted_by_default_arr(data1, data2):
-    # 1. 筛选出data1中存在且在data2中的键
-    matched_keys = [key for key in data2 if key in data1]
+    # 获取所有键的顺序
+    order = {key: idx for idx, key in enumerate(data2)}
+    max_order = len(data2)
 
-    # 2. 创建有序字典（按data2顺序）
-    sorted_dict = OrderedDict()
-    for key in matched_keys:
-        sorted_dict[key] = data1[key]
+    # 排序函数
+    def sort_key(item):
+        key, _ = item
+        return (order.get(key, max_order), key)
 
-    # 3. 添加未匹配的键值对（保持原字典顺序）
-    for key, value in data1.items():
-        if key not in data2:
-            sorted_dict[key] = value
-
-    return sorted_dict
-
-
-def main(data1="", data2="", data3="", data4="", data5="",
-         data6="", data7="", data8="", data9="", data10="",
-         data11="", data12=[], data13="", data14=[]):
-    result = {}
-
-    ## 每个槽位的状态。1-未收集 2-收集但不满足闭环 3-收集并且满足闭环
-    fun_status_for_slot(data1, data2, data3, data4, data5,
-                        data6, data7, data8, data9, data10,
-                        data11, data12, result, data13, data14)
-
-    # 是否闭环
-    close_flag = fun_close_flag(data1, data2, data3, data4, data5,
-                                data6, data7, data8, data9, data10,
-                                data11, data12, data13, data14)
-    if close_flag:
-        result["是否闭环"] = '是'
-        result["finish"] = '核需完成'
-        result["未收集槽位"] = []
-        result["收集但不满足闭环的槽位"] = []
-        return result
-
-    ## 未闭环，需要统计哪些槽位没有闭环
-    result["是否闭环"] = '否'
-    result["finish"] = '核需中'
-    fun_no_collect_slot(data1, data2, data3, data4, data5,
-                        data6, data7, data8, data9, data10,
-                        data11, data12, result, data13, data14)
-
-    ## 收集但不满足闭环的槽位
-    fun_collect_but_no_close_slot(data1, data2, data3, data4, data5,
-                                  data6, data7, data8, data9, data10,
-                                  data11, data12, result, data13, data14)
-
-    return result
+    # 排序并创建新字典
+    sorted_items = sorted(data1.items(), key=sort_key)
+    return dict(sorted_items)
 
 def fun_close_flag(data1, data2, data3, data4, data5,
                    data6, data7, data8, data9, data10,
@@ -361,7 +304,40 @@ def fun_no_collect_slot(data1, data2, data3, data4, data5,
 
     result["未收集槽位"] = fun_list_sorted_by_default_arr(no_collect_slot, data14)
 
+def main(data1="", data2="", data3="", data4="", data5="",
+         data6="", data7="", data8="", data9="", data10="",
+         data11="", data12=[], data13="", data14=[]):
+    result = {}
 
+    ## 每个槽位的状态。1-未收集 2-收集但不满足闭环 3-收集并且满足闭环
+    fun_status_for_slot(data1, data2, data3, data4, data5,
+                        data6, data7, data8, data9, data10,
+                        data11, data12, result, data13, data14)
+
+    # 是否闭环
+    close_flag = fun_close_flag(data1, data2, data3, data4, data5,
+                                data6, data7, data8, data9, data10,
+                                data11, data12, data13, data14)
+    if close_flag:
+        result["是否闭环"] = '是'
+        result["finish"] = '核需完成'
+        result["未收集槽位"] = []
+        result["收集但不满足闭环的槽位"] = []
+        return result
+
+    ## 未闭环，需要统计哪些槽位没有闭环
+    result["是否闭环"] = '否'
+    result["finish"] = '核需中'
+    fun_no_collect_slot(data1, data2, data3, data4, data5,
+                        data6, data7, data8, data9, data10,
+                        data11, data12, result, data13, data14)
+
+    ## 收集但不满足闭环的槽位
+    fun_collect_but_no_close_slot(data1, data2, data3, data4, data5,
+                                  data6, data7, data8, data9, data10,
+                                  data11, data12, result, data13, data14)
+
+    return result
 
 
 
@@ -370,29 +346,63 @@ def fun_no_collect_slot(data1, data2, data3, data4, data5,
 
 
 params = {
-    "data1": "90天内xxx",
-    "data2": "旧房翻新",
-    "data3": "万科云城",
-    "data4": "毛坯房&毛坯房",
+    "data1": "",
+    "data2": "",
+    "data3": "",
+    "data4": "",
     "data5": "",
-    "data6": "自住",
-    "data7": "杜",
-    "data8": "未涉及厨房与卫生间时：",
-    "data9": "家装",
-    "data10": "否",
+    "data6": "",
+    "data7": "",
+    "data8": "",
+    "data9": "",
+    "data10": "",
     "data11": "",
-    "data12": [
-        "开场白"
-    ],
-    "data13": "深圳",
+    "data12": [],
+    "data13": "",
     "data14": [
-        "装修时间","工程量","工程量-局改空间","工程量-局改详情","房屋类型","小区名称","城市","房屋面积","量房时间","装修用途","是否交房","交房时间","姓氏"
+        "房屋类型",
+        "工程量",
+        "工程量-局改空间",
+        "工程量-局改详情",
+        "装修用途",
+        "装修时间",
+        "城市",
+        "是否交房",
+        "交房时间",
+        "量房时间",
+        "小区名称",
+        "房屋面积",
+        "姓氏"
     ]
 }
+#
+#     {
+#     "data1": "90天内xxx",
+#     "data2": "旧房翻新",
+#     "data3": "万科云城",
+#     "data4": "毛坯房&毛坯房",
+#     "data5": "",
+#     "data6": "自住",
+#     "data7": "杜",
+#     "data8": "未涉及厨房与卫生间时：",
+#     "data9": "家装",
+#     "data10": "否",
+#     "data11": "",
+#     "data12": [
+#         "开场白"
+#     ],
+#     "data13": "深圳",
+#     "data14": [
+#         "装修时间","工程量","工程量-局改空间","工程量-局改详情","房屋类型","小区名称","城市","房屋面积","量房时间","装修用途","是否交房","交房时间","姓氏"
+#     ]
+# }
 
 # "data14": [
 #     "装修时间","工程量","工程量-局改空间","工程量-局改详情","房屋类型","小区名称","城市","房屋面积","量房时间","装修用途","是否交房","交房时间","姓氏"
 # ]
+
+
+
 
 if __name__ == '__main__':
     result = main(**params)
