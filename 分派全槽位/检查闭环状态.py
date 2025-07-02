@@ -1,7 +1,5 @@
 import json
-import base64
 import re
-from collections import OrderedDict
 
 none_list = ["", None, "None"]
 allowed_spaces = {'厨房', '卫生间', '厨卫'}
@@ -147,6 +145,9 @@ def fun_status_for_slot(data1, data2, data3, data4, data5,
 
     if '毛坯' in data2:
         status_for_slot["房屋类型"] = "收集并且满足闭环"
+        status_for_slot["工程量"] = "收集并且满足闭环"
+        status_for_slot["工程量-局改空间"] = "收集并且满足闭环"
+        status_for_slot["工程量-局改详情"] = "收集并且满足闭环"
     elif '旧房翻新' in data2:
         status_for_slot["房屋类型"] = "收集并且满足闭环"
         if data8 in none_list:
@@ -232,6 +233,7 @@ def fun_status_for_slot(data1, data2, data3, data4, data5,
             status_for_slot["交房时间"] = "收集但不满足闭环"
     elif data10 == '是':
         status_for_slot["是否交房"] = "收集并且满足闭环"
+        status_for_slot["交房时间"] = "收集并且满足闭环"
     else:
         status_for_slot["是否交房"] = "未收集"
 
@@ -347,7 +349,7 @@ def main(data1="", data2="", data3="", data4="", data5="",
 
 params = {
     "data1": "",
-    "data2": "",
+    "data2": "毛坯",
     "data3": "",
     "data4": "",
     "data5": "",
@@ -355,7 +357,7 @@ params = {
     "data7": "",
     "data8": "",
     "data9": "",
-    "data10": "",
+    "data10": "是",
     "data11": "",
     "data12": [],
     "data13": "",
