@@ -252,7 +252,7 @@ def fun_no_collect_slot(data1, data2, data3, data4, data5,
     if data1 in none_list:
         no_collect_slot.append("装修时间")
 
-    if '毛坯' in data2:
+    if '毛坯' in data2 or '精装房' in data2:
         pass
     elif '旧房翻新' in data2:
         if data8 in none_list:
