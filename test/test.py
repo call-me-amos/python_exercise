@@ -1,22 +1,15 @@
-import json
+import datetime
+from datetime import timedelta
+
+print(datetime.datetime.now().strftime("%Y-%m-%d"))
 
 
-def main(data, key, value):
-    # 如果 data 是字符串，尝试解析为 JSON
-    if isinstance(data, str):
-        try:
-            data_dict = json.loads(data)
-        except json.JSONDecodeError:
-            return {"result": data}
-    else:
-        data_dict = data
 
-    # 如果提供了 key 和 value，则修改数据
-    if key is not None and value is not None and isinstance(data_dict, dict):
-        data_dict[key] = value
+# 获取当前时间
+now = datetime.datetime.now()
+# 计算今天的零点
+today_midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+# 计算第二天的零点
+next_day_midnight = today_midnight + datetime.timedelta(days=1)
 
-    # 返回结果
-    return {
-        "result": data_dict
-    }
-
+print("第二天零点:", next_day_midnight.strftime("%Y-%m-%d"))

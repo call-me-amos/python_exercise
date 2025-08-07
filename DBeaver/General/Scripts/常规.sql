@@ -1,5 +1,5 @@
 -- 常量设置
-@set hivevar_transfer_manual_reason = (case  when cr.transfer_manual_reason=0 then '会话中' when cr.transfer_manual_reason=1 then '主动取消' when cr.transfer_manual_reason=2 then '用户开口' when cr.transfer_manual_reason=3 then '用户拉黑删除好友' when cr.transfer_manual_reason=4 then '微联回调消息失败' when cr.transfer_manual_reason=5 then '用户超时无响应' when cr.transfer_manual_reason=6 then '回复内容不识别' when cr.transfer_manual_reason=7 then '话术流程结束' when cr.transfer_manual_reason=8 then '回复非文本内容不识别' when cr.transfer_manual_reason=9 then '调用素材中心接口失败' when cr.transfer_manual_reason=10 then '二次促开口，不满足跟进条件' when cr.transfer_manual_reason=11 then '无法识别用户回复意图' when cr.transfer_manual_reason=12 then '没有匹配到问题' when cr.transfer_manual_reason=13 then '槽位值归一失败' when cr.transfer_manual_reason=14 then '没找到话术调度策略' when cr.transfer_manual_reason=15 then '话术调度策略转人工' when cr.transfer_manual_reason=16 then '查找状态策略表级联超过了10次' when cr.transfer_manual_reason=17 then '转人工意图策略' when cr.transfer_manual_reason=18 then '顾问企微账号不再使用兔小智' when cr.transfer_manual_reason=19 then '项目状态已是已获权以上' when cr.transfer_manual_reason=20 then '模型调用失败' when cr.transfer_manual_reason=21 then '促开口配置错误' when cr.transfer_manual_reason=22 then '账号取消托管' when cr.transfer_manual_reason=23 then '槽位提问超过2次' when cr.transfer_manual_reason=24 then '达到闭环条件' when cr.transfer_manual_reason=25 then '公装' when cr.transfer_manual_reason=26 then '相同话术不允许重复发' when cr.transfer_manual_reason=27 then '待发送话术对应的槽位已经有值' when cr.transfer_manual_reason=28 then '特殊意图超过阈值' when cr.transfer_manual_reason=29 then '项目状态已是已获权以上，且用户开口' when cr.transfer_manual_reason=30 then '用户未开口' when cr.transfer_manual_reason=31 then '用户二次开口' when cr.transfer_manual_reason=32 then '三个月后交房[闭环]' when cr.transfer_manual_reason=33 then '主动取消-话术流程错误' when cr.transfer_manual_reason=34 then '主动取消-话术不恰当' when cr.transfer_manual_reason=35 then '顾问主动要求' when cr.transfer_manual_reason=36 then '顾问抢答或撤回消息' when cr.transfer_manual_reason=37 then '大模型兜底内容无法识别其意图' when cr.transfer_manual_reason=38 then '大模型兜底导致相同内容超过2次' when cr.transfer_manual_reason=39 then '系统未知异常' when cr.transfer_manual_reason=40 then '暂停托管次数超过阈值' when cr.transfer_manual_reason=41 then '无人工响应' when cr.transfer_manual_reason=42 then '暂停托管跟进超时' when cr.transfer_manual_reason=43 then '在职转接删除好友' when cr.transfer_manual_reason=44 then '结束跟进' when cr.transfer_manual_reason=45 then '规则查找超过20次' when cr.transfer_manual_reason=46 then '用户填写小程序卡' when cr.transfer_manual_reason=47 then '话术存在占位符' when cr.transfer_manual_reason=48 then '计算大模型兜底意向量房时间异常' when cr.transfer_manual_reason=49 then '大模型推荐转人工' when cr.transfer_manual_reason=50 then '话术流程结束-ABC闭环' when cr.transfer_manual_reason=51 then '根据话术条件查询失败' when cr.transfer_manual_reason=52 then '话术流程结束-发完姓氏闭环' when cr.transfer_manual_reason=53 then '审核编辑后，项目状态已是已获权以上'  when cr.transfer_manual_reason=54 then '用户超长时间后开口'  when cr.transfer_manual_reason=55 then '不满足大模型兜底条件-未交房'  when cr.transfer_manual_reason=56 then '不满足大模型兜底条件-在外地'  when cr.transfer_manual_reason=57 then '触发过年期间不可约量房时间'  when cr.transfer_manual_reason=58 then '提示语返回异常'  when cr.transfer_manual_reason=59 then '已签约，转人工'  when cr.transfer_manual_reason=62 then '分派全槽位-用户超时无响应'	when cr.transfer_manual_reason=63 then '分派全槽位-大模型返回不可派'	when cr.transfer_manual_reason=64 then '分派全槽位-大模型返回核需完成'	when cr.transfer_manual_reason=65 then '分派全槽位-大模型返回其他'	when cr.transfer_manual_reason=66 then '分派全槽位-fastGPT返回包含特殊字符'	when cr.transfer_manual_reason=67 then '分派全槽位-核需中但是没有推荐话术'	when cr.transfer_manual_reason=101 then '开启会话失败' when cr.transfer_manual_reason=102 then '获取当前槽位失败' when cr.transfer_manual_reason=103 then '静默超时转人工挂机' when cr.transfer_manual_reason=104 then '用户出现负向意图-挂机' when cr.transfer_manual_reason=105 then '用户累计2次中性意图-挂机' when cr.transfer_manual_reason=106 then '用户表达不能操作1-挂机' when cr.transfer_manual_reason=107 then '会话调度流程结束-挂机' when cr.transfer_manual_reason=108 then '找不到对应的话术策略-挂机' when cr.transfer_manual_reason=109 then '加微操作未引导成功-挂机' when cr.transfer_manual_reason=110 then '收不到短信-挂机' when cr.transfer_manual_reason=111 then '短信加微操作未引导成功-挂机' when cr.transfer_manual_reason=112 then '结束语' when cr.transfer_manual_reason=113 then '用户表达不能操作2-挂机' when cr.transfer_manual_reason=114 then '用户辱骂-挂机' when cr.transfer_manual_reason=115 then '加微操作未引导成功1-挂机' when cr.transfer_manual_reason=116 then '用户表达不能操作3-挂机' when cr.transfer_manual_reason=117 then '用户主动挂机' when cr.transfer_manual_reason=108 then '找不到素材信息-挂机' when cr.transfer_manual_reason=119 then '前置话术-联系官网类-挂机' when cr.transfer_manual_reason=120 then '已匹配结束语' when cr.transfer_manual_reason=121 then '未匹配结束语' when cr.transfer_manual_reason=122 then '结束语-已转化' when cr.transfer_manual_reason=123 then '结束语-未转化' when cr.transfer_manual_reason=124 then '后续联系-结束语' else '未知' end )  as "转人工原因"
+@set hivevar_transfer_manual_reason = (case  when cr.transfer_manual_reason=0 then '会话中' when cr.transfer_manual_reason=1 then '主动取消' when cr.transfer_manual_reason=2 then '用户开口' when cr.transfer_manual_reason=3 then '用户拉黑删除好友' when cr.transfer_manual_reason=4 then '微联回调消息失败' when cr.transfer_manual_reason=5 then '用户超时无响应' when cr.transfer_manual_reason=6 then '回复内容不识别' when cr.transfer_manual_reason=7 then '话术流程结束' when cr.transfer_manual_reason=8 then '回复非文本内容不识别' when cr.transfer_manual_reason=9 then '调用素材中心接口失败' when cr.transfer_manual_reason=10 then '二次促开口，不满足跟进条件' when cr.transfer_manual_reason=11 then '无法识别用户回复意图' when cr.transfer_manual_reason=12 then '没有匹配到问题' when cr.transfer_manual_reason=13 then '槽位值归一失败' when cr.transfer_manual_reason=14 then '没找到话术调度策略' when cr.transfer_manual_reason=15 then '话术调度策略转人工' when cr.transfer_manual_reason=16 then '查找状态策略表级联超过了10次' when cr.transfer_manual_reason=17 then '转人工意图策略' when cr.transfer_manual_reason=18 then '顾问企微账号不再使用兔小智' when cr.transfer_manual_reason=19 then '项目状态已是已获权以上' when cr.transfer_manual_reason=20 then '模型调用失败' when cr.transfer_manual_reason=21 then '促开口配置错误' when cr.transfer_manual_reason=22 then '账号取消托管' when cr.transfer_manual_reason=23 then '槽位提问超过2次' when cr.transfer_manual_reason=24 then '达到闭环条件' when cr.transfer_manual_reason=25 then '公装' when cr.transfer_manual_reason=26 then '相同话术不允许重复发' when cr.transfer_manual_reason=27 then '待发送话术对应的槽位已经有值' when cr.transfer_manual_reason=28 then '特殊意图超过阈值' when cr.transfer_manual_reason=29 then '项目状态已是已获权以上，且用户开口' when cr.transfer_manual_reason=30 then '用户未开口' when cr.transfer_manual_reason=31 then '用户二次开口' when cr.transfer_manual_reason=32 then '三个月后交房[闭环]' when cr.transfer_manual_reason=33 then '主动取消-话术流程错误' when cr.transfer_manual_reason=34 then '主动取消-话术不恰当' when cr.transfer_manual_reason=35 then '顾问主动要求' when cr.transfer_manual_reason=36 then '顾问抢答或撤回消息' when cr.transfer_manual_reason=37 then '大模型兜底内容无法识别其意图' when cr.transfer_manual_reason=38 then '大模型兜底导致相同内容超过2次' when cr.transfer_manual_reason=39 then '系统未知异常' when cr.transfer_manual_reason=40 then '暂停托管次数超过阈值' when cr.transfer_manual_reason=41 then '无人工响应' when cr.transfer_manual_reason=42 then '暂停托管跟进超时' when cr.transfer_manual_reason=43 then '在职转接删除好友' when cr.transfer_manual_reason=44 then '结束跟进' when cr.transfer_manual_reason=45 then '规则查找超过20次' when cr.transfer_manual_reason=46 then '用户填写小程序卡' when cr.transfer_manual_reason=47 then '话术存在占位符' when cr.transfer_manual_reason=48 then '计算大模型兜底意向量房时间异常' when cr.transfer_manual_reason=49 then '大模型推荐转人工' when cr.transfer_manual_reason=50 then '话术流程结束-ABC闭环' when cr.transfer_manual_reason=51 then '根据话术条件查询失败' when cr.transfer_manual_reason=52 then '话术流程结束-发完姓氏闭环' when cr.transfer_manual_reason=53 then '审核编辑后，项目状态已是已获权以上'  when cr.transfer_manual_reason=54 then '用户超长时间后开口'  when cr.transfer_manual_reason=55 then '不满足大模型兜底条件-未交房'  when cr.transfer_manual_reason=56 then '不满足大模型兜底条件-在外地'  when cr.transfer_manual_reason=57 then '触发过年期间不可约量房时间'  when cr.transfer_manual_reason=58 then '提示语返回异常'  when cr.transfer_manual_reason=59 then '已签约，转人工'  when cr.transfer_manual_reason=62 then '分派全槽位-用户超时无响应'	when cr.transfer_manual_reason=63 then '分派全槽位-大模型返回不可派'	when cr.transfer_manual_reason=64 then '分派全槽位-大模型返回核需完成'	when cr.transfer_manual_reason=65 then '分派全槽位-大模型返回其他'	when cr.transfer_manual_reason=66 then '分派全槽位-fastGPT返回包含特殊字符'	when cr.transfer_manual_reason=67 then '分派全槽位-核需中但是没有推荐话术' when cr.transfer_manual_reason=68 then '全流程-恢复托管没有获取到互动环名称' when cr.transfer_manual_reason=69 then '好友被拉黑'	when cr.transfer_manual_reason=101 then '开启会话失败' when cr.transfer_manual_reason=102 then '获取当前槽位失败' when cr.transfer_manual_reason=103 then '静默超时转人工挂机' when cr.transfer_manual_reason=104 then '用户出现负向意图-挂机' when cr.transfer_manual_reason=105 then '用户累计2次中性意图-挂机' when cr.transfer_manual_reason=106 then '用户表达不能操作1-挂机' when cr.transfer_manual_reason=107 then '会话调度流程结束-挂机' when cr.transfer_manual_reason=108 then '找不到对应的话术策略-挂机' when cr.transfer_manual_reason=109 then '加微操作未引导成功-挂机' when cr.transfer_manual_reason=110 then '收不到短信-挂机' when cr.transfer_manual_reason=111 then '短信加微操作未引导成功-挂机' when cr.transfer_manual_reason=112 then '结束语' when cr.transfer_manual_reason=113 then '用户表达不能操作2-挂机' when cr.transfer_manual_reason=114 then '用户辱骂-挂机' when cr.transfer_manual_reason=115 then '加微操作未引导成功1-挂机' when cr.transfer_manual_reason=116 then '用户表达不能操作3-挂机' when cr.transfer_manual_reason=117 then '用户主动挂机' when cr.transfer_manual_reason=108 then '找不到素材信息-挂机' when cr.transfer_manual_reason=119 then '前置话术-联系官网类-挂机' when cr.transfer_manual_reason=120 then '已匹配结束语' when cr.transfer_manual_reason=121 then '未匹配结束语' when cr.transfer_manual_reason=122 then '结束语-已转化' when cr.transfer_manual_reason=123 then '结束语-未转化' when cr.transfer_manual_reason=124 then '后续联系-结束语' else '未知' end )  as "转人工原因"
 @set hivevar_qiwei_message_type = (case when qr.message_type =1 then '文本' when qr.message_type =2 then '语音' when qr.message_type =3 then '图片' when qr.message_type =4 then '视频' when qr.message_type =5 then '名片' when qr.message_type =6 then '链接' when qr.message_type =9 then '企微表情' when qr.message_type =14 then '语音聊天' when qr.message_type =18 then '小程序' when qr.message_type =19 then '文件' when qr.message_type =251 then '引用' else '其他' end) as "企微消息类型"
 @set hivevar_behaviorStatus = (case when cb.behavior_status = 1 then '请求'  when cb.behavior_status = 2 then '点击'  when cb.behavior_status = 3 then '回复'  when cb.behavior_status = 4 then '点击之后回复的内容'  when cb.behavior_status = 5 then '开始托管'  when cb.behavior_status = 6 then '结束托管'  when cb.behavior_status = 7 then '暂停托管'  when cb.behavior_status = 8 then '恢复托管'  when cb.behavior_status = 9 then '顾问采纳应答策略'  when cb.behavior_status = 10 then '顾问纠错应答策略'  when cb.behavior_status = 11 then '无人工响应'  when cb.behavior_status = 12 then '引用消息'  when cb.behavior_status = 13 then '互动环开始托管'  when cb.behavior_status = 14 then '互动环结束托管' else '其他' end) as "事件类型"
 
@@ -11,14 +11,14 @@ gw.nickname like '%陈聪%'
 
 --  电话id查询 会话记录
 	select from_unixtime(cr.create_time+8*3600) as "加微时间" ,cr.extend_info 
-	,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid,from_unixtime(cr.staff_service_time +8*3600) as sst,cr.check_status 
+	,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid,from_unixtime(cr.staff_service_time +8*3600) as "转人工时间",cr.check_status 
 	,${hivevar_transfer_manual_reason} , *
 	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
 	where
-	--cr.chat_id ='MTc3MjI4MTA1NTkjd21KaUliREFBQUh3bER0dE81Umc0NTJwSXVlRnN1MkE='
+	--cr.chat_id ='934947'
 	--cr.uid ='wmJiIbDAAAZf8vK8jSYhaAZ6A5k1EFtg'
 	--cr.robot_id ='13128944752'
-	json_extract_scalar(cr.extend_info  , '$.phone_id')='278311020'
+	json_extract_scalar(cr.extend_info  , '$.phone_id')='297266470'
 	and cr.create_time >=to_unixtime(cast ('2025-07-20 00:00:0' as timestamp)) - 8*3600 
 	order by id desc
 	limit 10
@@ -32,7 +32,7 @@ from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detai
 left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on cd.chat_id =cr.chat_id 
 left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 where 
-cd.chat_id ='MTMyNjY4NTgyNDYjd21KaUliREFBQW1wZUdEZ1hTZVY3T3RtWUhHMC1lLUE='
+cd.chat_id ='MjQ0ODIxNzgjd21KaUliREFBQXB0OUZyNDhDc1d4REp0MnkxTzBHVVE='
 --cd.id =167796158
 --cd.reply like '%称呼%'
 --and cd.check_type_code ='7!711!71102!754'
@@ -52,7 +52,7 @@ select from_unixtime(qr.create_time+8*3600) as "消息创建时间"
 ,qr.text_content ,qr.user_reply_intention ,qr.user_reply_slot 
 ,*
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
-where qr.chat_id ='MTA0MTIxMDYjd21KaUliREFBQVE0Ykh4d2xtcnBGZFk0ekdQNFZCZFE='
+where qr.chat_id ='MTgwMzMwNjE3MDQjd21KaUliREFBQThVMXY4MFl2a0lXU2JaYldMQzFrSnc='
 and qr.create_time >=to_unixtime(cast ('2025-07-20 00:00:0' as timestamp)) - 8*3600 
 order by qr.id asc
 ;
@@ -1111,7 +1111,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists(
 		select cb.id
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
 		where cb.behavior_status =7 and cb.chat_id =cr.chat_id 
 		limit 1
 	)  then '暂停托管' else '正常托管' end 
@@ -1120,7 +1120,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!692'
@@ -1131,8 +1131,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%装修时间%'
@@ -1142,7 +1142,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!697'
@@ -1153,8 +1153,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%房屋类型%'
@@ -1164,7 +1164,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!702'
@@ -1175,8 +1175,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%工程量%'
@@ -1186,7 +1186,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!699'
@@ -1197,8 +1197,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%装修用途%'
@@ -1208,7 +1208,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!705'
@@ -1219,8 +1219,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%是否交房%'
@@ -1230,7 +1230,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!693'
@@ -1241,8 +1241,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%交房时间%'
@@ -1252,7 +1252,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!694'
@@ -1263,8 +1263,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%量房时间%'
@@ -1274,7 +1274,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!703'
@@ -1285,8 +1285,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%小区名称%'
@@ -1296,7 +1296,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!696'
@@ -1307,8 +1307,8 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%房屋面积%'
@@ -1318,7 +1318,7 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 ,(
 	case when exists (
 		select cd.id 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
 		where cd.chat_id = cr.chat_id 
 		and cd.role_type =1
 		and cd.check_type_code ='7!711!71102!695'
@@ -1329,23 +1329,268 @@ cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
 	case when exists (
 		-- 大模型主动提问
 		select cd.reply 
-		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
-		left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 		where cd.chat_id =cr.chat_id 
 		and sp.property_name ='分派全槽位-提问队列'
 		and cd.reply like '%姓氏%'
 	) then '进入' else '未进入' end 
 ) as "进入-姓氏"
-from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-where 
-json_extract_scalar(cr.extend_info  , '$.allSlotFlag')='1' 
-and cr.deleted =0
+from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+where  cr.deleted =0 and cr.robot_takeover_type =0 and cr.strategy_scene =9
+and json_extract_scalar(cr.extend_info  , '$.allSlotFlag')='1' 
 and cr.transfer_manual_reason not in (19,29,53)
 and cr.robot_id != '18576473328'
 
-and cr.create_time >=to_unixtime(cast ('2025-07-09 00:00:0' as timestamp)) - 8*3600 
-and cr.create_time <to_unixtime(cast ('2025-07-10 00:00:0' as timestamp)) - 8*3600 
+and cr.create_time >=to_unixtime(cast ('2025-07-31 00:00:0' as timestamp)) - 8*3600 
+and cr.create_time <to_unixtime(cast ('2025-07-31 12:00:0' as timestamp)) - 8*3600 
+ 
 
+--- 全流程 进入率和收集率
+--- 大模型槽位进入率和收集率
+select 
+cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id"
+, cr.chat_id 
+, cr.conversation_template_id as "模板id"
+, from_unixtime(cr.create_time+8*3600) as "会话开始时间"
+, getday(cr.create_time+8*3600) as "会话开始时间-日期"
+,(
+	case when exists(
+		select cb.id
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+		where cb.behavior_status =7 and cb.chat_id =cr.chat_id 
+		limit 1
+	)  then '暂停托管' else '正常托管' end 
+) as "托管类型"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!692'
+		and cd.reply ='90天内'
+	) then '收集' else '未收集' end 
+) as "收集-装修时间"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%装修时间%'
+	) then '进入' else '未进入' end 
+) as "进入-装修时间"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!697'
+		and cd.reply !='' --TODO 需要细分
+	) then '收集' else '未收集' end 
+) as "收集-房屋类型"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%房屋类型%'
+	) then '进入' else '未进入' end 
+) as "进入-房屋类型"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!702'
+		and cd.reply !=''
+	) then '收集' else '未收集' end 
+) as "收集-工程量"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%工程量%'
+	) then '进入' else '未进入' end 
+) as "进入-工程量"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!699'
+		and cd.reply !=''
+	) then '收集' else '未收集' end 
+) as "收集-装修用途"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%装修用途%'
+	) then '进入' else '未进入' end 
+) as "进入-装修用途"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!705'
+		and cd.reply ='是'
+	) then '收集' else '未收集' end 
+) as "收集-是否交房"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%是否交房%'
+	) then '进入' else '未进入' end 
+) as "进入-是否交房"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!693'
+		and cd.reply ='3个月内'
+	) then '收集' else '未收集' end 
+) as "收集-交房时间"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%交房时间%'
+	) then '进入' else '未进入' end 
+) as "进入-交房时间"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!694'
+		and cd.reply ='一个月内'
+	) then '收集' else '未收集' end 
+) as "收集-意向量房时间"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%量房时间%'
+	) then '进入' else '未进入' end 
+) as "进入-意向量房时间"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!703'
+		and cd.reply !=''
+	) then '收集' else '未收集' end 
+) as "收集-小区名称"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%小区名称%'
+	) then '进入' else '未进入' end 
+) as "进入-小区名称"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!696'
+		and cd.reply !=''
+	) then '收集' else '未收集' end 
+) as "收集-房屋面积"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%房屋面积%'
+	) then '进入' else '未进入' end 
+) as "进入-房屋面积"
+------------------------------------------------------------------------------------
+,(
+	case when exists (
+		select cd.id 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		where cd.chat_id = cr.chat_id 
+		and cd.role_type =1
+		and cd.check_type_code ='7!711!71102!695'
+		and cd.reply !=''
+	) then '收集' else '未收集' end 
+) as "收集-姓氏"
+,(
+	case when exists (
+		-- 大模型主动提问
+		select cd.reply 
+		from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+		left join ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+		where cd.chat_id =cr.chat_id 
+		and sp.property_name ='全流程-提问队列'
+		and cd.reply like '%姓氏%'
+	) then '进入' else '未进入' end 
+) as "进入-姓氏"
+from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+where  cr.deleted =0 and cr.robot_takeover_type =0 and cr.strategy_scene =9
+and '' != regexp_extract(cr.extend_info , 'interactiveRingNameList')
+and json_array_length(json_extract(cr.extend_info, '$.interactiveRingNameList')) > 0
+and cr.transfer_manual_reason not in (19,29,53)
+and cr.robot_id != '18576473328'
+
+and cr.create_time >=to_unixtime(cast ('2025-07-31 00:00:0' as timestamp)) - 8*3600 
+and cr.create_time <to_unixtime(cast ('2025-07-31 12:00:0' as timestamp)) - 8*3600 
 
 
 
@@ -2599,6 +2844,49 @@ order by cd.chat_id ,cd.id desc
 
 
 
+select cr.chat_id 
+,(
+	case when exists (
+
+	) then '收集' else '未收集' end 
+) as "收集-姓氏"
+,*
+
+-- 当前大模型提取值
+select cd.chat_id
+,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid
+,cd.check_type_code, sp.property_name ,cd.reply  
+from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
+left join ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on cd.chat_id =cr.chat_id 
+where cr.deleted =0 and cr.robot_takeover_type =0 and cr.strategy_scene =9
+--	and '' != regexp_extract(cr.extend_info , 'interactiveRingNameList')
+--	and json_array_length(json_extract(cr.extend_info, '$.interactiveRingNameList')) > 0
+	and json_extract_scalar(cr.extend_info  , '$.allSlotFlag')='1' 
+	and cr.transfer_manual_reason not in (19,29,53)
+	and cr.robot_id != '18576473328'
+	and cr.create_time >=to_unixtime(cast ('2025-07-31 00:00:0' as timestamp)) - 8*3600 
+	and cr.create_time <to_unixtime(cast ('2025-07-31 12:00:0' as timestamp)) - 8*3600 
+--and cd.role_type =1
+--and cd.check_type_code in
+--(
+--'7!711!71102!692','7!711!71102!697','7!711!71102!702','7!711!71102!699','7!711!71102!705','7!711!71102!693','7!711!71102!694','7!711!71102!703','7!711!71102!696','7!711!71102!695'
+--)
+and cd.check_type_code in('7!711!71102!692')
+and cd.reply !=''
 
 
 
+	select from_unixtime(cr.create_time+8*3600) as "加微时间" ,cr.extend_info 
+	,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid,from_unixtime(cr.staff_service_time +8*3600) as sst,cr.check_status 
+	,${hivevar_transfer_manual_reason} , *
+	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+	where
+	cr.transfer_manual_reason =68
+	and cr.create_time >=to_unixtime(cast ('2025-07-25 00:00:0' as timestamp)) - 8*3600 
+	order by id desc
+
+	
+	
+	
+	
