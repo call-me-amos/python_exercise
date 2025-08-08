@@ -10,7 +10,11 @@ import imgkit
 import hashlib
 import base64
 
-import sys; sys.stdout.flush()
+from metabase_utils.presto_util.LoggerClass import logger
+
+
+
+
 # 企微机器人-全流程-调用fastGPT异常-告警群
 # robot_url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=87098f26-b97e-4631-8b63-83916e09e00b'
 # 企微机器人-大模型
@@ -97,8 +101,7 @@ def statistic_and_save_to_excel(df = None):
             adjusted_width = (max_length + 2) * 1.2  # 1.2倍系数
             worksheet.column_dimensions[column].width = min(adjusted_width, 50)  # 限制最大列宽50
 
-    print(f"处理完成！结果已保存到: {output_file}")
-    print(result)
+    logger.info(f"收集率和进入率统计完成：{output_file}")
     return result
 
 # 将sql中的开始和结束时间替换后返回
@@ -345,12 +348,15 @@ where  cr.deleted =0 and cr.robot_takeover_type =0 and cr.strategy_scene =9
 and json_extract_scalar(cr.extend_info  , '$.allSlotFlag')='1' 
 and cr.transfer_manual_reason not in (19,29,53)
 and cr.robot_id != '18576473328'
-    
-and cr.create_time >=to_unixtime(cast ('{startTimeStr}' as timestamp)) - 8*3600 
-and cr.create_time <to_unixtime(cast ('{endTimeStr}' as timestamp)) - 8*3600 
 
---and cr.chat_id='MTMyMTcwNDcwNjkjd21KaUliREFBQWJ3ZHlVTWFxZ0xsaVhjd0c1Wm5FM3c='
     """
+    param_sql = f"""
+{param_sql}
+--and cr.create_time >=to_unixtime(cast ('{startTimeStr}' as timestamp)) - 8*3600 
+--and cr.create_time <to_unixtime(cast ('{endTimeStr}' as timestamp)) - 8*3600 
+
+and cr.chat_id='MTMyMTcwNDcwNjkjd21KaUliREFBQWJ3ZHlVTWFxZ0xsaVhjd0c1Wm5FM3c='
+"""
     return param_sql
 
 #格式化播报内容
@@ -362,14 +368,12 @@ def format_message(merged_df):
 | :----- | :----: | :----: | :----: | :----: | :----: |\
 """
     for index, row in result.iterrows():
-        print(f"当前行数据：{index}, {row}")
         message += f"""
 | {row['槽位']} | {row['项目数量']} | {row['槽位进入数']} | {row['槽位进入率']} | {row['槽位收集数']}  | {row['槽位收集率']}  |"""
     return message
 
 #post请求发送播报数据
 def send_post_message(data):
-
     url = robot_url
     headers = {
         "Content-Type": "application/json"
@@ -381,7 +385,7 @@ def send_post_message(data):
         }
     }
     response = requests.post(url, headers=headers, data=json.dumps(data))
-    print(response.text)
+    logger.info(f"发送文本信息：{response.text}")
     return response.json()
 
 # # 把markdown生成图片
@@ -389,7 +393,7 @@ def markdown_to_image(md_text, output_path="output.png"):
     # Markdown 转 HTML
     html_content = markdown.markdown(md_text,extensions=['tables'])
 
-    print(f"当前的markdow信息：\n{html_content}")
+    logger.info(f"当前的markdown信息：\n{html_content}")
 
     # 完整 HTML 结构（添加 CSS 样式）
     full_html = f"""
@@ -423,7 +427,7 @@ def markdown_to_image(md_text, output_path="output.png"):
     </html>
     """
     # 指定 wkhtmltoimage 路径（根据你的实际安装位置修改）
-    config = imgkit.config(wkhtmltoimage=r'D:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe')
+    config = imgkit.config(wkhtmltoimage=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe')
 
     # HTML 转图片（添加 config 参数）
     imgkit.from_string(
@@ -432,7 +436,7 @@ def markdown_to_image(md_text, output_path="output.png"):
         config=config,  # 添加这行
         options={"format": "png", "enable-local-file-access": None}
     )
-    print(f"图片已保存至: {output_path}")
+    logger.info(f"图片已保存至: {output_path}")
 
 def get_md5_and_base64(file_path):
     # 获取 MD5
@@ -466,7 +470,7 @@ def send_post_img_message(data):
         }
     }
     response = requests.post(url, headers=headers, data=json.dumps(data))
-    print(response.text)
+    logger.info(f"发送图片信息：{response.text}")
     return response.json()
 
 
@@ -488,7 +492,7 @@ if __name__ == "__main__":
     today_midnight = now.replace(hour=0, minute=0, second=0, microsecond=0).strftime("%Y-%m-%d")
     # 计算第二天的零点
     next_day_midnight = (now.replace(hour=0, minute=0, second=0, microsecond=0) + datetime.timedelta(days=1)).strftime("%Y-%m-%d")
-    print(f"今天零点：{today_midnight}。第二天零点:{next_day_midnight}")
+    logger.info(f"今天零点：{today_midnight}。第二天零点:{next_day_midnight}")
 
     # 在循环前创建一个空列表来收集DataFrame
     all_dfs = []
@@ -511,10 +515,11 @@ if __name__ == "__main__":
     format_md_text = format_message(merged_df)
 
 
-    print(f"拼接表头后的最终报表数据：\n{format_md_text}")
+    logger.info(f"拼接表头后的最终报表数据：\n{format_md_text}")
 
-    send_post_message(format_md_text)   # 发送文本 markdown格式
+    # send_post_message(format_md_text)   # 发送文本 markdown格式
 
-    # markdown_to_image(format_md_text, output_path="data/output.png")  # 把markdown生成图片
-
-    #send_post_img_message("data/output.png")  # 发送图片
+    # 把markdown生成图片
+    markdown_to_image(format_md_text, output_path="data/output.png")
+    # 发送图片
+    send_post_img_message("data/output.png")
