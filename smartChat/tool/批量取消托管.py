@@ -3,7 +3,7 @@ import requests
     手动取消托管
 '''
 chat_ids = [
-    "MTA0MTIwOTUjd21KaUliREFBQVF6LUtCMF9zcFVBTWlWdW9PZXdCQUE="
+    "MTMxNzI0NTgwNTgjd21KaUliREFBQUZMczF0alA5NXo1X29hckpDS254RFE="
 ]
 
 

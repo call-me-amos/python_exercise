@@ -363,7 +363,7 @@ and cr.chat_id='MTMyMTcwNDcwNjkjd21KaUliREFBQWJ3ZHlVTWFxZ0xsaVhjd0c1Wm5FM3c='
 def format_message(merged_df):
     result = statistic_and_save_to_excel(merged_df)
     message = f"""\
-### 槽位收集率和进入率 统计结果
+### 【销冠】槽位收集率和进入率 统计结果
 | 槽位 | 项目数量 | 槽位进入数  | 槽位进入率 | 槽位收集数 | 槽位收集率 | 
 | :----- | :----: | :----: | :----: | :----: | :----: |\
 """
