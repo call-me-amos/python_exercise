@@ -12,7 +12,7 @@ OUTPUT_EXCEL = 'C:/Users/amos.tong/Desktop/城市+房屋面积-out.xlsx'  # 输�
 # API配置
 api_url = 'https://xagent.to8to.com/api/v1/chat/completions'
 headers = {
-    'Authorization': 'Bearer fastgpt-glzXJfnQv1seaaVy7naaG1GW8q63xZC5i1kVjuSiGTOQHxwB9oEujeB',
+    'Authorization': 'Bearer xxx',
     'Content-Type': 'application/json'
 }
 
