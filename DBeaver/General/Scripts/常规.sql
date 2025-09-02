@@ -15,11 +15,11 @@ gw.nickname like '%陈聪%'
 	,${hivevar_transfer_manual_reason} , *
 	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
 	where
-	--cr.chat_id ='934947'
+	--cr.chat_id ='MTA3MzgxMzYjd21KaUliREFBQWk4ZXFpUndhRURjbzdrLXNiclZuVVE='
 	--cr.uid ='wmJiIbDAAAZf8vK8jSYhaAZ6A5k1EFtg'
-	--cr.robot_id ='13128944752'
-	json_extract_scalar(cr.extend_info  , '$.phone_id')='297266470'
-	and cr.create_time >=to_unixtime(cast ('2025-07-20 00:00:0' as timestamp)) - 8*3600 
+	--cr.robot_id ='16562297954'
+	json_extract_scalar(cr.extend_info  , '$.phone_id')='122005807'
+	and cr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
 	order by id desc
 	limit 10
 
@@ -32,13 +32,13 @@ from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detai
 left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on cd.chat_id =cr.chat_id 
 left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 where 
-cd.chat_id ='MjQ0ODIxNzgjd21KaUliREFBQXB0OUZyNDhDc1d4REp0MnkxTzBHVVE='
+cd.chat_id ='MTcxODA2Njk1NjUjd21KaUliREFBQXQ5M1lmWWdqVWZMeFBBUTF5bE95a1E='
 --cd.id =167796158
 --cd.reply like '%称呼%'
 --and cd.check_type_code ='7!711!71102!754'
 and cd.deleted =0
 and cr.deleted =0
-and cr.create_time >=to_unixtime(cast ('2025-07-20 00:00:0' as timestamp)) - 8*3600 
+and cr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
 order by cd.id desc
 
 
@@ -52,8 +52,10 @@ select from_unixtime(qr.create_time+8*3600) as "消息创建时间"
 ,qr.text_content ,qr.user_reply_intention ,qr.user_reply_slot 
 ,*
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
-where qr.chat_id ='MTgwMzMwNjE3MDQjd21KaUliREFBQThVMXY4MFl2a0lXU2JaYldMQzFrSnc='
-and qr.create_time >=to_unixtime(cast ('2025-07-20 00:00:0' as timestamp)) - 8*3600 
+where 
+qr.chat_id ='947386'
+--qr.message_type =6
+and qr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
 order by qr.id asc
 ;
 
@@ -68,10 +70,16 @@ select from_unixtime(qr.create_time+8*3600) as ct
 ,*
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
 --left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd on qr.chat_id =cd.chat_id 
-where qr.text_content like '%interactiveRing%'
-and qr.create_time >=to_unixtime(cast ('2025-07-25 00:00:0' as timestamp)) - 8*3600 
+where qr.text_content like '%具体哪天%'
+and qr.create_time >=to_unixtime(cast ('2025-08-15 00:00:0' as timestamp)) - 8*3600 
 limit 10
 
+
+select from_unixtime(cb.create_time+8*3600) as ct,*
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+where cb.extend_info like '%transferManualReason%'
+and cb.create_time >=to_unixtime(cast ('2025-08-15 00:00:0' as timestamp)) - 8*3600 
+order by cb.id asc
 
 
 select *
@@ -2235,7 +2243,7 @@ order by cr.create_time desc
 
 ;
 --- 根据辅助资料名称，查询级联关系
-select t1.property_name ,t2_temp.property_name, t3_temp.property_name
+select t1.property_name ,t2_temp.property_name, t3_temp.property_name, t3_temp.description
 from hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property t1
 left join  
 (
@@ -2244,12 +2252,12 @@ left join
 ) t2_temp on t2_temp.parent_id=t1.id
 left join 
 (
-	select t3.parent_id ,t3.property_name
+	select t3.parent_id ,t3.property_name, t3.description
 	from hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property t3
 	where 
-	--t3.description = 'wholeprocess_877'
-	--t3.property_name ='全流程-邀约具体量房时间'
-	t3.whole_code like '%17007092%'
+	t3.description like '%round%'
+	--t3.property_name  like 'round'
+	--t3.whole_code like '%17007092%'
 ) t3_temp on t3_temp.parent_id = t2_temp.id
 where t3_temp.property_name is not null;
 
@@ -2882,11 +2890,68 @@ and cd.reply !=''
 	,${hivevar_transfer_manual_reason} , *
 	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
 	where
-	cr.transfer_manual_reason =68
-	and cr.create_time >=to_unixtime(cast ('2025-07-25 00:00:0' as timestamp)) - 8*3600 
+	 '' != regexp_extract(cr.extend_info , 'interactiveRingNameList')
+	and json_array_length(json_extract(cr.extend_info, '$.interactiveRingNameList')) > 0
+	and cr.create_time >=to_unixtime(cast ('2025-08-09 00:00:0' as timestamp)) - 8*3600 
 	order by id desc
 
 	
 	
 	
+	select *
+	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+	where cb.chat_id ='MTY1NzEzMDI1NTQjd21KaUliREFBQWkxZkpWVUJTVG4wWE45OWRHWlJoWUE='
+	order by cb.id asc
 	
+	
+	select *
+	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config cc
+	where cc.msg_type =2
+	order by id asc
+	
+select *	
+from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+where  cr.deleted =0 and cr.robot_takeover_type =0 and cr.strategy_scene =9
+and '' != regexp_extract(cr.extend_info , 'interactiveRingNameList')
+and json_array_length(json_extract(cr.extend_info, '$.interactiveRingNameList')) > 0
+and cr.transfer_manual_reason in (19,29,53)
+and cr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
+and cr.create_time <to_unixtime(cast ('2025-08-31 12:00:0' as timestamp)) - 8*3600 
+
+
+
+--查询QA 语料
+select cr1.id 
+,cr1.qa_question as "用户回复"
+,(
+case when json_extract_scalar(cr1.qa_return  , '$.qaMulityVO.similarity') = '-1.0' then '否' else '是' end
+) as "小模型预测是否QA"
+,json_extract_scalar(cr1.qa_return  , '$.qaMulityVO.similarity') as "小模型预测置信度"
+,JSON_EXTRACT(cr1.qa_return  , '$.qaMulityVO.candidateAnswer') as "小模型推荐承接话术"
+from hive2.ads.v_kudu2_stg_idc_new_t8t_nlp_fls_fls_qa_content_record cr1
+where cr1.id in 
+(76690974,76690964,76777877,76690980,76690958,76733417,76691084,76694700,76777964,76691042,76690971,76690916,76691090,76777987,76725037,76753017,76752467,76690955,76690994,76691033,76690978,76777910,76710293,76690930,76717111,76750477,76779807,76730994,76777906,76777927,76777981,76732503,76691060,76706248,76713247,76690987,76716058,76712054,76719844,76690999,76690976,76690937,76753891,76777924,76778877,76716344,76690998,76777885,76729231,76777908,76777917,76740251,76707900,76775529,76690927,76778009,76763622,76729203,76691016,76775673,76691012,76690938,76690932,76777983,76713009,76777965,76690968,76690990,80095336,76691039,76703797,76706573,76690919,76745346,76690991,76777952,76690956,76710028,76744441,76750329,76691053,76708290,76713819,76746924,76777930,76762050,76690985,76691070,76781457,76743666,76777879,76691057,76777857,76777941,76777914,76690986,76733407,76740884,76777943,76725380
+--	(
+--		-- 查询非QA 文本
+--		select cr.id 
+--		from hive2.ads.v_kudu2_stg_idc_new_t8t_nlp_fls_fls_qa_content_record cr
+--		where cr.create_time >=to_unixtime(cast ('2025-08-21 00:00:0' as timestamp)) - 8*3600
+--		and json_extract_scalar(cr.qa_return  , '$.qaMulityVO.similarity') != '-1.0'
+--		and cr.bussiness_key ='intelligentPlatform'
+--		limit 20
+--	)
+--	union 
+--	(
+--		-- 查询QA 文本
+--		select 
+--		cr.id 
+--		from hive2.ads.v_kudu2_stg_idc_new_t8t_nlp_fls_fls_qa_content_record cr
+--		where cr.create_time >=to_unixtime(cast ('2025-08-21 00:00:0' as timestamp)) - 8*3600
+--		and json_extract_scalar(cr.qa_return  , '$.qaMulityVO.similarity') != '-1.0'
+--		and cr.bussiness_key ='intelligentPlatform'
+--		limit 80
+--	)
+	-- 打乱顺序
+	--order by rand()
+)
+
