@@ -238,7 +238,7 @@ def main():
     EXCEL_PATH = "C:/Users/amos.tong/Desktop/土巴兔QA内容记录-用户咨询小模型回复.xlsx"  # 替换为你的Excel文件路径
     OUTPUT_PATH = "C:/Users/amos.tong/Desktop/土巴兔QA内容记录-用户咨询小模型回复(fastgpt预测).xlsx"  # 输出文件路径
     FASTGPT_API_URL = "https://gpts.to8to.com/api/v1/chat/completions"  # 替换为你的FastGPT API地址
-    API_KEY = "fastgpt-oChX6YeXoe8kL3stFEeaNHQ6O6bJ5zv4hZNFOuNPeXZLbLVRimPpBNQx"  # 如果有API密钥的话
+    API_KEY = "xxxx"  # 如果有API密钥的话
 
     # 创建处理器实例
     processor = FastGPTProcessor(EXCEL_PATH, FASTGPT_API_URL, API_KEY)
