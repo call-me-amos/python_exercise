@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from zhdate import ZhDate
 import re
 import copy
+from diy_config.config import ConfigManager
 
 
 # 配置日志
@@ -403,9 +404,11 @@ def main():
     EXCEL_PATH = "C:/Users/amos.tong/Desktop/待分析聊天记录.xlsx"  # 替换为你的Excel文件路径
     # EXCEL_PATH = "C:/Users/amos.tong/Desktop/1000聊天记录.xlsx"  # 替换为你的Excel文件路径
     OUTPUT_PATH = f"C:/Users/amos.tong/Desktop/待分析聊天记录-追加顾问提问槽位和用户意图-{time.time()}.xlsx"  # 输出文件路径
-    API_URL = "https://ark.cn-beijing.volces.com/api/v3/chat/completions"  # 替换为你的API地址
-    # API_KEY = "xx"  # 如果有API密钥的话  火山引擎
-    API_KEY = "xx"  # 如果有API密钥的话  火山引擎
+
+    config_manager = ConfigManager("config.ini")
+    # 获取特定配置值
+    API_URL = config_manager.get_value("豆包模型", "API_URL")
+    API_KEY = config_manager.get_value("豆包模型", "API_KEY")
 
     # 创建处理器实例
     processor = LLMProcessor(EXCEL_PATH, API_URL, API_KEY)
@@ -414,8 +417,8 @@ def main():
     success = processor.process(
         output_path=OUTPUT_PATH,
         batch_size=5,  # 每处理5行输出一次日志
-        start_row=2073,  # 读取excel行数，如果start_row=0，表示从excel第二行开始读取（去除了表头）
-        end_row = 5073
+        start_row=25073,  # 读取excel行数，如果start_row=0，表示从excel第二行开始读取（去除了表头）
+        end_row = 25094
     )
 
     if success:
