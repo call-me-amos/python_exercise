@@ -418,7 +418,7 @@ def main():
         output_path=OUTPUT_PATH,
         batch_size=5,  # 每处理5行输出一次日志
         start_row=25073,  # 读取excel行数，如果start_row=0，表示从excel第二行开始读取（去除了表头）
-        end_row = 25094
+        end_row = 25073
     )
 
     if success:
