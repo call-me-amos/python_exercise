@@ -84,6 +84,9 @@ def process_all_rows():
     data_list = read_json_file(file_path)
     for index, item in enumerate(data_list):
         try:
+            if index > 200:
+                print(f"当前行：{index}，超过最大值，不再处理后续数据")
+                break
             print(f"当前fastgpt处理行：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
@@ -104,7 +107,7 @@ def process_all_rows():
             user_question_str = responseData_map['AI对话-首轮槽位变量赋值']['query']
 
             # 将messages转成conversation
-            conversation_list = responseData_map['将messages转成conversation']['pluginOutput']['conversation']
+            conversation_str = responseData_map['将messages转成conversation']['pluginOutput']['conversation']
             messages_list = responseData_map['将messages转成conversation']['pluginDetail'][1]['customInputs']['messages']
 
             # 当前询问槽位
@@ -120,8 +123,8 @@ def process_all_rows():
             payload = {
                 "variables": {
                     "用户问题": user_question_str,
-                    "历史对话": conversation_list,
-                    "历史槽位信息": slots_list,
+                    "messages": messages_list,
+                    "slots": slots_list,
                     "当前询问槽位": current_ask_slot_str,
                     "当前槽位问题": answer_str,
                     "情绪标签-预测": emotions_flag,
@@ -136,7 +139,7 @@ def process_all_rows():
             result = {
                 '序号': index,
                 '用户问题': user_question_str,
-                '历史对话': conversation_list,
+                '历史对话': json.dumps(messages_list, index=4, ensure_ascii=False),
                 '历史槽位信息': slots_list,
                 '当前询问槽位': current_ask_slot_str,
                 '当前槽位问题': answer_str,
