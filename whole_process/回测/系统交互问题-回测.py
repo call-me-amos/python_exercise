@@ -7,15 +7,16 @@ from typing import Any, Dict, List
 import os
 import time
 import requests
+from metabase_utils.prestodb_my import query_from_db
 
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
-api_key = config_manager.get_value("情绪价值承接-回测", "api_key")
-fastgpt_api_url = config_manager.get_value("情绪价值承接-回测", "fastgpt_api_url")
+api_key = config_manager.get_value("系统交互问题-回测", "api_key")
+fastgpt_api_url = config_manager.get_value("系统交互问题-回测", "fastgpt_api_url")
 
-file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems.json"
-output_file = f"C:/Users/amos.tong/Desktop/归因/情绪价值承接-回测-结果-{time.time()}.xlsx"
+file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems_25.json"
+output_file = f"C:/Users/amos.tong/Desktop/归因/系统交互问题-回测-结果-{time.time()}.xlsx"
 def read_json_file(file_path: str) -> List[Any]:
     """读取JSON文件"""
     try:
@@ -79,14 +80,24 @@ def call_fastgpt_api(payload: any) -> str:
         print(f"JSON解析失败: {e}")
         return ""
 
-def process_all_rows():
+
+#获取消息列表
+def getTransferManualReasonByChartId(chartId):
+    query_sql = f"""
+    select chat_id,transfer_manual_reason
+    from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record
+    WHERE chat_id = '{chartId}' and deleted =0
+    """
+    messages = query_from_db(query_sql)
+    return messages
+def process_all_rows(max_row):
     results = []
+    chat_id_map = {}
     data_list = read_json_file(file_path)
     for index, item in enumerate(data_list):
         try:
-            if index > 200:
-                print(f"当前行：{index}，超过最大值，不再处理后续数据")
-                break
+            if index < 300:
+                continue
             print(f"当前fastgpt处理行：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
@@ -97,40 +108,42 @@ def process_all_rows():
 
             # slots 槽位信息
             slots_list = responseData_map['代码运行#判断最后一句消息角色']['customOutputs']['slots']
-
-            # 角色判断
-            last_say_role_str = responseData_map['代码运行#判断最后一句消息角色']['customOutputs']['最后一句消息发送人角色']
-            if '用户' != last_say_role_str:
+            # 如果chat_id_list包含 slots_list.get("chatId", "") 则continue
+            if "chatId" not in slots_list:
+                continue
+            current_chat_id = slots_list.get("chatId", "")
+            if current_chat_id != "" and current_chat_id not in chat_id_map:
+                message_df = getTransferManualReasonByChartId(current_chat_id)
+                for i, row in message_df.iterrows():
+                    chat_id_map[current_chat_id] = row
+            if len(chat_id_map) > max_row:
+                print(f"chat_id_map 超过最大值，不再处理后续数据")
+                break
+            transfer_manual_reason = chat_id_map[current_chat_id]['transfer_manual_reason']
+            if transfer_manual_reason != 58:
+                # 不是提示语异常的场景，目前不处理
                 continue
 
-            # 用户问题
-            user_question_str = responseData_map['AI对话-首轮槽位变量赋值']['query']
+            if responseData_map['指定回复#槽位兜底'] is None:
+                continue
+
+            # fastGpt返回字符串
+            textOutput_str = responseData_map['指定回复#槽位兜底']['textOutput']
 
             # 将messages转成conversation
             conversation_str = responseData_map['将messages转成conversation']['pluginOutput']['conversation']
             messages_list = responseData_map['将messages转成conversation']['pluginDetail'][1]['customInputs']['messages']
 
-            # 当前询问槽位
-            current_ask_slot_str = responseData_map['槽位话术解析']['customOutputs']['question']
-            # 当前槽位问题
-            answer_str = responseData_map['槽位话术解析']['customOutputs']['answer']
-
-            # 情绪承接话术
-            emotions_undertake = responseData_map['情绪价值承接-快核需']['pluginOutput']['情绪价值承接话术']
-            # 情绪价值标签
-            emotions_flag = responseData_map['情绪价值承接-快核需']['pluginOutput']['情绪价值标签']
-
             payload = {
                 "variables": {
-                    "用户问题": user_question_str,
-                    "messages": messages_list,
-                    "slots": slots_list,
-                    "当前询问槽位": current_ask_slot_str,
-                    "当前槽位问题": answer_str,
-                    "情绪标签-预测": emotions_flag,
-                    "综合回复-预测": emotions_undertake
+                    "content": textOutput_str
                 },
-                "messages": messages_list
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "我已经添加了你，现在我们可以开始聊天了。"
+                    }
+                ]
             }
             content_str = call_fastgpt_api(payload)
             content_json = json.loads(content_str, strict=False)
@@ -138,21 +151,16 @@ def process_all_rows():
             # 拼接返回行数据
             result = {
                 '序号': index,
-                '用户问题': user_question_str,
+                'current_chat_id': current_chat_id,
                 '历史对话': json.dumps(messages_list, indent=4, ensure_ascii=False),
-                '历史槽位信息': slots_list,
-                '当前询问槽位': current_ask_slot_str,
-                '当前槽位问题': answer_str,
-                '情绪标签-预测': emotions_flag,
-                '综合回复-预测': emotions_undertake,
-                '情绪标签是否一致': content_json.get('情绪标签是否一致', ''),
-                '综合回复是否一致': content_json.get('综合回复是否一致', ''),
-                '情绪标签不一致的理由': content_json.get('情绪标签不一致的理由', ''),
-                '综合回复不合适理由': content_json.get('综合回复不合适理由', '')
+                '转人工原因': transfer_manual_reason,
+                '原始字符串': textOutput_str,
+                '提取结果': content_json.get('提取结果', ""),
+                '提取到的json数据': content_json.get('提取到的json数据', {}),
             }
             results.append(result)
-        except Exception:
-            print(f"index={index}，数据解析异常，item={item}")
+        except Exception as e:
+            print(f"index={index}，数据解析异常，item={item} e={e}")
     return results
 
 
@@ -160,6 +168,6 @@ def process_all_rows():
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows()
+    results = process_all_rows(10)
     write_to_excel(results, output_file)
     print("over。。。。")

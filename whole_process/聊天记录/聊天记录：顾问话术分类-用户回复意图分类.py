@@ -417,8 +417,8 @@ def main():
     success = processor.process(
         output_path=OUTPUT_PATH,
         batch_size=5,  # 每处理5行输出一次日志
-        start_row=30073,  # 读取excel行数，如果start_row=0，表示从excel第二行开始读取（去除了表头）
-        end_row = 35073
+        start_row=35073,  # 读取excel行数，如果start_row=0，表示从excel第二行开始读取（去除了表头）
+        end_row = 39073
     )
 
     if success:
