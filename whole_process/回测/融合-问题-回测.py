@@ -90,14 +90,14 @@ def call_fastgpt_api(payload: any) -> str:
         print(f"API调用发生未知错误: {e}")
         return ""
 
-def process_all_rows():
+def process_all_rows(max_row):
     results = []
     data_list = read_json_file(file_path)
     for index, item in enumerate(data_list):
         try:
-            # if index > 1000:
-            #     print(f"当前行：{index}，超过最大值，不再处理后续数据")
-            #     break
+            if index > max_row:
+                print(f"当前行：{index}，超过最大值，不再处理后续数据")
+                break
             print(f"当前fastgpt处理行：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
@@ -146,6 +146,8 @@ def process_all_rows():
             if content_str.endswith("```"):
                 content_str = content_str.removesuffix("```").strip()
             content_json = json.loads(content_str, strict=False)
+            if content_json is None:
+                continue
 
             # 拼接返回行数据
             result = {
@@ -167,7 +169,7 @@ def process_all_rows():
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows()
+    results = process_all_rows(100)
     write_to_excel(results, output_file)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     print("@@@@@@@@@@  处理完成  @@@@@@@@@@@@@")
