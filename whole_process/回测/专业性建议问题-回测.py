@@ -14,7 +14,7 @@ config_manager = ConfigManager("config.ini")
 api_key = config_manager.get_value("知识-专业性建议问题-回测", "api_key")
 fastgpt_api_url = config_manager.get_value("知识-专业性建议问题-回测", "fastgpt_api_url")
 # fastgpt工作流日志
-file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems.json"
+file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems-设计类2.0.json"
 output_file = f"C:/Users/amos.tong/Desktop/归因/知识-专业性建议问题-回测-结果-{time.time()}.xlsx"
 def read_json_file(file_path: str) -> List[Any]:
     """读取JSON文件"""
@@ -79,12 +79,12 @@ def call_fastgpt_api(payload: any) -> str:
         print(f"JSON解析失败: {e}")
         return ""
 
-def process_all_rows():
+def process_all_rows(max_row):
     results = []
     data_list = read_json_file(file_path)
     for index, item in enumerate(data_list):
         try:
-            if index > 200:
+            if index > max_row:
                 print(f"当前行：{index}，超过最大值，不再处理后续数据")
                 break
 
@@ -166,7 +166,7 @@ def process_all_rows():
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows()
+    results = process_all_rows(2000)
     write_to_excel(results, output_file)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     print("@@@@@@@@@@  处理完成  @@@@@@@@@@@@@")

@@ -15,7 +15,7 @@ config_manager = ConfigManager("config.ini")
 api_key = config_manager.get_value("SOP-问题-回测", "api_key")
 fastgpt_api_url = config_manager.get_value("SOP-问题-回测", "fastgpt_api_url")
 
-file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems_09-13.json"
+file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems-设计类2.0.json"
 output_file = f"C:/Users/amos.tong/Desktop/归因/SOP-问题-回测-结果-{time.time()}.xlsx"
 def read_json_file(file_path: str) -> List[Any]:
     """读取JSON文件"""
