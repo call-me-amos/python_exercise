@@ -169,7 +169,7 @@ def process_all_rows(max_row):
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows(100)
+    results = process_all_rows(1000)
     write_to_excel(results, output_file)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     print("@@@@@@@@@@  处理完成  @@@@@@@@@@@@@")
