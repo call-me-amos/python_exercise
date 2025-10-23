@@ -8,6 +8,7 @@ import os
 import time
 import requests
 
+from whole_process.回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
@@ -164,9 +165,17 @@ def process_all_rows(max_row):
                 content_str = content_str.removesuffix("```").strip()
             content_json = json.loads(content_str, strict=False)
 
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
+
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 "当前用户问题": user_question_str,
                 "QA回复话术-预测": qa_undertake,
                 "messages": json.dumps(messages_list, indent=4, ensure_ascii=False),
@@ -186,7 +195,7 @@ def process_all_rows(max_row):
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows(1000)
+    results = process_all_rows(2000)
     write_to_excel(results, output_file)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     print("@@@@@@@@@@  处理完成  @@@@@@@@@@@@@")

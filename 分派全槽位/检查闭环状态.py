@@ -41,7 +41,7 @@ def fun_obj_sorted_by_default_arr(data1, data2):
 def fun_close_flag(data1, data2, data3, data4, data5,
                    data6, data7, data8, data9, data10,
                    data11, data12, data13, data14):
-    close_flag = (data9 in none_list or data9 == '家装') and data1 == '90天内'
+    close_flag = (data9 in none_list or data9 == '家装') and data1 in ('90天内','一个月内')
     close_flag = close_flag and all(arg not in none_list for arg in (data3, data4))
     close_flag = close_flag and data5 == '一个月内'
     # 是否交房
@@ -56,11 +56,17 @@ def fun_close_flag(data1, data2, data3, data4, data5,
         if '整改' in data8:
             house_type_is_closed = True
         else:
-            # 判断空间和详情
-            space_check = any(space in data8 for space in allowed_spaces)
-            detail_check = any(detail in data8 for detail in allowed_details)
+            # # 判断空间和详情
+            # space_check = any(space in data8 for space in allowed_spaces)
+            # detail_check = any(detail in data8 for detail in allowed_details)
+            #
+            # house_type_is_closed = space_check and detail_check
 
-            house_type_is_closed = space_check and detail_check
+            # 临时方案，工程量有值就认为提取到了
+            if data8 in none_list:
+                house_type_is_closed = False
+            else:
+                house_type_is_closed = True
     else:
         house_type_is_closed = False
     ## 整合房屋类型
@@ -344,38 +350,25 @@ def main(data1="", data2="", data3="", data4="", data5="",
 
 
 
-
-
-
 params = {
-    "data1": "",
-    "data2": "毛坯",
-    "data3": "",
-    "data4": "",
-    "data5": "",
-    "data6": "",
-    "data7": "",
-    "data8": "",
-    "data9": "",
-    "data10": "是",
-    "data11": "",
-    "data12": [],
-    "data13": "",
-    "data14": [
-        "房屋类型",
-        "工程量",
-        "工程量-局改空间",
-        "工程量-局改详情",
-        "装修用途",
-        "装修时间",
-        "城市",
-        "是否交房",
-        "交房时间",
-        "量房时间",
-        "小区名称",
-        "房屋面积",
-        "姓氏"
-    ]
+  "data1": "90天内",
+  "data2": "毛胚&毛坯房",
+  "data3": "万科云城",
+  "data4": "130",
+  "data5": "今天以前",
+  "data6": "自住",
+  "data7": "童",
+  "data8": "原始值无",
+  "data9": "",
+  "data10": "是",
+  "data11": "30天内",
+  "data12": [
+    ""
+  ],
+  "data13": "深圳",
+  "data14": [
+    ""
+  ]
 }
 #
 #     {

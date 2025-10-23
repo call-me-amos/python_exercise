@@ -8,7 +8,7 @@ import os
 import time
 import requests
 from metabase_utils.prestodb_my import query_from_db
-
+from whole_process.回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
@@ -125,6 +125,11 @@ def process_all_rows(max_row):
                                      "%Y-%m-%d %H:%M:%S"), "message_type": row["message_type"],
                                  "content": row["text_content"]})
 
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
+
             payload = {
                 "variables": {
                     "messages": messages,
@@ -137,6 +142,9 @@ def process_all_rows(max_row):
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 '历史对话': json.dumps(messages, indent=4, ensure_ascii=False),
 
                 '未满足派单标准': content_json.get('未满足派单标准', ''),

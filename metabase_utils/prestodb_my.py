@@ -36,7 +36,6 @@ class Prestodb(object):
 
 
 def query_from_db(query_sql):
-    print(query_sql)
     prestodb = Prestodb()
     data_df = prestodb.query(query_sql)
     return data_df

@@ -8,7 +8,7 @@ import os
 import time
 import requests
 from metabase_utils.prestodb_my import query_from_db
-
+from whole_process.回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
@@ -93,11 +93,12 @@ def getTransferManualReasonByChartId(chartId):
 def process_all_rows(max_row):
     results = []
     chat_id_map = {}
+    match_chat_id_set =[]
     data_list = read_json_file(file_path)
     for index, item in enumerate(data_list):
         try:
-            if index < 300:
-                continue
+            # if index < 300:
+            #     continue
             print(f"当前fastgpt处理行：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
@@ -116,14 +117,11 @@ def process_all_rows(max_row):
                 message_df = getTransferManualReasonByChartId(current_chat_id)
                 for i, row in message_df.iterrows():
                     chat_id_map[current_chat_id] = row
-            if len(chat_id_map) > max_row:
-                print(f"chat_id_map 超过最大值，不再处理后续数据")
-                break
+
             transfer_manual_reason = chat_id_map[current_chat_id]['transfer_manual_reason']
             if transfer_manual_reason != 58:
                 # 不是提示语异常的场景，目前不处理
                 continue
-
             if responseData_map['指定回复#槽位兜底'] is None:
                 continue
 
@@ -134,6 +132,10 @@ def process_all_rows(max_row):
             conversation_str = responseData_map['将messages转成conversation']['pluginOutput']['conversation']
             messages_list = responseData_map['将messages转成conversation']['pluginDetail'][1]['customInputs']['messages']
 
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
             payload = {
                 "variables": {
                     "content": textOutput_str
@@ -151,6 +153,9 @@ def process_all_rows(max_row):
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 'current_chat_id': current_chat_id,
                 '历史对话': json.dumps(messages_list, indent=4, ensure_ascii=False),
                 '转人工原因': transfer_manual_reason,
@@ -159,6 +164,10 @@ def process_all_rows(max_row):
                 '提取到的json数据': content_json.get('提取到的json数据', {}),
             }
             results.append(result)
+            if value_from_slots.get("chatId") not in match_chat_id_set:
+                match_chat_id_set.append(value_from_slots.get("chatId"))
+            if len(match_chat_id_set) > max_row:
+                break
         except Exception as e:
             print(f"index={index}，数据解析异常，item={item} e={e}")
     return results
@@ -168,6 +177,6 @@ def process_all_rows(max_row):
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows(10)
+    results = process_all_rows(1000)
     write_to_excel(results, output_file)
     print("over。。。。")

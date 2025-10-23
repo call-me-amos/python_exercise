@@ -8,6 +8,7 @@ import os
 import time
 import requests
 
+from whole_process.回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
@@ -15,7 +16,7 @@ api_key = config_manager.get_value("融合-问题", "api_key")
 fastgpt_api_url = config_manager.get_value("融合-问题", "fastgpt_api_url")
 
 file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems-设计类2.0.json"
-output_file = f"C:/Users/amos.tong/Desktop/归因/融合-问题-结果-{time.time()}.xlsx"
+output_file = f"C:/Users/amos.tong/Desktop/归因/融合-问题-回测结果-{time.time()}.xlsx"
 def read_json_file(file_path: str) -> List[Any]:
     """读取JSON文件"""
     try:
@@ -117,6 +118,8 @@ def process_all_rows(max_row):
             except KeyError:
                 print(f"index={index}，无法获取角色信息")
                 continue
+            # slots 槽位信息
+            slots_list = responseData_map['代码运行#判断最后一句消息角色']['customOutputs']['slots']
 
             # 融合模块
             try:
@@ -132,6 +135,26 @@ def process_all_rows(max_row):
             except (KeyError, IndexError):
                 print(f"index={index}，无法获取conversation信息")
                 continue
+
+            try:
+                phoneId =slots_list.get("phoneId", 0) if "phoneId" in slots_list else ""
+            except KeyError:
+                print(f"获取phoneId失败 {index}")
+                phoneId =0
+            try:
+                chatId = slots_list.get("chatId", "") if "chatId" in slots_list else ""
+            except KeyError:
+                print(f"获取chatId失败 {index}")
+                chatId =''
+            try:
+                uid =slots_list.get("外部联系人id", "") if "外部联系人id" in slots_list else ""
+            except KeyError:
+                print(f"获取uid失败 {index}")
+                uid =''
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
 
             payload = {
                 "variables": {
@@ -152,6 +175,9 @@ def process_all_rows(max_row):
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 "融合输入": fused_input,
                 "推荐承接话术": fused_result,
                 "messages": json.dumps(messages_list, indent=4, ensure_ascii=False),

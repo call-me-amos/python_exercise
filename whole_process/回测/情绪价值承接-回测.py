@@ -8,6 +8,7 @@ import os
 import time
 import requests
 
+from whole_process.回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
@@ -116,10 +117,14 @@ def process_all_rows(max_row):
             answer_str = responseData_map['槽位话术解析']['customOutputs']['answer']
 
             # 情绪承接话术
-            emotions_undertake = responseData_map['情绪价值承接-快核需']['pluginOutput']['情绪价值承接话术']
+            emotions_undertake = responseData_map['情绪承接-时间压缩']['pluginOutput']['情绪价值承接话术']
             # 情绪价值标签
-            emotions_flag = responseData_map['情绪价值承接-快核需']['pluginOutput']['情绪价值标签']
+            emotions_flag = responseData_map['情绪承接-时间压缩']['pluginOutput']['情绪价值标签']
 
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
             payload = {
                 "variables": {
                     "用户问题": user_question_str,
@@ -138,6 +143,9 @@ def process_all_rows(max_row):
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 '用户问题': user_question_str,
                 '历史对话': json.dumps(messages_list, indent=4, ensure_ascii=False),
                 '历史槽位信息': slots_list,
@@ -151,8 +159,9 @@ def process_all_rows(max_row):
                 '综合回复不合适理由': content_json.get('综合回复不合适理由', '')
             }
             results.append(result)
-        except Exception:
-            print(f"index={index}，数据解析异常，item={item}")
+        except KeyError:
+            print(f"index={index}，数据解析异常")
+            continue
     return results
 
 
@@ -160,6 +169,6 @@ def process_all_rows(max_row):
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows(2000)
+    results = process_all_rows(1000)
     write_to_excel(results, output_file)
     print("over。。。。")

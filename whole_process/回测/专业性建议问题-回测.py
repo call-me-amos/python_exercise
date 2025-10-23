@@ -8,6 +8,7 @@ import os
 import time
 import requests
 
+from whole_process.回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
@@ -124,6 +125,10 @@ def process_all_rows(max_row):
             if responseData_map['专业性承接-快核需'] is not None and len(responseData_map['专业性承接-快核需']) > 0:
                 pro_suggestion = responseData_map['专业性承接-快核需']['pluginOutput']['承接综合回复']
 
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
 
             payload = {
                 "variables": {
@@ -143,6 +148,9 @@ def process_all_rows(max_row):
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 '用户问题': user_question_str,
                 'messages': messages_list,
                 '历史槽位信息': slots_list,

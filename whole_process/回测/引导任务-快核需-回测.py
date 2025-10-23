@@ -8,6 +8,7 @@ import os
 import time
 import requests
 
+from whole_process.回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
@@ -111,10 +112,14 @@ def process_all_rows(max_row):
             conversation_str = responseData_map['将messages转成conversation']['pluginOutput']['conversation']
             messages_list = responseData_map['将messages转成conversation']['pluginDetail'][1]['customInputs']['messages']
 
-            # 引导任务-时间压缩#2 最新的槽位信息
-            pluginDetail_check = responseData_map['引导任务-时间压缩#2']['pluginDetail']
+            pluginDetail_check = responseData_map['引导任务-时间压缩-俊山#2']['pluginDetail']
             pluginDetail_check_map = {item['moduleName']:item for i,item in enumerate(pluginDetail_check)}
             new_slots_json = pluginDetail_check_map['代码运行#槽位赋值']['customInputs']['data1']
+
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
 
             payload = {
                 "variables": {
@@ -130,6 +135,9 @@ def process_all_rows(max_row):
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 '用户问题': user_question_str,
                 'messages': json.dumps(messages_list, indent=2, ensure_ascii=False),
                 '当前提取到的最新槽位': new_slots_json,
@@ -141,7 +149,7 @@ def process_all_rows(max_row):
             results.append(result)
         except Exception as e:
             print(f"index={index}，数据解析异常，错误信息：{e}")
-            print(f"异常数据项：{item}")
+            continue
     return results
 
 
