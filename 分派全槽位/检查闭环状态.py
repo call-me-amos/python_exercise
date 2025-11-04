@@ -51,7 +51,7 @@ def fun_close_flag(data1, data2, data3, data4, data5,
     # 判断房屋类型
     if '毛坯' in data2:
         house_type_is_closed = True
-    elif '旧房翻新' in data2:
+    elif '旧房翻新' in data2 or '精装房' in data2:
         # 判断整局改
         if '整改' in data8:
             house_type_is_closed = True

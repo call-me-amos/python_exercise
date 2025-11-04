@@ -1,5 +1,5 @@
 from exceptiongroup import catch
-import datetime
+
 from diy_config.config import ConfigManager
 import json
 import pandas as pd
@@ -7,16 +7,16 @@ from typing import Any, Dict, List
 import os
 import time
 import requests
-from metabase_utils.prestodb_my import query_from_db
-from whole_process.回测.common import parse_filed_from_slots
+
+from whole_process.归因_回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
-api_key = config_manager.get_value("SOP-问题-回测", "api_key")
-fastgpt_api_url = config_manager.get_value("SOP-问题-回测", "fastgpt_api_url")
-
+api_key = config_manager.get_value("引导任务-快核需", "api_key")
+fastgpt_api_url = config_manager.get_value("引导任务-快核需", "fastgpt_api_url")
+# fastgpt工作流日志
 file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems-设计类2.0.json"
-output_file = f"C:/Users/amos.tong/Desktop/归因/SOP-问题-回测-结果-{time.time()}.xlsx"
+output_file = f"C:/Users/amos.tong/Desktop/归因/引导任务-快核需-回测-结果-{time.time()}.xlsx"
 def read_json_file(file_path: str) -> List[Any]:
     """读取JSON文件"""
     try:
@@ -80,24 +80,16 @@ def call_fastgpt_api(payload: any) -> str:
         print(f"JSON解析失败: {e}")
         return ""
 
-#获取消息列表
-def getMessagesByChartId(chartId):
-    query_sql = f"""
-    select direction,system_type,send_time,message_type,text_content
-    from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record
-    WHERE chat_id = '{chartId}'
-    order by send_time asc
-    """
-    messages = query_from_db(query_sql)
-    return messages
 def process_all_rows(max_row):
     results = []
     data_list = read_json_file(file_path)
-    chat_id_list = []
-    phone_id_list =[]
     for index, item in enumerate(data_list):
         try:
-            print(f"当前fastgpt处理行：{index}")
+            if index > max_row:
+                print(f"当前行：{index}，超过最大值，不再处理后续数据")
+                break
+
+            print(f"当前行：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
                 continue
@@ -108,22 +100,21 @@ def process_all_rows(max_row):
             # slots 槽位信息
             slots_list = responseData_map['代码运行#判断最后一句消息角色']['customOutputs']['slots']
 
-            # 如果chat_id_list包含 slots_list.get("chatId", "") 则continue
-            current_chat_id = slots_list.get("chatId", "")
-            if current_chat_id == "" or current_chat_id in chat_id_list:
+            # 角色判断
+            last_say_role_str = responseData_map['代码运行#判断最后一句消息角色']['customOutputs']['最后一句消息发送人角色']
+            if '用户' != last_say_role_str:
                 continue
-            if len(chat_id_list) > max_row:
-                print(f"chat_id_list 超过最大值，不再处理后续数据")
-                break
 
-            chat_id_list.append(current_chat_id)
-            message_df = getMessagesByChartId(current_chat_id)
-            messages = []
-            for i, row in message_df.iterrows():
-                messages.append({"role": ("assistant" if row["direction"] == 2 else "user"),
-                                 "send_time": datetime.datetime.fromtimestamp(row["send_time"]).strftime(
-                                     "%Y-%m-%d %H:%M:%S"), "message_type": row["message_type"],
-                                 "content": row["text_content"]})
+            # 用户问题
+            user_question_str = responseData_map['AI对话-首轮槽位变量赋值']['query']
+
+            # 将messages转成conversation
+            conversation_str = responseData_map['将messages转成conversation']['pluginOutput']['conversation']
+            messages_list = responseData_map['将messages转成conversation']['pluginDetail'][1]['customInputs']['messages']
+
+            pluginDetail_check = responseData_map['引导任务-时间压缩-俊山#2']['pluginDetail']
+            pluginDetail_check_map = {item['moduleName']:item for i,item in enumerate(pluginDetail_check)}
+            new_slots_json = pluginDetail_check_map['代码运行#槽位赋值']['customInputs']['data1']
 
             # 需要获取的键名集合
             keys_to_search = {"phoneId", "chatId", "外部联系人id"}
@@ -132,9 +123,11 @@ def process_all_rows(max_row):
 
             payload = {
                 "variables": {
-                    "messages": messages,
+                    "用户问题": user_question_str,
+                    "messages": messages_list,
+                    "当前提取到的最新槽位": new_slots_json
                 },
-                "messages": messages
+                "messages": messages_list
             }
             content_str = call_fastgpt_api(payload)
             content_json = json.loads(content_str, strict=False)
@@ -145,27 +138,24 @@ def process_all_rows(max_row):
                 'phoneId': value_from_slots.get("phoneId"),
                 'chatId': value_from_slots.get("chatId"),
                 'uid': value_from_slots.get("外部联系人id"),
-                '历史对话': json.dumps(messages, indent=4, ensure_ascii=False),
+                '用户问题': user_question_str,
+                'messages': json.dumps(messages_list, indent=2, ensure_ascii=False),
+                '当前提取到的最新槽位': new_slots_json,
 
-                '未满足派单标准': content_json.get('未满足派单标准', ''),
-                '未满足派单标准原因': content_json.get('未满足派单标准原因', ''),
-                '用户表达不着急': content_json.get('用户表达不着急', ''),
-                '负向情绪': content_json.get('负向情绪', ''),
-                '询问是否AI': content_json.get('询问是否AI', ''),
-                '用户未回复': content_json.get('用户未回复', '')
+                'ner提取结果是否一致': content_json.get('ner提取结果是否一致', ''),
+                'ner提取结果差异': content_json.get('ner提取结果差异', ''),
+                'ner提取明细': json.dumps(content_json.get('ner提取明细', ''), indent=2, ensure_ascii=False),
             }
             results.append(result)
         except Exception as e:
             print(f"index={index}，数据解析异常，错误信息：{e}")
-            print(f"异常数据项：{item}")
+            continue
     return results
-
-
 
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows(100)
+    results = process_all_rows(2000)
     write_to_excel(results, output_file)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     print("@@@@@@@@@@  处理完成  @@@@@@@@@@@@@")

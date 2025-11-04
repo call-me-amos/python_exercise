@@ -8,11 +8,15 @@ import os
 import time
 import requests
 from metabase_utils.prestodb_my import query_from_db
+from whole_process.归因_回测.common import parse_filed_from_slots
 
+config_manager = ConfigManager("config.ini")
+# 获取特定配置值
+api_key = config_manager.get_value("SOP-问题-回测", "api_key")
+fastgpt_api_url = config_manager.get_value("SOP-问题-回测", "fastgpt_api_url")
 
-file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems_09-13.json"
-output_file_for_temp = f"C:/Users/amos.tong/Desktop/待处理聊天记录/待处理聊天记录-语料回复.xlsx"
-output_file = f"C:/Users/amos.tong/Desktop/待处理聊天记录/语料回复的明细-{time.time()}.xlsx"
+file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems-设计类2.0.json"
+output_file = f"C:/Users/amos.tong/Desktop/归因/SOP-问题-回测-结果-{time.time()}.xlsx"
 def read_json_file(file_path: str) -> List[Any]:
     """读取JSON文件"""
     try:
@@ -48,42 +52,33 @@ def write_to_excel(data: List[Any], output_file: str) -> bool:
         print(f"写入Excel时发生错误: {e}")
         return False
 
-# 获取聊天记录
-def getMessages():
-    query_sql = f"""
-select 
-CONCAT(t1.wechat,'@',t1.external_userid) as sid
-,t1.direction
-,(
-	case when t1.direction =2 then '客服' else '用户' end
-) as "发送人"
-,t1.msg_time/1000 as msg_time
-,from_unixtime(t1.msg_time/1000+8*3600) as "发送时间"
-,t1.content 
-from 
-(
-	SELECT 
-		if(substr(from_id,1,2)='wm',tolist,from_id) as wechat,
-		if(substr(tolist,1,2)='wm',tolist,from_id) as external_userid,
-		if(substr(from_id,1,2)='wm',1,2) as direction,
-		msg_time,
-		msg_type,
-		content 
-	FROM hive2.ads.v_kudu2_stg_idc_new_t8t_mid_ucchat_uc_wechat_chatdata
-	WHERE msg_type='text'
-	 	and content <>'【未知消息类型】'
-	 	and content <>''
-	 	and msg_time>((to_unixtime(cast ('2025-10-08 00:00:0' as timestamp)) - 8*3600) *1000)
-	 	and msg_time<((to_unixtime(cast ('2025-10-09 00:00:0' as timestamp)) - 8*3600) *1000)
-) as t1 
-where 
---t1.wechat in('18575677395','16625124081','13244727305','17679207507','10708951')
---and 
-t1.external_userid like 'wm%'
-order by CONCAT(t1.wechat,'@',t1.external_userid),t1.msg_time
-    """
-    messages = query_from_db(query_sql)
-    return messages
+def call_fastgpt_api(payload: any) -> str:
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}"
+    }
+    try:
+        response = requests.post(
+            fastgpt_api_url,
+            headers=headers,
+            json=payload,
+            timeout=30
+        )
+
+        if response.status_code == 200:
+            content_str = response.json().get("choices", [{}])[0].get("message", {}).get("content", "")
+            print(f"fastgpt返回内容：\n{content_str}")
+            return content_str
+        else:
+            print(f"API调用失败: {response.status_code} - {response.text}")
+            return ""
+
+    except requests.exceptions.RequestException as e:
+        print(f"API请求异常: {e}")
+        return ""
+    except json.JSONDecodeError as e:
+        print(f"JSON解析失败: {e}")
+        return ""
 
 #获取消息列表
 def getMessagesByChartId(chartId):
@@ -129,9 +124,27 @@ def process_all_rows(max_row):
                                  "send_time": datetime.datetime.fromtimestamp(row["send_time"]).strftime(
                                      "%Y-%m-%d %H:%M:%S"), "message_type": row["message_type"],
                                  "content": row["text_content"]})
+
+            # 需要获取的键名集合
+            keys_to_search = {"phoneId", "chatId", "外部联系人id"}
+            # 调用方法
+            value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
+
+            payload = {
+                "variables": {
+                    "messages": messages,
+                },
+                "messages": messages
+            }
+            content_str = call_fastgpt_api(payload)
+            content_json = json.loads(content_str, strict=False)
+
             # 拼接返回行数据
             result = {
                 '序号': index,
+                'phoneId': value_from_slots.get("phoneId"),
+                'chatId': value_from_slots.get("chatId"),
+                'uid': value_from_slots.get("外部联系人id"),
                 '历史对话': json.dumps(messages, indent=4, ensure_ascii=False),
 
                 '未满足派单标准': content_json.get('未满足派单标准', ''),
@@ -152,12 +165,6 @@ def process_all_rows(max_row):
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    # 将聊天记录写入Excel文件，如果需要多次分析，可以使用缓存的聊天记录，避免重复查询数据
-    message_df = getMessages()
-    message_df.to_excel(output_file_for_temp, index=False, engine='openpyxl')
-    print(f"聊天记录已成功写入: {output_file_for_temp}")
-
-
     results = process_all_rows(100)
     write_to_excel(results, output_file)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")

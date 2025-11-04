@@ -9,5 +9,5 @@ for chatId in data:
     print(f"{deChatId.split('#')[0]} -- {deChatId.split('#')[1]} --{chatId}")
 
 
-new_chat_id = base64.b64encode(('13128753701' + '#' + 'wmJiIbDAAA6SqsuPr937SEdxigrp8YYw').encode('utf-8')).decode('utf-8')
+new_chat_id = base64.b64encode(('18565689273' + '#' + 'wmJiIbDAAAYdcEJkP0fZ8Hz6g-G1dVTQ').encode('utf-8')).decode('utf-8')
 print(f"new_chat_id={new_chat_id}")

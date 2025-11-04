@@ -8,7 +8,7 @@ import os
 import time
 import requests
 
-from whole_process.回测.common import parse_filed_from_slots
+from whole_process.归因_回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值

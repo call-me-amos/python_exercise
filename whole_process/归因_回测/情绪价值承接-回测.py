@@ -8,15 +8,15 @@ import os
 import time
 import requests
 
-from whole_process.回测.common import parse_filed_from_slots
+from whole_process.归因_回测.common import parse_filed_from_slots
 
 config_manager = ConfigManager("config.ini")
 # 获取特定配置值
-api_key = config_manager.get_value("引导任务-快核需", "api_key")
-fastgpt_api_url = config_manager.get_value("引导任务-快核需", "fastgpt_api_url")
-# fastgpt工作流日志
+api_key = config_manager.get_value("情绪价值承接-回测", "api_key")
+fastgpt_api_url = config_manager.get_value("情绪价值承接-回测", "fastgpt_api_url")
+
 file_path = f"C:/Users/amos.tong/Desktop/归因/fastgpt.chatitems-设计类2.0.json"
-output_file = f"C:/Users/amos.tong/Desktop/归因/引导任务-快核需-回测-结果-{time.time()}.xlsx"
+output_file = f"C:/Users/amos.tong/Desktop/归因/情绪价值承接-回测-结果-{time.time()}.xlsx"
 def read_json_file(file_path: str) -> List[Any]:
     """读取JSON文件"""
     try:
@@ -86,10 +86,9 @@ def process_all_rows(max_row):
     for index, item in enumerate(data_list):
         try:
             if index > max_row:
-                print(f"当前行：{index}，超过最大值，不再处理后续数据")
+                print(f"当前行：{index}，超过最大值{max_row}，不再处理后续数据")
                 break
-
-            print(f"当前行：{index}")
+            print(f"当前fastgpt处理行：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
                 continue
@@ -112,20 +111,29 @@ def process_all_rows(max_row):
             conversation_str = responseData_map['将messages转成conversation']['pluginOutput']['conversation']
             messages_list = responseData_map['将messages转成conversation']['pluginDetail'][1]['customInputs']['messages']
 
-            pluginDetail_check = responseData_map['引导任务-时间压缩-俊山#2']['pluginDetail']
-            pluginDetail_check_map = {item['moduleName']:item for i,item in enumerate(pluginDetail_check)}
-            new_slots_json = pluginDetail_check_map['代码运行#槽位赋值']['customInputs']['data1']
+            # 当前询问槽位
+            current_ask_slot_str = responseData_map['槽位话术解析']['customOutputs']['question']
+            # 当前槽位问题
+            answer_str = responseData_map['槽位话术解析']['customOutputs']['answer']
+
+            # 情绪承接话术
+            emotions_undertake = responseData_map['情绪承接-时间压缩']['pluginOutput']['情绪价值承接话术']
+            # 情绪价值标签
+            emotions_flag = responseData_map['情绪承接-时间压缩']['pluginOutput']['情绪价值标签']
 
             # 需要获取的键名集合
             keys_to_search = {"phoneId", "chatId", "外部联系人id"}
             # 调用方法
             value_from_slots = parse_filed_from_slots(slots_list, keys_to_search)
-
             payload = {
                 "variables": {
                     "用户问题": user_question_str,
                     "messages": messages_list,
-                    "当前提取到的最新槽位": new_slots_json
+                    "slots": slots_list,
+                    "当前询问槽位": current_ask_slot_str,
+                    "当前槽位问题": answer_str,
+                    "情绪标签-预测": emotions_flag,
+                    "综合回复-预测": emotions_undertake
                 },
                 "messages": messages_list
             }
@@ -139,24 +147,28 @@ def process_all_rows(max_row):
                 'chatId': value_from_slots.get("chatId"),
                 'uid': value_from_slots.get("外部联系人id"),
                 '用户问题': user_question_str,
-                'messages': json.dumps(messages_list, indent=2, ensure_ascii=False),
-                '当前提取到的最新槽位': new_slots_json,
-
-                'ner提取结果是否一致': content_json.get('ner提取结果是否一致', ''),
-                'ner提取结果差异': content_json.get('ner提取结果差异', ''),
-                'ner提取明细': json.dumps(content_json.get('ner提取明细', ''), indent=2, ensure_ascii=False),
+                '历史对话': json.dumps(messages_list, indent=4, ensure_ascii=False),
+                '历史槽位信息': slots_list,
+                '当前询问槽位': current_ask_slot_str,
+                '当前槽位问题': answer_str,
+                '情绪标签-预测': emotions_flag,
+                '综合回复-预测': emotions_undertake,
+                '情绪标签是否一致': content_json.get('情绪标签是否一致', ''),
+                '综合回复是否一致': content_json.get('综合回复是否一致', ''),
+                '情绪标签不一致的理由': content_json.get('情绪标签不一致的理由', ''),
+                '综合回复不合适理由': content_json.get('综合回复不合适理由', '')
             }
             results.append(result)
-        except Exception as e:
-            print(f"index={index}，数据解析异常，错误信息：{e}")
+        except KeyError:
+            print(f"index={index}，数据解析异常")
             continue
     return results
 
 
+
+
 if __name__ == "__main__":
     print("开始处理。。。。。")
-    results = process_all_rows(2000)
+    results = process_all_rows(1000)
     write_to_excel(results, output_file)
-    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-    print("@@@@@@@@@@  处理完成  @@@@@@@@@@@@@")
-    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    print("over。。。。")

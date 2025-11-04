@@ -1,6 +1,8 @@
 import configparser
 
-
+"""
+    通用配置
+"""
 class ConfigManager:
     def __init__(self, config_file):
         # config_file 文件放在调用方法同级
