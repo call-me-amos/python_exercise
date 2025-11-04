@@ -42,3 +42,6 @@ version
 .metadata/
 drivers
 DBeaver/General/.dbeaver/*
+**/__pycache__/**
+*.pyc
+**/*.pyc
