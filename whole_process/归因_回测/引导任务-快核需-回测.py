@@ -57,7 +57,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             messages_list = responseData_map['将messages转成conversation']['pluginDetail'][1]['customInputs'][
                 'messages']
 
-            pluginDetail_check = responseData_map['引导任务-时间压缩-俊山#2']['pluginDetail']
+            pluginDetail_check = responseData_map['引导任务-时间压缩-俊山']['pluginDetail']
             pluginDetail_check_map = {item['moduleName']: item for i, item in enumerate(pluginDetail_check)}
             new_slots_json = pluginDetail_check_map['代码运行#槽位赋值']['customInputs']['data1']
 

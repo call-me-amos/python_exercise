@@ -109,11 +109,12 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             if len(match_chat_id_set) > max_row:
                 break
         except Exception as e:
-            print(f"index={index}，数据解析异常，item={item} e={e}")
+            print(f"index={index}，数据解析异常 e={e}")
     return results
 
 
 if __name__ == "__main__":
+    # 转人工原因为：58： 提示语异常，检查工作流返回的内容是不是非json
     print("开始处理。。。。。")
     api_key, fastgpt_api_url = init_config()
     results = process_all_rows(1000, api_key, fastgpt_api_url,[])

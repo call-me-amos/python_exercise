@@ -63,12 +63,12 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             answer_str = responseData_map['槽位话术解析']['customOutputs']['answer']
 
             # QA回复话术
-            qa_undertake = responseData_map['咨询承接 -强核需']['pluginOutput']['咨询承接响应']
+            qa_undertake = responseData_map['咨询承接 -时间压缩']['pluginOutput']['咨询承接响应']
 
             # 专业性建议
             pro_suggestion = ''
-            if responseData_map['专业性承接-快核需'] is not None and len(responseData_map['专业性承接-快核需']) > 0:
-                pro_suggestion = responseData_map['专业性承接-快核需']['pluginOutput']['承接综合回复']
+            if responseData_map['专业度承接-时间压缩'] is not None and len(responseData_map['专业度承接-时间压缩']) > 0:
+                pro_suggestion = responseData_map['专业度承接-时间压缩']['pluginOutput']['承接综合回复']
 
             # 需要获取的键名集合
             keys_to_search = {"phoneId", "chatId", "外部联系人id"}
@@ -110,8 +110,8 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
                 '专业性建议是否合适的理由': content_json.get('专业性建议是否合适的理由', '')
             }
             results.append(result)
-        except Exception:
-            print(f"index={index}，数据解析异常，item={item}")
+        except Exception as e:
+            print(f"index={index}，数据解析异常 e={e}")
     return results
 
 

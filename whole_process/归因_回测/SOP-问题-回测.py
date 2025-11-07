@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import json
 
 import whole_process.归因_回测.common as common
@@ -67,7 +67,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             messages = []
             for i, row in message_df.iterrows():
                 messages.append({"role": ("assistant" if row["direction"] == 2 else "user"),
-                                 "send_time": datetime.datetime.fromtimestamp(row["send_time"]).strftime(
+                                 "send_time": datetime.fromtimestamp(row["send_time"]).strftime(
                                      "%Y-%m-%d %H:%M:%S"), "message_type": row["message_type"],
                                  "content": row["text_content"]})
 
@@ -103,14 +103,13 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             results.append(result)
         except Exception as e:
             print(f"index={index}，数据解析异常，错误信息：{e}")
-            print(f"异常数据项：{item}")
     return results
 
 
 if __name__ == "__main__":
     print("开始处理。。。。。")
     api_key, fastgpt_api_url = init_config()
-    results = process_all_rows(100, api_key, fastgpt_api_url,[])
+    results = process_all_rows(10000, api_key, fastgpt_api_url,[])
     common.write_to_excel(results, output_file)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     print("@@@@@@@@@@  处理完成  @@@@@@@@@@@@@")
