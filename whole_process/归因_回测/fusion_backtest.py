@@ -17,7 +17,7 @@ def init_config():
 
 def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
     results = []
-    if data_list is None:
+    if data_list is None or len(data_list) == 0:
         data_list = common.read_json_file(file_path)
     for index, item in enumerate(data_list):
         try:
