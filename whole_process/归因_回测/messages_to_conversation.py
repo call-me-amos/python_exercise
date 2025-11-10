@@ -25,7 +25,7 @@ def main(messages):
             parsed = json.loads(content)
             if isinstance(parsed, dict) and "url" in parsed:
                 content = f"[图片] {parsed.get('url')}"
-        except Exception:
+        except Exception as em:
             pass  # 普通文本就直接用
 
         conversation.append(f"{role}：{content}")

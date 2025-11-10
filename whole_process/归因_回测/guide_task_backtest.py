@@ -92,8 +92,8 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
                 'ner提取明细': json.dumps(content_json.get('ner提取明细', ''), indent=2, ensure_ascii=False),
             }
             results.append(result)
-        except Exception as e:
-            print(f"index={index}，数据解析异常，错误信息：{e}")
+        except Exception as ex:
+            print(f"index={index}，数据解析异常，错误信息：{ex}")
             continue
     return results
 

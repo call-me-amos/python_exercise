@@ -67,7 +67,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
 
             # 专业性建议
             pro_suggestion = ''
-            if responseData_map['专业度承接-时间压缩'] is not None and len(responseData_map['专业度承接-时间压缩']) > 0:
+            if '专业度承接-时间压缩' in responseData_map and responseData_map['专业度承接-时间压缩'] is not None and len(responseData_map['专业度承接-时间压缩']) > 0:
                 pro_suggestion = responseData_map['专业度承接-时间压缩']['pluginOutput']['承接综合回复']
             else:
                 continue
@@ -112,8 +112,8 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
                 '专业性建议是否合适的理由': content_json.get('专业性建议是否合适的理由', '')
             }
             results.append(result)
-        except Exception as e:
-            print(f"index={index}，数据解析异常 e={e}")
+        except Exception as ep:
+            print(f"index={index}，数据解析异常 e={ep}")
             continue
     return results
 

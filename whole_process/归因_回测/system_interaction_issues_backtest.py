@@ -108,8 +108,9 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
                 match_chat_id_set.append(value_from_slots.get("chatId"))
             if len(match_chat_id_set) > max_row:
                 break
-        except Exception as e:
-            print(f"index={index}，数据解析异常 e={e}")
+        except Exception as ex:
+            print(f"index={index}，数据解析异常 ex={ex}")
+            continue
     return results
 
 

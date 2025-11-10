@@ -99,8 +99,8 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
                 '综合回复不合适理由': content_json.get('综合回复不合适理由', '')
             }
             results.append(result)
-        except KeyError:
-            print(f"index={index}，数据解析异常")
+        except KeyError as e:
+            print(f"index={index}，数据解析异常 {e}")
             continue
     return results
 

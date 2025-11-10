@@ -113,8 +113,8 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
                 "思考过程": content_json.get('思考过程', ''),
             }
             results.append(result)
-        except Exception as e:
-            print(f"index={index}，数据解析异常， e={e}")
+        except Exception as ex:
+            print(f"index={index}，数据解析异常， e={ex}")
             continue
     return results
 

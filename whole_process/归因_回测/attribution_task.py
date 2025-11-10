@@ -17,13 +17,15 @@ import whole_process.归因_回测.system_interaction_issues_backtest as system_
 import whole_process.归因_回测.common as common
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
+import os
+import pandas as pd
 
 def init_config_and_time():
     """初始化配置和时间范围"""
     now = datetime.now()
     today_date = now.strftime("%Y-%m-%d")
     start_time = datetime.strptime(f"{today_date} 00:00:00", "%Y-%m-%d %H:%M:%S")
-    end_time = datetime.strptime(f"{today_date} 10:30:00", "%Y-%m-%d %H:%M:%S")
+    end_time = datetime.strptime(f"{today_date} 09:30:00", "%Y-%m-%d %H:%M:%S")
     
     return now, start_time, end_time
 
@@ -34,8 +36,8 @@ def process_single_backtest(backtest_module, data_list, result_key):
         batch_result = backtest_module.process_all_rows(1000, api_key, fastgpt_api_url, data_list)
         print(f"{result_key}本批处理完成，结果数量: {len(batch_result)}")
         return result_key, batch_result
-    except Exception as e:
-        print(f"{result_key}处理失败: {e}")
+    except Exception as ex:
+        print(f"{result_key}处理失败: {ex}")
         return result_key, []
 
 def process_all_backtests(data_list, results_dict):
@@ -64,7 +66,7 @@ def process_all_backtests(data_list, results_dict):
 def save_single_result_to_excel(result_key, result_data, now, file_name):
     """保存单个结果到Excel文件"""
     if result_data:
-        output_file = f"C:/Users/amos.tong/Desktop/归因_每天/{file_name}-回测-结果-{now.strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
+        output_file = f"C:/Users/amos.tong/Desktop/归因_每天/{file_name}-回测-结果-{now.strftime('%Y-%m-%d')}.xlsx"
         common.write_to_excel(result_data, output_file)
         print(f"{result_key}数据处理完成，共处理 {len(result_data)} 条记录")
         return f"{result_key}: 已保存 {len(result_data)} 条记录"
@@ -88,7 +90,135 @@ def save_results_to_excel(results_dict, now):
         
         for future in as_completed(future_to_key):
             result = future.result()
-            print(result)
+            print(f'future.result={result}')
+
+def get_percentage(data_list, column_name, target_value):
+    """计算指定列中目标值的占比"""
+    if not data_list or len(data_list) == 0:
+        return 0
+    total = len(data_list)
+    count = sum(1 for item in data_list if item.get(column_name) == target_value)
+    return round(count / total * 100, 2)
+
+def analyze_single_file(file_path, file_name, date_str):
+    """分析单个Excel文件"""
+    if not os.path.exists(file_path):
+        print(f"文件不存在: {file_path}")
+        return None
+    
+    try:
+        df = pd.read_excel(file_path)
+        data_list = df.to_dict('records')
+        
+        result = {'date': date_str}
+        
+        # 根据不同的文件类型计算不同的统计指标
+        if '情绪价值承接' in file_name:
+            result['【情绪价值承接】情绪标签是否一致'] = get_percentage(data_list, '情绪标签是否一致', '是')
+            result['【情绪价值承接】综合回复是否一致'] = get_percentage(data_list, '综合回复是否一致', '是')
+        
+        elif '新版QA' in file_name:
+            result['【新版QA】QA回复是否流畅'] = get_percentage(data_list, 'QA回复是否流畅', '是')
+        
+        elif '融合' in file_name:
+            result['【融合】推荐承接话术不合理'] = get_percentage(data_list, '推荐承接话术不合理', '是')
+        
+        elif 'SOP-问题' in file_name:
+            result['【SOP-问题】未满足派单标准'] = get_percentage(data_list, '未满足派单标准', '是')
+            result['【SOP-问题】用户表达不着急'] = get_percentage(data_list, '用户表达不着急', '是')
+            result['【SOP-问题】负向情绪'] = get_percentage(data_list, '负向情绪', '是')
+            result['【SOP-问题】询问是否AI'] = get_percentage(data_list, '询问是否AI', '是')
+            result['【SOP-问题】用户未回复'] = get_percentage(data_list, '用户未回复', '是')
+        
+        elif '知识-专业性建议问题' in file_name:
+            result['【知识-专业性建议问题】QA回复话术是否合适'] = get_percentage(data_list, 'QA回复话术是否合适', '否')
+            result['【知识-专业性建议问题】专业性建议是否合适'] = get_percentage(data_list, '专业性建议是否合适', '否')
+        
+        elif '引导任务' in file_name:
+            result['【引导任务】ner提取结果是否一致'] = get_percentage(data_list, 'ner提取结果是否一致', '是')
+        
+        elif '系统交互问题' in file_name:
+            result['【系统交互问题】提取结果'] = get_percentage(data_list, '提取结果', '成功')
+        
+        print(f"分析完成: {file_name}, 日期: {date_str}")
+        return result
+        
+    except Exception as ex:
+        print(f"分析文件失败: {file_path}, 错误: {ex}")
+        return None
+
+def analyze_recent_data(now):
+    """分析最近4天的数据并生成统计报告"""
+    print("开始分析最近4天的数据...")
+    
+    # 文件类型配置
+    file_types = [
+        '情绪价值承接', '新版QA', '融合', 'SOP-问题', 
+        '知识-专业性建议问题', '引导任务', '系统交互问题'
+    ]
+    
+    # 获取最近4天的日期
+    dates = []
+    for i in range(4):
+        date = now - timedelta(days=i)
+        dates.append(date.strftime('%Y-%m-%d'))
+    
+    # 收集所有统计数据
+    all_stats = []
+    
+    # 为每种文件类型收集数据
+    for file_type in file_types:
+        print(f"正在分析 {file_type} 类型的数据...")
+        
+        # 为每个日期分析数据
+        for date_str in dates:
+            file_path = f"C:/Users/amos.tong/Desktop/归因_每天/{file_type}-回测-结果-{date_str}.xlsx"
+            result = analyze_single_file(file_path, file_type, date_str)
+            if result:
+                all_stats.append(result)
+    
+    if all_stats:
+        # 将所有统计数据合并到一个DataFrame中
+        stats_df = pd.DataFrame(all_stats)
+        
+        # 按日期分组，每个指标作为一行
+        pivot_data = []
+        all_metrics = set()
+        
+        # 收集所有指标名称
+        for stat in all_stats:
+            for key in stat.keys():
+                if key != 'date':
+                    all_metrics.add(key)
+        
+        # 为每个指标创建一行数据
+        for metric in sorted(all_metrics):
+            row = {'指标': metric}
+            for date_str in sorted(dates, reverse=True):  # 日期倒序排列
+                # 查找对应日期和指标的数据
+                value = None
+                for stat in all_stats:
+                    if stat.get('date') == date_str and metric in stat:
+                        value = stat[metric]
+                        break
+                row[date_str] = f"{value}%" if value is not None else ""
+            pivot_data.append(row)
+        
+        # 创建最终的统计表格
+        final_df = pd.DataFrame(pivot_data)
+        
+        # 保存到单个Excel文件
+        output_path = f"C:/Users/amos.tong/Desktop/归因_每天/归因回测统计汇总-{now.strftime('%Y-%m-%d')}.xlsx"
+        
+        # 确保目录存在
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        
+        # 保存到Excel
+        final_df.to_excel(output_path, index=False)
+        print(f"统计报告已保存: {output_path}")
+        print(f"共生成 {len(pivot_data)} 项统计指标，覆盖 {len(set(stat['date'] for stat in all_stats))} 个日期")
+    else:
+        print("没有找到任何有效的数据文件")
 
 def process_data_batches(mongo_client, start_time, end_time):
     """处理数据批次循环"""
@@ -102,13 +232,16 @@ def process_data_batches(mongo_client, start_time, end_time):
         'system_interaction_issues_result': []
     }
     
-    page_size = 500
+    #page_size = 500
+    page_size = 20
     last_time = start_time
     batch_count = 0
 
     while True:
         batch_count += 1
         print(f"正在查询第 {batch_count} 批数据，从时间 {last_time} 开始... 结束时间：{end_time}")
+        if batch_count > 2:
+            break
         
         # 查询MongoDB数据
         data_list = mongo_client.find_many(
@@ -156,8 +289,11 @@ def task():
             # 保存所有结果到Excel
             save_results_to_excel(results_dict, now)
 
-    except Exception as e:
-        print(f"操作过程中发生异常: {e}")
+            # 统计分析最近4天的数据
+            analyze_recent_data(now)
+
+    except Exception as ex:
+        print(f"操作过程中发生异常: {ex}")
     finally:
         # 确保在任何情况下都关闭连接
         mongo_client.disconnect()

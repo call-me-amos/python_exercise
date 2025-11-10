@@ -1,7 +1,7 @@
 import json
 import re
 
-none_list = ["", None, "None"]
+none_list = ["", None, "None", "0"]
 allowed_spaces = {'厨房', '卫生间', '厨卫'}
 allowed_details = {'水电', '水', '电'}
 name_count = 0
