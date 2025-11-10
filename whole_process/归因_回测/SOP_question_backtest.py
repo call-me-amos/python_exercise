@@ -103,6 +103,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             results.append(result)
         except Exception as e:
             print(f"index={index}，数据解析异常，错误信息：{e}")
+            continue
     return results
 
 

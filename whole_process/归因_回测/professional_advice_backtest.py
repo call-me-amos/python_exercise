@@ -69,6 +69,8 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             pro_suggestion = ''
             if responseData_map['专业度承接-时间压缩'] is not None and len(responseData_map['专业度承接-时间压缩']) > 0:
                 pro_suggestion = responseData_map['专业度承接-时间压缩']['pluginOutput']['承接综合回复']
+            else:
+                continue
 
             # 需要获取的键名集合
             keys_to_search = {"phoneId", "chatId", "外部联系人id"}
@@ -112,6 +114,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             results.append(result)
         except Exception as e:
             print(f"index={index}，数据解析异常 e={e}")
+            continue
     return results
 
 

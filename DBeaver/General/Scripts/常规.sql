@@ -1,5 +1,5 @@
 -- 常量设置
-@set hivevar_transfer_manual_reason = (case  when cr.transfer_manual_reason=0 then '会话中' when cr.transfer_manual_reason=1 then '主动取消' when cr.transfer_manual_reason=2 then '用户开口' when cr.transfer_manual_reason=3 then '用户拉黑删除好友' when cr.transfer_manual_reason=4 then '微联回调消息失败' when cr.transfer_manual_reason=5 then '用户超时无响应' when cr.transfer_manual_reason=6 then '回复内容不识别' when cr.transfer_manual_reason=7 then '话术流程结束' when cr.transfer_manual_reason=8 then '回复非文本内容不识别' when cr.transfer_manual_reason=9 then '调用素材中心接口失败' when cr.transfer_manual_reason=10 then '二次促开口，不满足跟进条件' when cr.transfer_manual_reason=11 then '无法识别用户回复意图' when cr.transfer_manual_reason=12 then '没有匹配到问题' when cr.transfer_manual_reason=13 then '槽位值归一失败' when cr.transfer_manual_reason=14 then '没找到话术调度策略' when cr.transfer_manual_reason=15 then '话术调度策略转人工' when cr.transfer_manual_reason=16 then '查找状态策略表级联超过了10次' when cr.transfer_manual_reason=17 then '转人工意图策略' when cr.transfer_manual_reason=18 then '顾问企微账号不再使用兔小智' when cr.transfer_manual_reason=19 then '项目状态已是已获权以上' when cr.transfer_manual_reason=20 then '模型调用失败' when cr.transfer_manual_reason=21 then '促开口配置错误' when cr.transfer_manual_reason=22 then '账号取消托管' when cr.transfer_manual_reason=23 then '槽位提问超过2次' when cr.transfer_manual_reason=24 then '达到闭环条件' when cr.transfer_manual_reason=25 then '公装' when cr.transfer_manual_reason=26 then '相同话术不允许重复发' when cr.transfer_manual_reason=27 then '待发送话术对应的槽位已经有值' when cr.transfer_manual_reason=28 then '特殊意图超过阈值' when cr.transfer_manual_reason=29 then '项目状态已是已获权以上，且用户开口' when cr.transfer_manual_reason=30 then '用户未开口' when cr.transfer_manual_reason=31 then '用户二次开口' when cr.transfer_manual_reason=32 then '三个月后交房[闭环]' when cr.transfer_manual_reason=33 then '主动取消-话术流程错误' when cr.transfer_manual_reason=34 then '主动取消-话术不恰当' when cr.transfer_manual_reason=35 then '顾问主动要求' when cr.transfer_manual_reason=36 then '顾问抢答或撤回消息' when cr.transfer_manual_reason=37 then '大模型兜底内容无法识别其意图' when cr.transfer_manual_reason=38 then '大模型兜底导致相同内容超过2次' when cr.transfer_manual_reason=39 then '系统未知异常' when cr.transfer_manual_reason=40 then '暂停托管次数超过阈值' when cr.transfer_manual_reason=41 then '无人工响应' when cr.transfer_manual_reason=42 then '暂停托管跟进超时' when cr.transfer_manual_reason=43 then '在职转接删除好友' when cr.transfer_manual_reason=44 then '结束跟进' when cr.transfer_manual_reason=45 then '规则查找超过20次' when cr.transfer_manual_reason=46 then '用户填写小程序卡' when cr.transfer_manual_reason=47 then '话术存在占位符' when cr.transfer_manual_reason=48 then '计算大模型兜底意向量房时间异常' when cr.transfer_manual_reason=49 then '大模型推荐转人工' when cr.transfer_manual_reason=50 then '话术流程结束-ABC闭环' when cr.transfer_manual_reason=51 then '根据话术条件查询失败' when cr.transfer_manual_reason=52 then '话术流程结束-发完姓氏闭环' when cr.transfer_manual_reason=53 then '审核编辑后，项目状态已是已获权以上'  when cr.transfer_manual_reason=54 then '用户超长时间后开口'  when cr.transfer_manual_reason=55 then '不满足大模型兜底条件-未交房'  when cr.transfer_manual_reason=56 then '不满足大模型兜底条件-在外地'  when cr.transfer_manual_reason=57 then '触发过年期间不可约量房时间'  when cr.transfer_manual_reason=58 then '提示语返回异常'  when cr.transfer_manual_reason=59 then '已签约，转人工'  when cr.transfer_manual_reason=62 then '分派全槽位-用户超时无响应'	when cr.transfer_manual_reason=63 then '分派全槽位-大模型返回不可派'	when cr.transfer_manual_reason=64 then '分派全槽位-大模型返回核需完成'	when cr.transfer_manual_reason=65 then '分派全槽位-大模型返回其他'	when cr.transfer_manual_reason=66 then '分派全槽位-fastGPT返回包含特殊字符'	when cr.transfer_manual_reason=67 then '分派全槽位-核需中但是没有推荐话术' when cr.transfer_manual_reason=68 then '全流程-恢复托管没有获取到互动环名称' when cr.transfer_manual_reason=69 then '好友被拉黑'	when cr.transfer_manual_reason=101 then '开启会话失败' when cr.transfer_manual_reason=102 then '获取当前槽位失败' when cr.transfer_manual_reason=103 then '静默超时转人工挂机' when cr.transfer_manual_reason=104 then '用户出现负向意图-挂机' when cr.transfer_manual_reason=105 then '用户累计2次中性意图-挂机' when cr.transfer_manual_reason=106 then '用户表达不能操作1-挂机' when cr.transfer_manual_reason=107 then '会话调度流程结束-挂机' when cr.transfer_manual_reason=108 then '找不到对应的话术策略-挂机' when cr.transfer_manual_reason=109 then '加微操作未引导成功-挂机' when cr.transfer_manual_reason=110 then '收不到短信-挂机' when cr.transfer_manual_reason=111 then '短信加微操作未引导成功-挂机' when cr.transfer_manual_reason=112 then '结束语' when cr.transfer_manual_reason=113 then '用户表达不能操作2-挂机' when cr.transfer_manual_reason=114 then '用户辱骂-挂机' when cr.transfer_manual_reason=115 then '加微操作未引导成功1-挂机' when cr.transfer_manual_reason=116 then '用户表达不能操作3-挂机' when cr.transfer_manual_reason=117 then '用户主动挂机' when cr.transfer_manual_reason=108 then '找不到素材信息-挂机' when cr.transfer_manual_reason=119 then '前置话术-联系官网类-挂机' when cr.transfer_manual_reason=120 then '已匹配结束语' when cr.transfer_manual_reason=121 then '未匹配结束语' when cr.transfer_manual_reason=122 then '结束语-已转化' when cr.transfer_manual_reason=123 then '结束语-未转化' when cr.transfer_manual_reason=124 then '后续联系-结束语' else '未知' end )  as "转人工原因"
+@set hivevar_transfer_manual_reason = (case  when cr.transfer_manual_reason=0 then '会话中' when cr.transfer_manual_reason=1 then '主动取消' when cr.transfer_manual_reason=2 then '用户开口' when cr.transfer_manual_reason=3 then '用户拉黑删除好友' when cr.transfer_manual_reason=4 then '微联回调消息失败' when cr.transfer_manual_reason=5 then '用户超时无响应' when cr.transfer_manual_reason=6 then '回复内容不识别' when cr.transfer_manual_reason=7 then '话术流程结束' when cr.transfer_manual_reason=8 then '回复非文本内容不识别' when cr.transfer_manual_reason=9 then '调用素材中心接口失败' when cr.transfer_manual_reason=10 then '二次促开口，不满足跟进条件' when cr.transfer_manual_reason=11 then '无法识别用户回复意图' when cr.transfer_manual_reason=12 then '没有匹配到问题' when cr.transfer_manual_reason=13 then '槽位值归一失败' when cr.transfer_manual_reason=14 then '没找到话术调度策略' when cr.transfer_manual_reason=15 then '话术调度策略转人工' when cr.transfer_manual_reason=16 then '查找状态策略表级联超过了10次' when cr.transfer_manual_reason=17 then '转人工意图策略' when cr.transfer_manual_reason=18 then '顾问企微账号不再使用兔小智' when cr.transfer_manual_reason=19 then '项目状态已是已获权以上' when cr.transfer_manual_reason=20 then '模型调用失败' when cr.transfer_manual_reason=21 then '促开口配置错误' when cr.transfer_manual_reason=22 then '账号取消托管' when cr.transfer_manual_reason=23 then '槽位提问超过2次' when cr.transfer_manual_reason=24 then '达到闭环条件' when cr.transfer_manual_reason=25 then '公装' when cr.transfer_manual_reason=26 then '相同话术不允许重复发' when cr.transfer_manual_reason=27 then '待发送话术对应的槽位已经有值' when cr.transfer_manual_reason=28 then '特殊意图超过阈值' when cr.transfer_manual_reason=29 then '项目状态已是已获权以上，且用户开口' when cr.transfer_manual_reason=30 then '用户未开口' when cr.transfer_manual_reason=31 then '用户二次开口' when cr.transfer_manual_reason=32 then '三个月后交房[闭环]' when cr.transfer_manual_reason=33 then '主动取消-话术流程错误' when cr.transfer_manual_reason=34 then '主动取消-话术不恰当' when cr.transfer_manual_reason=35 then '顾问主动要求' when cr.transfer_manual_reason=36 then '顾问抢答或撤回消息' when cr.transfer_manual_reason=37 then '大模型兜底内容无法识别其意图' when cr.transfer_manual_reason=38 then '大模型兜底导致相同内容超过2次' when cr.transfer_manual_reason=39 then '系统未知异常' when cr.transfer_manual_reason=40 then '暂停托管次数超过阈值' when cr.transfer_manual_reason=41 then '无人工响应' when cr.transfer_manual_reason=42 then '暂停托管跟进超时' when cr.transfer_manual_reason=43 then '在职转接删除好友' when cr.transfer_manual_reason=44 then '结束跟进' when cr.transfer_manual_reason=45 then '规则查找超过20次' when cr.transfer_manual_reason=46 then '用户填写小程序卡' when cr.transfer_manual_reason=47 then '话术存在占位符' when cr.transfer_manual_reason=48 then '计算大模型兜底意向量房时间异常' when cr.transfer_manual_reason=49 then '大模型推荐转人工' when cr.transfer_manual_reason=50 then '话术流程结束-ABC闭环' when cr.transfer_manual_reason=51 then '根据话术条件查询失败' when cr.transfer_manual_reason=52 then '话术流程结束-发完姓氏闭环' when cr.transfer_manual_reason=53 then '审核编辑后，项目状态已是已获权以上'  when cr.transfer_manual_reason=54 then '用户超长时间后开口'  when cr.transfer_manual_reason=55 then '不满足大模型兜底条件-未交房'  when cr.transfer_manual_reason=56 then '不满足大模型兜底条件-在外地'  when cr.transfer_manual_reason=57 then '触发过年期间不可约量房时间'  when cr.transfer_manual_reason=58 then '提示语返回异常'  when cr.transfer_manual_reason=59 then '已签约，转人工'  when cr.transfer_manual_reason=62 then '分派全槽位-用户超时无响应'	when cr.transfer_manual_reason=63 then '分派全槽位-大模型返回不可派'	when cr.transfer_manual_reason=64 then '分派全槽位-大模型返回核需完成'	when cr.transfer_manual_reason=65 then '分派全槽位-大模型返回其他'	when cr.transfer_manual_reason=66 then '分派全槽位-fastGPT返回包含特殊字符'	when cr.transfer_manual_reason=67 then '分派全槽位-核需中但是没有推荐话术' when cr.transfer_manual_reason=68 then '全流程-恢复托管没有获取到互动环名称' when cr.transfer_manual_reason=69 then '好友被拉黑'	when cr.transfer_manual_reason=70 then '未知大模型返回文本格式' when cr.transfer_manual_reason=71 then '未知大模型返回文本内容' when cr.transfer_manual_reason=72 then '解析大模型格式异常' when cr.transfer_manual_reason=73 then '大模型返回结果命中违规词' when cr.transfer_manual_reason=74 then '提示语返回的answer为空' when cr.transfer_manual_reason=75 then '没有符合发送的话术' when cr.transfer_manual_reason=101 then '开启会话失败' when cr.transfer_manual_reason=102 then '获取当前槽位失败' when cr.transfer_manual_reason=103 then '静默超时转人工挂机' when cr.transfer_manual_reason=104 then '用户出现负向意图-挂机' when cr.transfer_manual_reason=105 then '用户累计2次中性意图-挂机' when cr.transfer_manual_reason=106 then '用户表达不能操作1-挂机' when cr.transfer_manual_reason=107 then '会话调度流程结束-挂机' when cr.transfer_manual_reason=108 then '找不到对应的话术策略-挂机' when cr.transfer_manual_reason=109 then '加微操作未引导成功-挂机' when cr.transfer_manual_reason=110 then '收不到短信-挂机' when cr.transfer_manual_reason=111 then '短信加微操作未引导成功-挂机' when cr.transfer_manual_reason=112 then '结束语' when cr.transfer_manual_reason=113 then '用户表达不能操作2-挂机' when cr.transfer_manual_reason=114 then '用户辱骂-挂机' when cr.transfer_manual_reason=115 then '加微操作未引导成功1-挂机' when cr.transfer_manual_reason=116 then '用户表达不能操作3-挂机' when cr.transfer_manual_reason=117 then '用户主动挂机' when cr.transfer_manual_reason=108 then '找不到素材信息-挂机' when cr.transfer_manual_reason=119 then '前置话术-联系官网类-挂机' when cr.transfer_manual_reason=120 then '已匹配结束语' when cr.transfer_manual_reason=121 then '未匹配结束语' when cr.transfer_manual_reason=122 then '结束语-已转化' when cr.transfer_manual_reason=123 then '结束语-未转化' when cr.transfer_manual_reason=124 then '后续联系-结束语' else '未知' end )  as "转人工原因"
 @set hivevar_qiwei_message_type = (case when qr.message_type =1 then '文本' when qr.message_type =2 then '语音' when qr.message_type =3 then '图片' when qr.message_type =4 then '视频' when qr.message_type =5 then '名片' when qr.message_type =6 then '链接' when qr.message_type =9 then '企微表情' when qr.message_type =14 then '语音聊天' when qr.message_type =18 then '小程序' when qr.message_type =19 then '文件' when qr.message_type =251 then '引用' else '其他' end) as "企微消息类型"
 @set hivevar_behaviorStatus = (case when cb.behavior_status = 1 then '请求'  when cb.behavior_status = 2 then '点击'  when cb.behavior_status = 3 then '回复'  when cb.behavior_status = 4 then '点击之后回复的内容'  when cb.behavior_status = 5 then '开始托管'  when cb.behavior_status = 6 then '结束托管'  when cb.behavior_status = 7 then '暂停托管'  when cb.behavior_status = 8 then '恢复托管'  when cb.behavior_status = 9 then '顾问采纳应答策略'  when cb.behavior_status = 10 then '顾问纠错应答策略'  when cb.behavior_status = 11 then '无人工响应'  when cb.behavior_status = 12 then '引用消息'  when cb.behavior_status = 13 then '互动环开始托管'  when cb.behavior_status = 14 then '互动环结束托管' else '其他' end) as "事件类型"
 
@@ -10,19 +10,24 @@ where
 gw.nickname like '%陈聪%' 
 
 --  电话id查询 会话记录
-	select from_unixtime(cr.create_time+8*3600) as "加微时间" ,cr.extend_info 
+	select from_unixtime(cr.create_time+8*3600) as "加微时间" 
+	,cr.robot_takeover_type 
+	,cr.extend_info 
 	,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid,from_unixtime(cr.staff_service_time +8*3600) as "转人工时间",cr.check_status 
 	,${hivevar_transfer_manual_reason} , *
 	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
 	where
-	--cr.chat_id ='MTA3MzgxMzYjd21KaUliREFBQWk4ZXFpUndhRURjbzdrLXNiclZuVVE='
-	--cr.uid ='wmJiIbDAAAZf8vK8jSYhaAZ6A5k1EFtg'
+	--cr.chat_id ='MTMwMjU0OTA1NjMjd21KaUliREFBQWxiZUM5MTFZRDRGVnNSbTQxNU1CMXc='
+	--cr.uid ='wmJiIbDAAAmfIR3RLnzMqL9sC77GbI_A'
 	--cr.robot_id ='16562297954'
-	json_extract_scalar(cr.extend_info  , '$.phone_id')='122005807'
-	and cr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
+	json_extract_scalar(cr.extend_info  , '$.phone_id')='460075376'
+	--cr.transfer_manual_reason =58 and
+	--cr.robot_id ='10416912'
+	--cr.strategy_scene =9
+	--cr.conversation_template_id =167
+	and cr.create_time >=to_unixtime(cast ('2025-10-20 00:00:0' as timestamp)) - 8*3600 
 	order by id desc
 	limit 10
-
 
 -------------------------
 select from_unixtime(cd.create_time+8*3600) as create_time,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid, cd.role_type 
@@ -32,14 +37,15 @@ from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detai
 left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on cd.chat_id =cr.chat_id 
 left join hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp on cd.check_type_code =sp.whole_code 
 where 
-cd.chat_id ='MTcxODA2Njk1NjUjd21KaUliREFBQXQ5M1lmWWdqVWZMeFBBUTF5bE95a1E='
+cd.chat_id ='MTMxOTc5NDEwNjMjd21KaUliREFBQVNJeHhKYlVpRVJHa0F3UTJnbGNfT0E='
 --cd.id =167796158
 --cd.reply like '%称呼%'
 --and cd.check_type_code ='7!711!71102!754'
 and cd.deleted =0
 and cr.deleted =0
-and cr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
+and cr.create_time >=to_unixtime(cast ('2025-10-20 00:00:0' as timestamp)) - 8*3600 
 order by cd.id desc
+limit 100
 
 
 
@@ -53,12 +59,19 @@ select from_unixtime(qr.create_time+8*3600) as "消息创建时间"
 ,*
 from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
 where 
-qr.chat_id ='947386'
---qr.message_type =6
-and qr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
+--qr.uid ='wmJiIbDAAAfXcZK46mIKp8DZAv18Q2sw'
+qr.chat_id ='MTMwOTcxMTQxMTYjd21KaUliREFBQVRRNTk5OURJR29MV3dxY3RSc1diNVE='
+--qr.message_type =18
+and qr.create_time >=to_unixtime(cast ('2025-10-09 00:00:0' as timestamp)) - 8*3600 
 order by qr.id asc
+limit 100
 ;
 
+select *
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
+where qr.system_type =0 and qr.direction =2
+and qr.answer_relate_message_id like 'WECSMG_WECCLT_%'
+and qr.create_time >=to_unixtime(cast ('2025-10-20 00:00:0' as timestamp)) - 8*3600 
 
 
 select from_unixtime(qr.create_time+8*3600) as ct
@@ -2261,6 +2274,11 @@ left join
 ) t3_temp on t3_temp.parent_id = t2_temp.id
 where t3_temp.property_name is not null;
 
+select *
+from hive2.ads.v_kudu2_stg_scm_t8t_scm_cfg_supply_property sp
+where sp.whole_code ='5!504!50416!121'
+;
+
 
 
 
@@ -2852,14 +2870,6 @@ order by cd.chat_id ,cd.id desc
 
 
 
-select cr.chat_id 
-,(
-	case when exists (
-
-	) then '收集' else '未收集' end 
-) as "收集-姓氏"
-,*
-
 -- 当前大模型提取值
 select cd.chat_id
 ,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid
@@ -2885,39 +2895,6 @@ and cd.reply !=''
 
 
 
-	select from_unixtime(cr.create_time+8*3600) as "加微时间" ,cr.extend_info 
-	,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid,from_unixtime(cr.staff_service_time +8*3600) as sst,cr.check_status 
-	,${hivevar_transfer_manual_reason} , *
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-	where
-	 '' != regexp_extract(cr.extend_info , 'interactiveRingNameList')
-	and json_array_length(json_extract(cr.extend_info, '$.interactiveRingNameList')) > 0
-	and cr.create_time >=to_unixtime(cast ('2025-08-09 00:00:0' as timestamp)) - 8*3600 
-	order by id desc
-
-	
-	
-	
-	select *
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
-	where cb.chat_id ='MTY1NzEzMDI1NTQjd21KaUliREFBQWkxZkpWVUJTVG4wWE45OWRHWlJoWUE='
-	order by cb.id asc
-	
-	
-	select *
-	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_detail_content_config cc
-	where cc.msg_type =2
-	order by id asc
-	
-select *	
-from ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
-where  cr.deleted =0 and cr.robot_takeover_type =0 and cr.strategy_scene =9
-and '' != regexp_extract(cr.extend_info , 'interactiveRingNameList')
-and json_array_length(json_extract(cr.extend_info, '$.interactiveRingNameList')) > 0
-and cr.transfer_manual_reason in (19,29,53)
-and cr.create_time >=to_unixtime(cast ('2025-08-20 00:00:0' as timestamp)) - 8*3600 
-and cr.create_time <to_unixtime(cast ('2025-08-31 12:00:0' as timestamp)) - 8*3600 
-
 
 
 --查询QA 语料
@@ -2926,17 +2903,18 @@ select cr1.id
 ,(
 case when json_extract_scalar(cr1.qa_return  , '$.qaMulityVO.similarity') = '-1.0' then '否' else '是' end
 ) as "小模型预测是否QA"
+,json_extract_scalar(cr1.qa_return  , '$.qaMulityVO.questionType') as "小模型预测置QA类型"
 ,json_extract_scalar(cr1.qa_return  , '$.qaMulityVO.similarity') as "小模型预测置信度"
 ,JSON_EXTRACT(cr1.qa_return  , '$.qaMulityVO.candidateAnswer') as "小模型推荐承接话术"
 from hive2.ads.v_kudu2_stg_idc_new_t8t_nlp_fls_fls_qa_content_record cr1
 where cr1.id in 
-(76690974,76690964,76777877,76690980,76690958,76733417,76691084,76694700,76777964,76691042,76690971,76690916,76691090,76777987,76725037,76753017,76752467,76690955,76690994,76691033,76690978,76777910,76710293,76690930,76717111,76750477,76779807,76730994,76777906,76777927,76777981,76732503,76691060,76706248,76713247,76690987,76716058,76712054,76719844,76690999,76690976,76690937,76753891,76777924,76778877,76716344,76690998,76777885,76729231,76777908,76777917,76740251,76707900,76775529,76690927,76778009,76763622,76729203,76691016,76775673,76691012,76690938,76690932,76777983,76713009,76777965,76690968,76690990,80095336,76691039,76703797,76706573,76690919,76745346,76690991,76777952,76690956,76710028,76744441,76750329,76691053,76708290,76713819,76746924,76777930,76762050,76690985,76691070,76781457,76743666,76777879,76691057,76777857,76777941,76777914,76690986,76733407,76740884,76777943,76725380
+(76690960,76690924,76710029,76743697,76691047,76698884,76690939,76695568,76777853,76745034,76709468,76713737,76712107,76777874,76703484,80112640,76697146,76703625,76690925,76721899,76722663,76777976,76703989,76722332,76717282,76691101,76777851,76691068,76700597,76745525,76715496,76758540,76744361,76777989,76777838,76777897,76690984,76777961,76690911,76777936,76690945,76749196,76703630,76713367,76740814,76742345,76777845,76725938,76690947,76767049,76702470,76697239,76753775,76777876,76712456,76690914,76691007,76777836,76777852,76733211,76731100,76725282,76750555,76767012,76777893,76691035,76777985,76707942,76690950,76691086,76704664,76777887,76736550,76713304,76733541,76708814,76690944,76747237,76719107,76752437,80113329,76777863,76741502,76690997,76753788,76690993,76771288,76731842,76713608,76694504,76741401,76690966,80112728,76690949,76738731,76742162,76715023,76712016,76692456,76713753
 --	(
 --		-- 查询非QA 文本
 --		select cr.id 
 --		from hive2.ads.v_kudu2_stg_idc_new_t8t_nlp_fls_fls_qa_content_record cr
 --		where cr.create_time >=to_unixtime(cast ('2025-08-21 00:00:0' as timestamp)) - 8*3600
---		and json_extract_scalar(cr.qa_return  , '$.qaMulityVO.similarity') != '-1.0'
+--		and json_extract_scalar(cr.qa_return  , '$.qaMulityVO.similarity') = '-1.0'
 --		and cr.bussiness_key ='intelligentPlatform'
 --		limit 20
 --	)
@@ -2951,7 +2929,434 @@ where cr1.id in
 --		and cr.bussiness_key ='intelligentPlatform'
 --		limit 80
 --	)
-	-- 打乱顺序
-	--order by rand()
+--	order by rand()
 )
+
+----------------------------------------------------------------------------------------------------------
+
+-- 查询可匹配聊天记录
+select cast(json_extract(cr.extend_info, '$.phone_id') as integer) as "电话id",
+       qr.direction as "发送角色",
+       qr.system_type as "是否主动发送",
+       qr.text_content as "消息内容",
+       format_datetime(FROM_UNIXTIME(qr.send_time + 28800), 'yyyy-MM-dd HH:mm:ss')  as "消息发送时间",
+       qr.user_reply_intention as "用户回复意图",
+       qr.user_reply_slot as "用户回复槽位值",
+       ak.check_type_code AS "问题分类",
+       cr.robot_id 
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr on cr.chat_id = qr.chat_id and cr.chat_id is not null 
+LEFT JOIN hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_robot_ask ak ON qr.robot_ask_id=ak.id
+where 
+cr.create_time  >=to_unixtime(cast ('2025-09-20 00:00:0' as timestamp)) - 8*3600 
+and cr.create_time  <to_unixtime(cast ('2025-09-26 00:00:0' as timestamp)) - 8*3600 
+and cast(json_extract(cr.extend_info, '$.phone_id') as integer) in 
+(
+	select --a.external_userid,a.owner_wechat as wechat,
+	b.phone_id as phone_id
+	FROM hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_user_wechat AS a 
+	    LEFT JOIN hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_user_info AS b ON a.user_id=b.user_id
+	    left join hive2.ads.v_kudu_stg_mid_t8t_mid_uc_uc_user_housekeeper as housekeeper on a.user_id = housekeeper .user_id  
+	    LEFT JOIN hive2.ads.v_kudu2_stg_idc_new_t8t_mid_ucchat_uc_wechat_agree_status as c on a.owner_wechat=c.qr_user_id and a.external_userid=c.external_open_id and c.agree_status="agree_status"
+	where a.add_wechat_time  >=to_unixtime(cast ('2025-09-20 00:00:0' as timestamp)) - 8*3600 
+	and a.add_wechat_time  <to_unixtime(cast ('2025-09-26 00:00:0' as timestamp)) - 8*3600 
+	and a.user_all_message>5 and a.create_user = housekeeper.owner_id and b.phone_id IN (
+	    SELECT b.phone_id
+	    FROM hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_project AS a 
+	        LEFT JOIN hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_contact AS b ON a.con_id=b.id 
+	        LEFT JOIN hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_demand AS c ON a.dem_id=c.dem_id 
+	        LEFT JOIN hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_demand_hard AS d ON a.dem_id=d.dem_id 
+	        LEFT JOIN hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_house AS e ON a.proj_id=e.proj_id
+	        LEFT JOIN hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_proj_granted_record AS g ON a.proj_id=g.proj_id AND a.granted_time=g.granted_time
+	    WHERE  a.granted_time >=to_unixtime(cast ('2025-09-20 00:00:0' as timestamp)) - 8*3600 
+	    and a.granted_time <to_unixtime(cast ('2025-09-26 00:00:0' as timestamp)) - 8*3600 
+	            AND a.status=110 AND g.granted_source=5 
+	)
+)
+and qr.text_content is not null 
+--and cr.chat_id in 
+--(	
+--	select cd.chat_id 
+--	from	hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+--	where cd.deleted =0
+--	and cd.create_time >=to_unixtime(cast ('2025-08-28 00:00:0' as timestamp)) - 8*3600 
+--	and cd.create_time <to_unixtime(cast ('2025-09-08 00:00:0' as timestamp)) - 8*3600 
+--	and cd.check_type_code = '7!711!71102!545'
+--	and cd.reply !=''
+--)
+order by cr.chat_id asc, qr.send_time asc
+limit 500;
+
+
+
+
+
+-- 查询聊天记录 微信聊天记录
+select 
+CONCAT(t1.wechat,'@',t1.external_userid) as sid
+,t1.direction
+,(
+	case when t1.direction =2 then '客服' else '用户' end
+) as "发送人"
+, as "发送场景"
+,t1.msg_time/1000 as msg_time
+,from_unixtime(t1.msg_time/1000+8*3600) as "发送时间"
+,t1.content 
+from 
+(
+	SELECT 
+		if(substr(from_id,1,2)='wm',tolist,from_id) as wechat,
+		if(substr(tolist,1,2)='wm',tolist,from_id) as external_userid,
+		if(substr(from_id,1,2)='wm',1,2) as direction,
+		msg_time,
+		msg_type,
+		content
+	FROM hive2.ads.v_kudu2_stg_idc_new_t8t_mid_ucchat_uc_wechat_chatdata wc
+	WHERE msg_type='text'
+	 	and content <>'【未知消息类型】'
+	 	and content <>''
+	 	and msg_time>((to_unixtime(cast ('2025-10-08 00:00:0' as timestamp)) - 8*3600) *1000)
+	 	and msg_time<((to_unixtime(cast ('2025-10-09 00:00:0' as timestamp)) - 8*3600) *1000)
+) as t1 
+where 
+--t1.wechat in('18575677395','16625124081','13244727305','17679207507','10708951')
+--and 
+t1.external_userid like 'wm%'
+order by CONCAT(t1.wechat,'@',t1.external_userid),t1.msg_time
+
+
+-- 查询聊天记录 微联侧
+select 
+CONCAT(t1.wechat,'@',t1.external_userid) as sid
+,t1.direction
+,(
+	case when t1.direction =2 then '客服' else '用户' end
+) as "发送人"
+, as "发送场景"
+,t1.msg_time/1000 as msg_time
+,from_unixtime(t1.msg_time/1000+8*3600) as "发送时间"
+,t1.content 
+from 
+
+
+
+-- 智能应答消息渗透率 当天消息、24小时内消息
+select qr.chat_id
+,(case when qr.direction=2 then '顾问' when qr.direction=1 then '用户' else '其他' end )  as "发送角色"
+,qr.uid 
+,qr.we_chat 
+,qr.text_content 
+,from_unixtime(qr.send_time+8*3600) as "发送时间"
+,regexp_extract(qr.answer_relate_message_id, '^([^_]+_[^_]+)_', 1) as  sence
+,from_unixtime(cr.create_time +8*3600) as "加微时间"
+-- 新增字段1：判断是否同一天
+,if(
+    getday(qr.send_time,'yyyy-MM-dd 00:00:00') = getday(qr.create_time,'yyyy-MM-dd 00:00:00'), 
+    '是', 
+    '否'
+) as "是否同一天"
+    -- 新增字段2：判断是否相差在24小时内
+,if(
+        abs(qr.send_time - cr.create_time) <= 24*3600, 
+        '是', 
+        '否'
+    ) as "是否相差24小时内"
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
+left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on qr.chat_id =cr.chat_id 
+where cr.chat_id is not null and cr.deleted =0 and cr.strategy_scene =9
+and qr.create_time >=to_unixtime(cast ('2025-09-27 00:00:0' as timestamp)) - 8*3600 
+and qr.create_time < to_unixtime(cast ('2025-09-30 00:00:0' as timestamp)) - 8*3600 
+
+
+-- 恢复托管之后，机器人还发言了
+select t1.chat_id , t1.execute_time , t1.phoneId, t1.we_chat 
+from 
+(
+	select t.chat_id
+	, from_unixtime(cb1.create_time+8*3600) as execute_time
+	, t.phoneId
+	,qr.we_chat 
+	from 
+	(
+		select cb.chat_id 
+		,max(cb.id) as max_id
+		,max(json_extract_scalar(cr.extend_info , '$.phone_id')) as phoneId
+		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+		left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on cb.chat_id =cr.chat_id 
+		where cr.deleted =0 and cr.strategy_scene =9 and cr.check_status =1
+		group by cb.chat_id 
+	) t
+	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb1 on t.max_id=cb1.id
+	left join 
+	hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr on qr.chat_id =t.chat_id and qr.send_time >cb1.create_time
+	where cb1.behavior_status = 15
+	and qr.chat_id is not null 
+	and regexp_extract(qr.answer_relate_message_id, '^([^_]+_[^_]+)_', 1)='WECSMG_IR'
+) t1
+group by t1.chat_id , t1.execute_time , t1.phoneId,t1.we_chat 
+
+
+
+--装企推荐话术的回复率--智能应答
+select t3.chat_id
+,t3.start_qiwei_record_id as "关键字话术id"
+,t5.text_content  as "关键字话术"
+, from_unixtime(t5.send_time +8*3600) as "关键字话术发送时间"
+,t3.next_qiwei_record_id as "回复话术id"
+,t4.text_content as "回复话术"
+, from_unixtime(t4.send_time +8*3600) as "回复话术发送时间"
+,regexp_extract(t4.answer_relate_message_id, '^([^_]+_[^_]+)_', 1) as "发送角色"
+,t3.phone_id as phone_id
+from 
+(
+	select t2detail.chat_id
+	,min(t2detail.id) as start_qiwei_record_id
+	,case 
+        when count(case when t1.direction = 1 and t1.system_type = 0 then 1 end) > 0 
+        then max(case when t1.direction = 1 and t1.system_type = 0 then t1.id else null end)
+        else 0 
+    end as next_qiwei_record_id
+	, min(json_extract_scalar(cr.extend_info , '$.phone_id')) as phone_id
+	from 
+	(
+		select qr.id ,qr.chat_id 
+		from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record qr
+		where qr.text_content like '%避免您沟通几遍%'
+		-- 测试：228585507 394496446 MTUyMTYyNjIzNzIjd21KaUliREFBQTlBVU5zVDlGOGo1WEJVdDFycGFPRVE=  2025-09-28
+		--and qr.id =228585507
+		and qr.create_time >=to_unixtime(cast ('2025-09-01 00:00:0' as timestamp)) - 8*3600 
+		and qr.create_time < to_unixtime(cast ('2025-09-30 00:00:0' as timestamp)) - 8*3600 
+	) t2
+	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record t2detail on t2.id = t2detail.id 
+	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record t1 on t1.chat_id =t2detail.chat_id 
+	left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr on cr.chat_id = t1.chat_id
+	where 
+	t1.id > t2detail.id
+	and cr.chat_id is not null and cr.deleted =0 and cr.strategy_scene =9
+	--当天
+	and getday(t1.send_time,'yyyy-MM-dd 00:00:00') = getday(t2detail.send_time,'yyyy-MM-dd 00:00:00')
+	-- 24小时内
+	--and t1.send_time < t2detail.send_time +24*3600
+	group by t2detail.chat_id
+) t3
+left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record t5 on t5.id =t3.start_qiwei_record_id
+left join hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_qiwei_record t4 on t4.id =t3.next_qiwei_record_id
+
+
+
+
+
+
+--装企推荐话术的回复率--企微
+select t3.external_userid,t3.profile_custom_id
+,t3.start_record_id as "关键字话术id"
+,t5.text_content  as "关键字话术"
+, from_unixtime(t5.send_time +8*3600) as "关键字话术发送时间"
+,t3.next_record_id as "回复话术id"
+,t4.text_content as "回复话术"
+, from_unixtime(t4.send_time +8*3600) as "回复话术发送时间"
+, t4.scene as "发送角色"
+from 
+(
+	select t1.external_userid,t1.profile_custom_id
+	,min(wla2.id) as start_record_id
+	,case 
+        when count(case when wla2.scene = 'IR' then 1 end) > 0 
+        then max(case when wla2.scene = 'IR' then wla2.id else null end)
+        else 0 
+    end as next_record_id
+	from 
+	(
+		select wla.*
+		from hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link_all wla
+		where 
+		wla.text_content like '%activity/research%'
+		and wla.create_time >=to_unixtime(cast ('2025-09-29 00:00:0' as timestamp)) - 8*3600 
+		and wla.create_time < to_unixtime(cast ('2025-09-30 00:00:0' as timestamp)) - 8*3600 
+		--wla.external_userid='wmJiIbDAAATQ5999DIGoLWwqctRsWb5Q'
+	) t1
+	left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link_all wla2 
+		on t1.external_userid=wla2.external_userid and t1.profile_custom_id=wla2.profile_custom_id
+	where
+	t1.external_userid is not null and t1.external_userid !=''
+	and t1.id < wla2.id 
+	--当天
+	and getday(t1.send_time/1000,'yyyy-MM-dd 00:00:00') = getday(wla2.send_time/1000,'yyyy-MM-dd 00:00:00')
+	-- 24小时内
+	--and t1.send_time/1000  +24*3600 > wla2.send_time/1000
+	and wla2.create_time >=to_unixtime(cast ('2025-09-29 00:00:0' as timestamp)) - 8*3600 
+	and wla2.create_time < to_unixtime(cast ('2025-09-30 00:00:0' as timestamp)) - 8*3600 
+	group by t1.external_userid,t1.profile_custom_id
+) t3
+left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link_all t5 on t5.id =t3.start_record_id
+left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link_all t4 on t4.id =t3.next_record_id
+where 
+ t4.create_time >=to_unixtime(cast ('2025-09-29 00:00:0' as timestamp)) - 8*3600 
+and t4.create_time < to_unixtime(cast ('2025-09-30 00:00:0' as timestamp)) - 8*3600 
+and t5.create_time >=to_unixtime(cast ('2025-09-29 00:00:0' as timestamp)) - 8*3600 
+and t5.create_time < to_unixtime(cast ('2025-09-30 00:00:0' as timestamp)) - 8*3600 
+
+--语料的回复率-企微
+select t3.external_userid,t3.profile_custom_id
+,t3.start_record_id as "关键字话术id"
+,t5.text_content  as "关键字话术"
+, from_unixtime(t5.send_time +8*3600) as "关键字话术发送时间"
+,t3.scend_record_id as "回复话术id"
+,t4.text_content as "回复话术"
+, from_unixtime(t4.send_time +8*3600) as "回复话术发送时间"
+, t4.scene as "发送角色"
+from 
+(
+				select t1.external_userid,t1.profile_custom_id
+				,min(t1.id) as start_record_id --语料id
+				,min(wla2.id) as scend_record_id --回复id
+			    --select *
+				from 
+				(
+					select wla.*
+					from hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link wla
+					where 
+					--wla.text_content like '%activity/research%'
+					wla.object_content like '%activity/research%'
+					and wla.create_time >=to_unixtime(cast ('2025-11-01 11:00:0' as timestamp)) - 8*3600 
+					and wla.create_time < to_unixtime(cast ('2025-11-01 14:00:0' as timestamp)) - 8*3600 
+					-- 测试数据
+					--and wla.external_userid='wmJiIbDAAATQ5999DIGoLWwqctRsWb5Q'
+				) t1
+				left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link wla2 
+					on t1.external_userid=wla2.external_userid and t1.profile_custom_id=wla2.profile_custom_id
+				where
+				t1.external_userid is not null and t1.external_userid !=''
+				and t1.id < wla2.id 
+				group by t1.external_userid,t1.profile_custom_id
+) t3
+left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link t5 on t5.id =t3.start_record_id
+left join hive2.ads.v_hive2_ods_idc_new_t8t_mid_ucchat_uc_wechat_single_chat_we_link t4 on t4.id =t3.scend_record_id
+where 
+ t4.create_time >=to_unixtime(cast ('2025-11-01 11:00:0' as timestamp)) - 8*3600 
+and t4.create_time < to_unixtime(cast ('2025-11-01 14:00:0' as timestamp)) - 8*3600 
+and t5.create_time >=to_unixtime(cast ('2025-11-01 11:00:0' as timestamp)) - 8*3600 
+and t5.create_time < to_unixtime(cast ('2025-11-01 14:00:0' as timestamp)) - 8*3600 
+
+
+----------------------------------------------------------------------------------------------------
+---查询工作流核需闭环状态	
+	select cr.chat_id ,cr.robot_id 
+	,from_unixtime(cr.create_time+8*3600) as "加微时间" 
+	, cr.conversation_template_id 
+	,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid
+	,(
+			case when exists(
+				select cd.id
+				from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+				where cd.chat_id =cr.chat_id  
+				and cd.check_type_code = '7!711!71102!919'
+				and cd.reply ='核需完成'
+				limit 1
+			)  then '核需完成' else '其他' end 
+		) as "工作流核需闭环状态"
+	,
+		(
+			case when exists(
+				select cb.id
+				from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+				where cb.behavior_status =7 and cb.chat_id =cr.chat_id 
+				limit 1
+			)  then '暂停托管' else '非暂停托管' end 
+		) as "托管类型"
+	,${hivevar_transfer_manual_reason} 
+	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+	where cr.deleted =0 and cr.strategy_scene =9
+	and cr.create_time >=to_unixtime(cast ('2025-10-27 00:00:0' as timestamp)) - 8*3600 
+----------------------------------------------------------------------------------------------------
+
+---是否邀约成功 触发数据	
+select cr.chat_id ,cr.robot_id 
+,from_unixtime(cr.create_time+8*3600) as "加微时间" 
+, cr.conversation_template_id 
+,json_extract_scalar(cr.extend_info , '$.phone_id') as phoneid
+,(
+	case when exists(
+	        select cd.id
+	        from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_detail cd
+	        where cd.chat_id =cr.chat_id  
+	        and cd.check_type_code = '7!711!71102!925'
+	        and cd.reply ='是'
+	        limit 1
+	)  then '是' else '其他' end 
+) as "是否邀约成功"
+,
+(
+        case when exists(
+                select cb.id
+                from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+                where cb.behavior_status =7 and cb.chat_id =cr.chat_id 
+                limit 1
+        )  then '暂停托管' else '非暂停托管' end 
+) as "托管类型"
+,(
+	case when exists (
+		 	select cb.id
+		 	from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_smart_chat_counselor_behavior cb
+		 	where cb.chat_id =cr.chat_id 
+		 	and cb.behavior_status in (13, 14)
+		 	and cb.extend_info like '%BC类首次对话%'
+		 	limit 1
+	) then '进入' else '未进入' end 
+) as "是否进入BC类首次对话互动环"
+,t1.puttime as "首次分派时间"
+,utd.invited_measuring_time as "邀约量房时间"
+from hive2.ads.v_kudu2_stg_idc_it4_t8t_tbt_tls_tls_smart_chat_conversation_record cr
+left join 
+(
+	SELECT 
+    td.phone_id,from_unixtime(td.invited_measuring_time  +8*3600) as invited_measuring_time
+	FROM hive2.ads.v_kudu2_stg_mid_t8t_mid_uc_uc_trace_demand td
+	INNER JOIN (
+	    SELECT 
+	        phone_id, 
+	        MAX(id) AS max_id
+	    FROM hive2.ads.v_kudu2_stg_mid_t8t_mid_uc_uc_trace_demand 
+	    WHERE user_type IN (3, 4)
+	    GROUP BY phone_id
+	) t_max ON td.phone_id = t_max.phone_id AND td.id = t_max.max_id
+	WHERE td.user_type IN (3, 4)
+	--测试
+	--and td.phone_id =461168005
+) utd on utd.phone_id = cast(json_extract_scalar(cr.extend_info , '$.phone_id') as integer)
+left join 
+(
+	select f1.phone_id, from_unixtime(min(f4.puttime)  +8*3600) as puttime
+	from hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_contact f1 
+	left join hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_project  f2 on f1.id = f2.con_id
+	left join hive2.ads.v_kudu_stg_crm_t8t_mid_proj_cus_demand f3 on f2.proj_id = f3.proj_id
+	left join hive2.ads.v_kudu2_stg_crm_t8t_mid_proj_to8to_yuyue_apply_fp f4 on f3.dem_id = f4.yid and f4.gettype not in (33, 45, 48, 54)
+	where f1.create_time >=to_unixtime(cast ('2025-11-05 00:00:0' as timestamp)) - 8*3600
+	group by f1.phone_id  
+) t1 on t1.phone_id =  cast(json_extract_scalar(cr.extend_info , '$.phone_id') as integer)
+where cr.deleted =0 and cr.strategy_scene =9
+and cr.create_time >=to_unixtime(cast ('2025-11-05 00:00:0' as timestamp)) - 8*3600 
+
+        
+        
+      
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
