@@ -18,12 +18,13 @@ if __name__ == "__main__":
 
             # 仿照参考代码：根据appId和时间范围查询，按时间升序排序，跳过前0条，限制400条
             complex_docs = mongo_client.find_many(
-                collection_name="chatitems",
+                collection_name="openapis",
+                #collection_name="chatitems",
+                #collection_name="chatitems",
                 filter_dict={
-                    "appId": ObjectId("6892c47a9b3d87c33c3ac78f"),
-                    "time": {"$gte": start_time, "$lt": end_time}
+                    "apiKey": "fastgpt-hvz4h5dA1VqX8UdOBsqRET7SL6ifTfrwtD7JpFAGC3xe2BmQt3O4"
                 },
-                sort_fields=[("time", -1)],  # 按时间升序排序，1表示升序
+                #sort_fields=[("time", -1)],  # 按时间升序排序，1表示升序
                 skip=0,
                 limit=4
             )

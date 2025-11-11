@@ -101,7 +101,7 @@ class MongoDBClient:
             print(f"查找文档失败: {e}")
             return None
     
-    def find_many(self, collection_name: str, filter_dict: Dict[str, Any] = None, limit: int = 0, sort_fields: List[tuple] = None, skip: int = 0) -> List[Dict[str, Any]]:
+    def find_many(self, collection_name: str, filter_dict: Dict[str, Any] = None, limit: int = 0, sort_fields: List[tuple] = None, skip: int = 0, allow_disk_use: bool = False) -> List[Dict[str, Any]]:
         """
         查找多个文档，支持排序和跳过
         
@@ -111,6 +111,7 @@ class MongoDBClient:
             limit: 限制返回数量，0表示无限制
             sort_fields: 排序字段列表，格式如 [("field1", 1), ("field2", -1)]，1为升序，-1为降序
             skip: 跳过的文档数量
+            allow_disk_use: 是否允许使用磁盘进行排序（当内存不足时）
             
         Returns:
             List[Dict]: 查找到的文档列表
@@ -127,6 +128,9 @@ class MongoDBClient:
                 
             if limit > 0:
                 cursor = cursor.limit(limit)
+            
+            if allow_disk_use:
+                cursor = cursor.allow_disk_use(True)
                 
             return list(cursor)
         except Exception as e:
