@@ -24,7 +24,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
             if index > max_row:
                 print(f"当前行：{index}，超过最大值，不再处理后续数据")
                 break
-            print(f"当前fastgpt处理行：{index}")
+            print(f"当前fastgpt处理行 融合：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
                 continue

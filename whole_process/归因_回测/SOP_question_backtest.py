@@ -43,7 +43,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
     phone_id_list = []
     for index, item in enumerate(data_list):
         try:
-            print(f"当前fastgpt处理行：{index}")
+            print(f"当前fastgpt处理行 SOP-问题：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
                 continue

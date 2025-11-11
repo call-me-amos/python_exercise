@@ -38,7 +38,7 @@ def process_all_rows(max_row, api_key, fastgpt_api_url, data_list=None):
         try:
             # if index < 300:
             #     continue
-            print(f"当前fastgpt处理行：{index}")
+            print(f"当前fastgpt处理行 系统交互问题：{index}")
             responseData = item['responseData']
             if len(responseData) == 0:
                 continue

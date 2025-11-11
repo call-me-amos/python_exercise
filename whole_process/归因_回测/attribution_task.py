@@ -5,6 +5,8 @@ import time
 import sys
 import os
 
+from whole_process.归因_回测.utils import excel_to_image_pillow, send_post_img_message
+
 # 添加项目根目录到 Python 路径
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 import whole_process.归因_回测.emotional_backtest as emotional_backtest
@@ -23,9 +25,12 @@ import pandas as pd
 def init_config_and_time():
     """初始化配置和时间范围"""
     now = datetime.now()
-    today_date = now.strftime("%Y-%m-%d")
+    # 指定哪一天
+    base_datetime = datetime.now() - timedelta(days=1)
+    today_date = base_datetime.strftime("%Y-%m-%d")
+
     start_time = datetime.strptime(f"{today_date} 00:00:00", "%Y-%m-%d %H:%M:%S")
-    end_time = datetime.strptime(f"{today_date} 09:30:00", "%Y-%m-%d %H:%M:%S")
+    end_time = datetime.strptime(f"{today_date} 12:00:00", "%Y-%m-%d %H:%M:%S")
     
     return now, start_time, end_time
 
@@ -138,7 +143,7 @@ def analyze_single_file(file_path, file_name, date_str):
             result['【引导任务】ner提取结果是否一致'] = get_percentage(data_list, 'ner提取结果是否一致', '是')
         
         elif '系统交互问题' in file_name:
-            result['【系统交互问题】提取结果'] = get_percentage(data_list, '提取结果', '成功')
+            result['【系统交互问题】提取结果'] = get_percentage(data_list, '提取结果', '失败')
         
         print(f"分析完成: {file_name}, 日期: {date_str}")
         return result
@@ -147,7 +152,7 @@ def analyze_single_file(file_path, file_name, date_str):
         print(f"分析文件失败: {file_path}, 错误: {ex}")
         return None
 
-def analyze_recent_data(now):
+def analyze_recent_data(now, day_num=4):
     """分析最近4天的数据并生成统计报告"""
     print("开始分析最近4天的数据...")
     
@@ -159,7 +164,7 @@ def analyze_recent_data(now):
     
     # 获取最近4天的日期
     dates = []
-    for i in range(4):
+    for i in range(day_num):
         date = now - timedelta(days=i)
         dates.append(date.strftime('%Y-%m-%d'))
     
@@ -172,7 +177,7 @@ def analyze_recent_data(now):
         
         # 为每个日期分析数据
         for date_str in dates:
-            file_path = f"C:/Users/amos.tong/Desktop/归因_每天/{file_type}-回测-结果-{date_str}.xlsx"
+            file_path = f"C:/Users/amos.tong/Desktop/归因/归因_每天/{file_type}-回测-结果-{date_str}.xlsx"
             result = analyze_single_file(file_path, file_type, date_str)
             if result:
                 all_stats.append(result)
@@ -208,13 +213,46 @@ def analyze_recent_data(now):
         final_df = pd.DataFrame(pivot_data)
         
         # 保存到单个Excel文件
-        output_path = f"C:/Users/amos.tong/Desktop/归因_每天/归因回测统计汇总-{now.strftime('%Y-%m-%d')}.xlsx"
+        output_path = f"C:/Users/amos.tong/Desktop/归因/归因_每天/归因回测统计汇总-{now.strftime('%Y-%m-%d')}.xlsx"
         
         # 确保目录存在
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        
+
         # 保存到Excel
-        final_df.to_excel(output_path, index=False)
+        with pd.ExcelWriter(output_path, engine='xlsxwriter') as writer:
+            final_df.to_excel(writer, index=False, sheet_name='统计汇总')
+
+            # 获取工作表和工作簿对象
+            workbook = writer.book
+            worksheet = writer.sheets['统计汇总']
+
+            # 设置列宽（不启用文本换行）
+            for i, col in enumerate(final_df.columns):
+                if i == 0:  # 第一列（指标列）
+                    # 设置第一列宽度为100
+                    worksheet.set_column(i, i, 40)
+                else:  # 其他列
+                    # 计算标题宽度
+                    header_width = len(str(col)) + 2
+
+                    # 计算该列数据的最大宽度
+                    if not final_df.empty:
+                        data_width = final_df[col].astype(str).str.len().max()
+                        # 取标题和数据宽度的最大值，但限制在合理范围内
+                        max_width = min(max(header_width, data_width + 2), 30)  # 最大30字符
+                    else:
+                        max_width = header_width
+
+                    worksheet.set_column(i, i, max_width)
+
+        output_image = f"C:/Users/amos.tong/Desktop/归因/归因_每天/归因回测统计汇总-{now.strftime('%Y-%m-%d')}.png"
+        #excel_to_image_pillow(excel_file=output_path,  output_image=output_image)
+        excel_to_image_pillow(excel_file=output_path, output_image=output_image, first_col_width = 350)
+
+        print(f"excel文件生成图片， excel文件名={output_path} 图片名={output_image}")
+        send_post_img_message(output_image)
+        print(f"向企微发送图片，图片名={output_image}")
+        
         print(f"统计报告已保存: {output_path}")
         print(f"共生成 {len(pivot_data)} 项统计指标，覆盖 {len(set(stat['date'] for stat in all_stats))} 个日期")
     else:
@@ -232,26 +270,28 @@ def process_data_batches(mongo_client, start_time, end_time):
         'system_interaction_issues_result': []
     }
     
-    #page_size = 500
-    page_size = 20
-    last_time = start_time
+    page_size = 500
+    skip_count = 0
     batch_count = 0
 
     while True:
         batch_count += 1
-        print(f"正在查询第 {batch_count} 批数据，从时间 {last_time} 开始... 结束时间：{end_time}")
-        if batch_count > 2:
-            break
+        print(f"正在查询第 {batch_count} 批数据，跳过 {skip_count} 条记录，每页 {page_size} 条...")
+
+        # 测试代码
+        # page_size = 20
+        # if batch_count > 2:
+        #     break
         
-        # 查询MongoDB数据
+        # 查询MongoDB数据 - 使用skip/limit分页
         data_list = mongo_client.find_many(
             collection_name="chatitems",
             filter_dict={
                 "appId": ObjectId("68bfbd1d0d3c3dd5b3434fec"),
-                "time": {"$gte": last_time, "$lt": end_time}
+                "time": {"$gte": start_time, "$lte": end_time}
             },
             sort_fields=[("time", 1)],
-            skip=0,
+            skip=skip_count,
             limit=page_size
         )
         
@@ -264,13 +304,18 @@ def process_data_batches(mongo_client, start_time, end_time):
         # 处理所有回测
         process_all_backtests(data_list, results_dict)
         
-        # 更新last_time为当前批次最大的时间值
-        last_time = data_list[-1]['time']
-        print(f"下次查询将从时间 {last_time} 开始")
+        # 更新skip_count为下一页的起始位置
+        skip_count += len(data_list)
+        print(f"下次查询将跳过 {skip_count} 条记录")
         
-        # 间隔5秒
-        print("等待5秒后继续...")
-        time.sleep(5)
+        # 如果返回的数据少于page_size，说明已经是最后一页
+        if len(data_list) < page_size:
+            print("已到达最后一页，结束循环")
+            break
+        
+        # 间隔1秒
+        print("等待1秒后继续...")
+        time.sleep(1)
     
     return results_dict
 
@@ -282,15 +327,15 @@ def task():
         if mongo_client.connect():
             # 初始化时间范围
             now, start_time, end_time = init_config_and_time()
-            
+
             # 处理数据批次
             results_dict = process_data_batches(mongo_client, start_time, end_time)
-            
+
             # 保存所有结果到Excel
             save_results_to_excel(results_dict, now)
 
-            # 统计分析最近4天的数据
-            analyze_recent_data(now)
+            # 统计分析最近xxx天的数据（默认4天）
+            analyze_recent_data(now, 1)
 
     except Exception as ex:
         print(f"操作过程中发生异常: {ex}")
