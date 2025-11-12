@@ -332,9 +332,9 @@ def get_md5_and_base64(file_path):
 def send_post_img_message(data):
     md5_value, base64_content = get_md5_and_base64(data)
     # 正式群组
-    #url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=ba179f55-ebad-467e-bf73-ae20f62d196c"
-    # 智能应答【ERROR】
-    url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1e222140-0b10-41d0-b088-1ca37a0694cc"
+    url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=ba179f55-ebad-467e-bf73-ae20f62d196c"
+    # # 智能应答【ERROR】
+    # url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1e222140-0b10-41d0-b088-1ca37a0694cc"
     headers = {
         "Content-Type": "application/json"
     }

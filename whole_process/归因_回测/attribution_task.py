@@ -124,21 +124,21 @@ def analyze_single_file(file_path, file_name, date_str):
 
         # 根据不同的文件类型计算不同的统计指标
         if '情绪价值承接' in file_name:
-            result['【情绪价值承接】情绪标签是否一致'] = get_percentage(data_list, '情绪标签是否一致', '是')
-            result['【情绪价值承接】综合回复是否一致'] = get_percentage(data_list, '综合回复是否一致', '是')
+            result['【情绪价值承接】情绪标签准确率'] = get_percentage(data_list, '情绪标签是否一致', '是')
+            result['【情绪价值承接】综合回复准确率'] = get_percentage(data_list, '综合回复是否一致', '是')
 
         elif '新版QA' in file_name:
-            result['【新版QA】QA回复是否流畅'] = get_percentage(data_list, 'QA回复是否流畅', '是')
+            result['【新版QA】QA回复流畅度占比'] = get_percentage(data_list, 'QA回复是否流畅', '是')
 
         elif '融合' in file_name:
-            result['【融合】推荐承接话术不合理'] = get_percentage(data_list, '推荐承接话术不合理', '是')
+            result['【融合】推荐承接话术合理性占比'] = get_percentage(data_list, '推荐承接话术不合理', '否')
 
         elif 'SOP-问题' in file_name:
-            result['【SOP-问题】未满足派单标准'] = get_percentage(data_list, '未满足派单标准', '是')
-            result['【SOP-问题】用户表达不着急'] = get_percentage(data_list, '用户表达不着急', '是')
-            result['【SOP-问题】负向情绪'] = get_percentage(data_list, '负向情绪', '是')
-            result['【SOP-问题】询问是否AI'] = get_percentage(data_list, '询问是否AI', '是')
-            result['【SOP-问题】用户未回复'] = get_percentage(data_list, '用户未回复', '是')
+            result['【SOP-问题】未满足派单标准占比'] = get_percentage(data_list, '未满足派单标准', '是')
+            result['【SOP-问题】用户表达不着急占比'] = get_percentage(data_list, '用户表达不着急', '是')
+            result['【SOP-问题】负向情绪占比'] = get_percentage(data_list, '负向情绪', '是')
+            result['【SOP-问题】询问是否AI占比'] = get_percentage(data_list, '询问是否AI', '是')
+            result['【SOP-问题】用户未回复占比'] = get_percentage(data_list, '用户未回复', '是')
 
         elif '知识-专业性建议问题' in file_name:
             result['【知识-专业性建议问题】QA回复话术是否合适'] = get_percentage(data_list, 'QA回复话术是否合适', '否')
@@ -331,6 +331,8 @@ def process_data_batches(mongo_client, start_time, end_time):
 def task():
     """主任务函数"""
     print("主任务函数")
+    today_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"开始时间：{today_date}        task 开始处理。。。。。")
     mongo_client = MongoDBClient()
     try:
         # 连接到MongoDB
@@ -344,8 +346,8 @@ def task():
             # 保存所有结果到Excel - 使用数据实际日期
             save_results_to_excel(results_dict, base_datetime)
 
-            # 统计分析最近xxx天的数据（默认3天）
-            analyze_recent_data(now, 3)
+            # 统计分析最近xxx天的数据（默认4天）
+            analyze_recent_data(now, 4)
 
     except Exception as ex:
         print(f"操作过程中发生异常: {ex}")
@@ -353,10 +355,9 @@ def task():
         # 确保在任何情况下都关闭连接
         mongo_client.disconnect()
 
-
-if __name__ == "__main__":
-    today_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"开始时间：{today_date}        task 开始处理。。。。。")
-    task()
     today_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"结束时间：{today_date}        over。。。。")
+
+
+if __name__ == "__main__":
+    task()
