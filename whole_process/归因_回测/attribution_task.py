@@ -330,6 +330,7 @@ def process_data_batches(mongo_client, start_time, end_time):
 
 def task():
     """主任务函数"""
+    print("主任务函数")
     mongo_client = MongoDBClient()
     try:
         # 连接到MongoDB
@@ -337,14 +338,14 @@ def task():
             # 初始化时间范围
             now, start_time, end_time, base_datetime = init_config_and_time()
 
-            # # 处理数据批次
-            # results_dict = process_data_batches(mongo_client, start_time, end_time)
-            #
-            # # 保存所有结果到Excel - 使用数据实际日期
-            # save_results_to_excel(results_dict, base_datetime)
+            # 处理数据批次
+            results_dict = process_data_batches(mongo_client, start_time, end_time)
 
-            # 统计分析最近xxx天的数据（默认4天）
-            analyze_recent_data(now, 4)
+            # 保存所有结果到Excel - 使用数据实际日期
+            save_results_to_excel(results_dict, base_datetime)
+
+            # 统计分析最近xxx天的数据（默认3天）
+            analyze_recent_data(now, 3)
 
     except Exception as ex:
         print(f"操作过程中发生异常: {ex}")
